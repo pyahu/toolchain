@@ -1,4 +1,6 @@
 # Pyahu Community — AI agents overlay (MISE_ENV=ai)
 
 [tools]
-claude-code = "latest"
+claude-code = "latest"   # Anthropic Claude Code
+codex       = "latest"   # OpenAI Codex CLI
+opencode    = "latest"   # OpenCode

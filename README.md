@@ -128,7 +128,7 @@ sticky for a project (or use `mise.toml` + `mise install -E <env>`).
 **Cloud & Kubernetes** (`mise.cloud.toml`): kubectl 1.35, kubectx, kubens, k9s, kind, helm 4,
 telepresence, aws-cli 2, doctl, terraform 1.14, grpcurl, pgcli, mycli
 
-**AI** (`mise.ai.toml`): claude-code
+**AI** (`mise.ai.toml`): claude-code, codex, opencode
 
 ---
 

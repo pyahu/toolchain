@@ -1,0 +1,45 @@
+# Pyahu Community — Certified Toolchain (base)
+#
+# Replaces the old containerized Pyahu Shell. Same tools, now managed by mise
+# (https://mise.jdx.dev) — no Docker image, pinned per repo, identical on every machine.
+#
+# This file is the "minimal" baseline: shell, modern unix utilities, git workflow,
+# containers helper, and an editor. Stack language/cloud overlays on top with MISE_ENV.
+#
+#   MISE_ENV=java          → + mise.java.toml
+#   MISE_ENV=go            → + mise.go.toml
+#   MISE_ENV=python        → + mise.python.toml
+#   MISE_ENV=cloud         → + mise.cloud.toml
+#   MISE_ENV=ai            → + mise.ai.toml
+#   MISE_ENV=java,cloud,ai → stack several (this is the old "full" profile)
+#
+# Versions track current stable lines; `mise outdated` / `mise upgrade` bumps them.
+# OS-level prerequisites not managed here: git, zsh, curl, docker, a Nerd Font, vim.
+
+[tools]
+# shell & prompt
+starship = "1.24"
+fzf      = "0.67"
+zoxide   = "0.9"
+
+# modern unix utilities
+ripgrep = "15"
+fd      = "10"
+bat     = "0.26"
+eza     = "0.23"
+btop    = "1.4"
+dust    = "1"
+glow    = "2"
+yazi    = "25"
+jq      = "1.8"
+yq      = "4"
+"pipx:httpie" = "3.2.4"
+
+# git workflow
+"github-cli" = "2"
+delta        = "0.18"
+lazygit      = "0.58"
+
+# containers & editor
+lazydocker = "0.24"
+neovim     = "0.11"

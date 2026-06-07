@@ -1,0 +1,21 @@
+# Pyahu Community — Cloud & Kubernetes overlay (MISE_ENV=cloud)
+
+[tools]
+# kubernetes
+kubectl      = "1.35"
+kubectx      = "0.9"
+kubens       = "0.9"
+k9s          = "0.50"
+kind         = "0.31"
+helm         = "4"
+telepresence = "2"
+
+# cloud
+awscli    = "2"
+doctl     = "1"
+terraform = "1.14"
+
+# database clients & rpc
+grpcurl       = "1.9"
+"pipx:pgcli"  = "4.5.0"
+"pipx:mycli"  = "1.74.0"

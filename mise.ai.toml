@@ -1,0 +1,4 @@
+# Pyahu Community — AI agents overlay (MISE_ENV=ai)
+
+[tools]
+claude-code = "latest"

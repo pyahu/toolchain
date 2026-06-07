@@ -1,0 +1,10 @@
+# Pyahu Community — Java overlay (MISE_ENV=java)
+# Replaces SDKMAN. Java 25 + the build tools the certified Spring Boot / Quarkus templates use.
+
+[tools]
+java   = "temurin-25"
+maven  = "3"
+gradle = "8"
+
+# kcat (Kafka client) is not in the mise registry — install it with your OS
+# package manager: `brew install kcat` / `apt install kcat`.

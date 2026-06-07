@@ -1,7 +1,7 @@
-# Pyahu Community — Certified Toolchain (base)
+# Pyahu Community certified toolchain (base)
 #
-# Replaces the old containerized Pyahu Shell. Same tools, now managed by mise
-# (https://mise.jdx.dev) — no Docker image, pinned per repo, identical on every machine.
+# Developer CLI tools managed by mise (https://mise.jdx.dev): no Docker image,
+# pinned per repo, identical on every machine.
 #
 # This file is the "minimal" baseline: shell, modern unix utilities, git workflow,
 # containers helper, and an editor. Stack language/cloud overlays on top with MISE_ENV.

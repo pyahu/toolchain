@@ -3,9 +3,9 @@
 The certified developer toolchain for [Pyahu Community](https://pyahu.io), managed by
 [mise](https://mise.jdx.dev).
 
-It is the same set of tools the old **Pyahu Shell** shipped, now as a mise config instead of a
-Docker image. No container to pull, no rebuilds. Tools are pinned per repo and resolve to the
-**same versions on every machine**, so your team's workstations stop drifting apart.
+One pinned set of CLI tools defined as a mise config. No Docker image, no manual setup. Tools are
+pinned per repo and resolve to the **same versions on every machine**, so your team's workstations
+stop drifting apart.
 
 ---
 

@@ -16,7 +16,8 @@
 #   MISE_ENV=java,cloud,ai → stack several (this is the old "full" profile)
 #
 # Versions track current stable lines; `mise outdated` / `mise upgrade` bumps them.
-# OS-level prerequisites not managed here: git, zsh, curl, docker, a Nerd Font, vim.
+# OS-level prerequisites not managed here: git, zsh, curl, docker, a Nerd Font, vim,
+# and btop (no macOS binaries in the mise registry — `brew install btop` / `apt install btop`).
 
 [tools]
 # shell & prompt
@@ -29,7 +30,6 @@ ripgrep = "15"
 fd      = "10"
 bat     = "0.26"
 eza     = "0.23"
-btop    = "1.4"
 dust    = "1"
 glow    = "2"
 yazi    = "25"

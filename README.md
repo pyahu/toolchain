@@ -34,8 +34,8 @@ eval "$(mise activate zsh)"   # or bash
 ```
 
 OS-level tools mise does not manage (install with your package manager):
-`git`, `zsh`, `curl`, `docker`, a Nerd Font, `vim`, and the Kafka client `kcat`
-(`brew install kcat` / `apt install kcat`).
+`git`, `zsh`, `curl`, `docker`, a Nerd Font, `vim`, the resource monitor `btop`, and the Kafka
+client `kcat` (`brew install btop kcat` / `apt install btop kcat`).
 
 ---
 
@@ -126,7 +126,6 @@ sticky for a project (or use `mise.toml` + `mise install -E <env>`).
 | fd | fast `find` | 10 |
 | bat | `cat` with syntax highlighting | 0.26 |
 | eza | modern `ls` | 0.23 |
-| btop | resource monitor | 1.4 |
 | dust | disk usage | 1 |
 | glow | markdown in the terminal | 2 |
 | yazi | terminal file manager | 25 |

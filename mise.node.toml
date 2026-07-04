@@ -1,0 +1,8 @@
+# Pyahu Community — Node & frontend overlay (MISE_ENV=node)
+# Next.js / Vue / general TypeScript work.
+
+[tools]
+node = "24"    # Active LTS line
+pnpm = "11"
+yarn = "4"
+bun  = "1.3"

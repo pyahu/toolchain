@@ -6,11 +6,13 @@
 # This file is the "minimal" baseline: shell, modern unix utilities, git workflow,
 # containers helper, and an editor. Stack language/cloud overlays on top with MISE_ENV.
 #
-#   MISE_ENV=java          → + mise.java.toml
+#   MISE_ENV=java          → + mise.java.toml   (Java & Kotlin)
 #   MISE_ENV=go            → + mise.go.toml
 #   MISE_ENV=python        → + mise.python.toml
-#   MISE_ENV=cloud         → + mise.cloud.toml
+#   MISE_ENV=node          → + mise.node.toml   (Next.js / Vue / TypeScript)
+#   MISE_ENV=cloud         → + mise.cloud.toml  (Kubernetes, GitOps, Terraform)
 #   MISE_ENV=ai            → + mise.ai.toml
+#   MISE_ENV=arch          → + mise.arch.toml   (architecture / diagrams-as-code)
 #   MISE_ENV=java,cloud,ai → stack several (this is the old "full" profile)
 #
 # Versions track current stable lines; `mise outdated` / `mise upgrade` bumps them.

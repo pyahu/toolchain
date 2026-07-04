@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  # mise queries the GitHub API to resolve versions; the token avoids rate limits
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  overlay:
+    name: install (linux, ${{ matrix.env || 'base' }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        env: ["", "java", "go", "python", "node", "cloud", "ai", "arch"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        with:
+          install: false
+      - name: mise install
+        run: mise install
+        env:
+          MISE_ENV: ${{ matrix.env }}
+      - name: mise ls
+        run: mise ls
+        env:
+          MISE_ENV: ${{ matrix.env }}
+
+  macos:
+    name: install (macos, everything)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        with:
+          install: false
+      - name: mise install
+        run: mise install
+        env:
+          MISE_ENV: java,go,python,node,cloud,ai,arch
+      - name: mise ls
+        run: mise ls
+        env:
+          MISE_ENV: java,go,python,node,cloud,ai,arch

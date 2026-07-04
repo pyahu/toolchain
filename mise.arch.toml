@@ -1,0 +1,9 @@
+# Pyahu Community — Software architecture overlay (MISE_ENV=arch)
+# Diagrams-as-code for design docs and C4 models.
+
+[tools]
+d2 = "0.7"    # declarative diagrams (https://d2lang.com)
+
+# Not in the mise registry: structurizr-cli (C4 models) and plantuml — install
+# them with your OS package manager if you need them:
+#   brew install structurizr-cli plantuml

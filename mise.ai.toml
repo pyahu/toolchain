@@ -1,4 +1,7 @@
 # Pyahu Community — AI agents overlay (MISE_ENV=ai)
+#
+# Deliberately unpinned: AI CLIs ship fixes weekly and old versions age badly,
+# so this overlay tracks latest instead of the pinned lines used elsewhere.
 
 [tools]
 claude-code = "latest"   # Anthropic Claude Code

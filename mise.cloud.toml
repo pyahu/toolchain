@@ -10,6 +10,13 @@ kind         = "0.31"
 helm         = "4"
 telepresence = "2"
 
+# gitops
+kustomize = "5"
+argocd    = "3"
+flux2     = "2"
+sops      = "3"
+age       = "1"
+
 # cloud
 awscli    = "2"
 doctl     = "1"

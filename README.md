@@ -16,10 +16,12 @@ curl https://mise.run | sh
 eval "$(mise activate zsh)"   # add to ~/.zshrc — bash users: mise activate bash, in ~/.bashrc
 ```
 
-OS-level tools mise doesn't manage (install with your package manager): `git`, `zsh`, `curl`,
-`docker`, a Nerd Font, `vim`, `btop`, `kcat` (`brew install btop kcat` / `apt install btop kcat`).
+OS-level tools this toolchain doesn't manage (install with your package manager): `git`, `zsh`,
+`curl`, `docker`, a Nerd Font, `vim`, `btop`, `kcat` (`brew install btop kcat` /
+`apt install btop kcat`).
 
-Wire this repo into your machine:
+Wire this repo into your machine — profiles: `java`, `go`, `python`, `node`, `cloud`, `ai`, `arch`
+(pick `node` too if you want `ai`'s Kimi CLI):
 
 ```sh
 git clone https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
@@ -27,17 +29,27 @@ cd ~/.config/pyahu-toolchain
 ./install.sh java go python node cloud ai   # pick the profiles you use
 ```
 
-`install.sh` symlinks the base config to your mise global config and each profile to a mise
-environment file — mise's own config resolution, nothing custom. Add the `export MISE_ENV=...`
-line it prints to your shell rc, then run `mise install`. Later, `git pull` in that clone updates
-the machine immediately, no re-run needed. Anything this machine needs outside the curated set
-goes in `~/.config/mise/config.local.toml`, which mise merges in automatically.
+`install.sh` validates the profiles, then symlinks the base config to your mise global config and
+each profile to a mise environment file — mise's own config resolution, nothing custom. It backs
+up any real file already at a symlink target (`.bak`, `.bak.1`, ...), so it's safe to re-run.
+Export the `MISE_ENV=...` line it prints in your current shell and add it to your shell rc, then
+run `mise install`:
+
+```sh
+export MISE_ENV=java,go,python,node,cloud,ai
+mise install
+```
+
+Later, `git pull` in that clone updates the config immediately; run `mise install` again to fetch
+anything newly pinned. Anything this machine needs outside the curated set goes in
+`~/.config/mise/config.local.toml`, which mise merges in automatically.
 
 Working in someone else's repo instead? Drop the base config as a project file — mise merges it
 with your global config, and the closer file wins:
 
 ```sh
-curl -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/main/mise.toml
+curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/main/mise.toml
+mise install
 git add mise.toml && git commit -m "chore: pin toolchain with mise"
 ```
 
@@ -97,12 +109,13 @@ plantuml are not in the mise registry — `brew install` them if you need C4 mod
 
 ## Updating
 
-Pins track current stable lines. To bump them:
-
 ```sh
 mise outdated   # see what's behind
-mise upgrade    # update within the pinned lines
+mise upgrade    # install the latest version within each pinned line
 ```
+
+That doesn't change this repo's pins — pull for those (`git pull` in the clone, or re-curl the
+project file). Moving a pin to a new stable line is a PR; see [Contributing](#contributing).
 
 ---
 

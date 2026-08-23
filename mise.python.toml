@@ -1,6 +1,6 @@
 # Pyahu Community — Python overlay (MISE_ENV=python)
 
 [tools]
-uv   = "0.9"
-ruff = "0.14"
-"pipx:ipython" = "9.14.1"
+uv   = "0.12"
+ruff = "0.16"
+"pipx:ipython" = "9.16.1"

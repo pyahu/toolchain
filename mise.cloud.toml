@@ -2,11 +2,11 @@
 
 [tools]
 # kubernetes
-kubectl      = "1.35"
-kubectx      = "0.9"
-kubens       = "0.9"
-k9s          = "0.50"
-kind         = "0.31"
+kubectl      = "1.36"
+kubectx      = "0.11"
+kubens       = "0.11"
+k9s          = "0.51"
+kind         = "0.32"
 helm         = "4"
 telepresence = "2"
 
@@ -20,9 +20,9 @@ age       = "1"
 # cloud
 awscli    = "2"
 doctl     = "1"
-terraform = "1.14"
+terraform = "1.15"
 
 # database clients & rpc
 grpcurl       = "1.9"
 "pipx:pgcli"  = "4.5.0"
-"pipx:mycli"  = "1.74.0"
+"pipx:mycli"  = "2.15.0"

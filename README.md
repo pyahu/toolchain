@@ -19,45 +19,17 @@ the reproducibility of the image without the wall between you and your tools.
 
 ---
 
-## Prerequisites
-
-Install mise once (see the [mise install docs](https://mise.jdx.dev/getting-started.html)):
+## Install
 
 ```sh
 curl https://mise.run | sh
+eval "$(mise activate zsh)"   # add to ~/.zshrc / ~/.bashrc (or bash)
 ```
 
-Then activate it in your shell (`~/.zshrc` / `~/.bashrc`):
+OS-level tools mise doesn't manage (install with your package manager): `git`, `zsh`, `curl`,
+`docker`, a Nerd Font, `vim`, `btop`, `kcat` (`brew install btop kcat` / `apt install btop kcat`).
 
-```sh
-eval "$(mise activate zsh)"   # or bash
-```
-
-OS-level tools mise does not manage (install with your package manager):
-`git`, `zsh`, `curl`, `docker`, a Nerd Font, `vim`, the resource monitor `btop`, and the Kafka
-client `kcat` (`brew install btop kcat` / `apt install btop kcat`).
-
----
-
-## Quick start
-
-```sh
-# clone or copy the configs you want, then:
-mise install                       # base toolchain (shell, utils, git, editor)
-mise install -E java               # add the Java overlay
-MISE_ENV=java,cloud mise install   # stack several overlays
-```
-
-`mise install` reads the config in the current directory (and parent directories), downloads the
-pinned versions, and puts them on your `PATH`. Run `mise ls` to see what is active.
-
----
-
-## Setting up your machine (recommended)
-
-Clone the repo once and run the installer with the profiles you want. It symlinks the base config
-to your mise global config, and each profile to a mise environment file — the same mechanism mise
-already uses for project overlays, just applied globally:
+Wire this repo into your machine:
 
 ```sh
 git clone https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
@@ -65,78 +37,26 @@ cd ~/.config/pyahu-toolchain
 ./install.sh java go python node cloud ai   # pick the profiles you use
 ```
 
-Then add the printed `export MISE_ENV=...` line to your shell rc so the profiles stay active in
-every terminal, and run `mise install`.
+`install.sh` symlinks the base config to your mise global config and each profile to a mise
+environment file — mise's own config resolution, nothing custom. Add the `export MISE_ENV=...`
+line it prints to your shell rc, then run `mise install`. Later, `git pull` in that clone updates
+the machine immediately, no re-run needed. Anything this machine needs outside the curated set
+goes in `~/.config/mise/config.local.toml`, which mise merges in automatically.
 
-Tools your machine needs that aren't part of the curated set (a one-off CLI, an internal tool)
-go in `~/.config/mise/config.local.toml` — mise merges it in automatically, and since it lives
-outside this repo it's never committed here. `mise doctor` and `mise config ls` always show you
-exactly which files are active.
-
-To pick up new pins later: `cd ~/.config/pyahu-toolchain && git pull` — the symlinks mean your
-machine updates immediately, no re-run needed.
-
-### Doing it by hand
-
-The installer is just a shortcut for mise's normal config resolution. mise reads config from your
-**project** and from a **global** location, merging them (closer files win):
-
-### Per project (recommended, committed with your repo)
-
-Drop `mise.toml` in your project root. Everyone who clones the repo gets the same tools:
+Working in someone else's repo instead? Drop the base config as a project file — mise merges it
+with your global config, and the closer file wins:
 
 ```sh
 curl -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/main/mise.toml
 git add mise.toml && git commit -m "chore: pin toolchain with mise"
 ```
 
-mise also accepts `.mise.toml`, `mise/config.toml`, `.config/mise.toml`, or
-`.config/mise/config.toml` in the project. Local, uncommitted overrides go in `mise.local.toml`.
-
-### Global (all your projects)
-
-Put the base config at `~/.config/mise/config.toml` to have these tools everywhere:
-
-```sh
-mkdir -p ~/.config/mise
-curl -o ~/.config/mise/config.toml https://raw.githubusercontent.com/pyahu/toolchain/main/mise.toml
-```
-
-System-wide (all users) lives at `/etc/mise/config.toml`.
-
-### Recommended: global base + per-project overlays
-
-The two combine — mise merges the global config with whatever it finds in the project, and closer
-files win. The setup we recommend: put the **base** config in `~/.config/mise/config.toml` so the
-everyday tools follow you everywhere, and let each **project** commit its own `mise.toml` pinning
-just what it needs (its language overlay, exact runtime versions). `cd` into the project and mise
-gives you the union of both.
-
----
-
-## Profiles (mise environments)
-
-The base `mise.toml` is the minimal set. Language and cloud overlays stack on top via `MISE_ENV`,
-which maps to the `mise.<env>.toml` files in this repo:
-
-| Profile  | File               | Activate with                         |
-| -------- | ------------------ | ------------------------------------- |
-| base     | `mise.toml`        | `mise install`                        |
-| java     | `mise.java.toml`   | `MISE_ENV=java mise install`          |
-| go       | `mise.go.toml`     | `MISE_ENV=go mise install`            |
-| python   | `mise.python.toml` | `MISE_ENV=python mise install`        |
-| node     | `mise.node.toml`   | `MISE_ENV=node mise install`          |
-| cloud    | `mise.cloud.toml`  | `MISE_ENV=cloud mise install`         |
-| ai       | `mise.ai.toml`     | `MISE_ENV=ai mise install`            |
-| arch     | `mise.arch.toml`   | `MISE_ENV=arch mise install`          |
-| everything | all of the above | `MISE_ENV=java,go,python,node,cloud,ai,arch mise install` |
-
-Copy the overlays you use next to your `mise.toml`. Set `MISE_ENV` in your shell to make a profile
-sticky for a project (or use `mise.toml` + `mise install -E <env>`).
-
 ---
 
 ## What's in the box
+
+Base is the minimal set (shell, unix utilities, git workflow, editor). Overlays stack on top via
+`MISE_ENV`, e.g. `MISE_ENV=java,cloud,ai mise install`.
 
 **Base** (`mise.toml`)
 
@@ -162,24 +82,25 @@ sticky for a project (or use `mise.toml` + `mise install -E <env>`).
 | mprocs | run/monitor multiple processes | 0.9 |
 | neovim | editor | 0.12 |
 
-**Java & Kotlin** (`mise.java.toml`): Temurin JDK 25, Maven 3, Gradle 9, Kotlin 2 (replaces SDKMAN)
+**Java & Kotlin** (`mise.java.toml`, `MISE_ENV=java`): Temurin JDK 25, Maven 3, Gradle 9, Kotlin 2
+(replaces SDKMAN)
 
-**Go** (`mise.go.toml`): go 1.27, golangci-lint 2, delve (`dlv`), air, ko
+**Go** (`mise.go.toml`, `MISE_ENV=go`): go 1.27, golangci-lint 2, delve (`dlv`), air, ko
 
-**Python** (`mise.python.toml`): uv 0.12, ruff 0.16, ipython 9.16.1
+**Python** (`mise.python.toml`, `MISE_ENV=python`): uv 0.12, ruff 0.16, ipython 9.16.1
 
-**Node & frontend** (`mise.node.toml`): node 24 (LTS), pnpm 11, yarn 4, bun 1.4 — for Next.js,
-Vue, and general TypeScript work
+**Node & frontend** (`mise.node.toml`, `MISE_ENV=node`): node 24 (LTS), pnpm 11, yarn 4, bun 1.4 —
+for Next.js, Vue, and general TypeScript work
 
-**Cloud, Kubernetes & GitOps** (`mise.cloud.toml`): kubectl 1.36, kubectx, kubens, k9s, kind,
-helm 4, telepresence, kustomize 5, argocd 3, flux 2, sops, age, aws-cli 2, doctl, terraform 1.15,
-grpcurl, pgcli, mycli
+**Cloud, Kubernetes & GitOps** (`mise.cloud.toml`, `MISE_ENV=cloud`): kubectl 1.36, kubectx,
+kubens, k9s, kind, helm 4, telepresence, kustomize 5, argocd 3, flux 2, sops, age, aws-cli 2,
+doctl, terraform 1.15, grpcurl, pgcli, mycli
 
-**AI** (`mise.ai.toml`): claude-code, codex, opencode — deliberately unpinned (these ship fixes
-weekly)
+**AI** (`mise.ai.toml`, `MISE_ENV=ai`): claude-code, codex, opencode — deliberately unpinned
+(these ship fixes weekly)
 
-**Architecture** (`mise.arch.toml`): d2 for diagrams-as-code (structurizr-cli and plantuml are not
-in the mise registry — `brew install` them if you need C4 models)
+**Architecture** (`mise.arch.toml`, `MISE_ENV=arch`): d2 for diagrams-as-code (structurizr-cli and
+plantuml are not in the mise registry — `brew install` them if you need C4 models)
 
 ---
 

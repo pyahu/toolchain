@@ -130,6 +130,7 @@ work
 | kubens | switch Kubernetes namespaces | 0.11 |
 | k9s | Kubernetes TUI | 0.51 |
 | kind | local Kubernetes clusters | 0.32 |
+| k3d | local Kubernetes clusters (k3s in Docker) | 5.9 |
 | helm | Kubernetes package manager | 4 |
 | telepresence | local-to-cluster dev | 2 |
 | kustomize | Kubernetes config overlays | 5 |

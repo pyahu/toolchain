@@ -13,7 +13,7 @@
 #   MISE_ENV=cloud         → + mise.cloud.toml  (Kubernetes, GitOps, Terraform)
 #   MISE_ENV=ai            → + mise.ai.toml
 #   MISE_ENV=arch          → + mise.arch.toml   (architecture / diagrams-as-code)
-#   MISE_ENV=java,cloud,ai → stack several (this is the old "full" profile)
+#   MISE_ENV=java,cloud,ai → stack several profiles at once
 #
 # Versions track current stable lines; `mise outdated` / `mise upgrade` bumps them.
 # OS-level prerequisites not managed here: git, zsh, curl, docker, a Nerd Font, vim,

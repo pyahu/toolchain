@@ -6,14 +6,14 @@ The certified developer toolchain for [Pyahu Community](https://pyahu.io), manag
 [mise](https://mise.jdx.dev).
 
 One pinned set of CLI tools defined as a mise config. No Docker image, no manual setup. Tools are
-pinned per repo and resolve to the **same versions on every machine**, so your team's workstations
-stop drifting apart.
+pinned per repo to the **same stable lines on every machine**, so your team's workstations stop
+drifting apart.
 
 ## Install
 
 ```sh
 curl https://mise.run | sh
-eval "$(mise activate zsh)"   # add to ~/.zshrc / ~/.bashrc (or bash)
+eval "$(mise activate zsh)"   # add to ~/.zshrc — bash users: mise activate bash, in ~/.bashrc
 ```
 
 OS-level tools mise doesn't manage (install with your package manager): `git`, `zsh`, `curl`,
@@ -87,7 +87,8 @@ kubens, k9s, kind, helm 4, telepresence, kustomize 5, argocd 3, flux 2, sops, ag
 doctl, terraform 1.15, grpcurl, pgcli, mycli
 
 **AI** (`mise.ai.toml`, `MISE_ENV=ai`): claude-code, codex, opencode, kimi-code — deliberately
-unpinned (these ship fixes weekly)
+unpinned (these ship fixes weekly). kimi-code needs Node on `PATH`: activate it with
+`MISE_ENV=node,ai`
 
 **Architecture** (`mise.arch.toml`, `MISE_ENV=arch`): d2 for diagrams-as-code (structurizr-cli and
 plantuml are not in the mise registry — `brew install` them if you need C4 models)

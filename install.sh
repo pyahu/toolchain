@@ -24,26 +24,37 @@ fi
 
 mkdir -p "$MISE_CONFIG_DIR"
 
-link() {
-  src="$1"
-  dest="$2"
-  if [ -e "$dest" ] && [ ! -L "$dest" ]; then
-    mv "$dest" "$dest.bak"
-    echo "backed up existing $dest -> $dest.bak"
-  fi
-  ln -sfn "$src" "$dest"
-  echo "linked $dest -> $src"
-}
-
-link "$REPO_DIR/mise.toml" "$MISE_CONFIG_DIR/config.toml"
-
+# Validate every profile up front so a typo never leaves a half-applied install.
 for profile in "$@"; do
   overlay="$REPO_DIR/mise.$profile.toml"
   if [ ! -f "$overlay" ]; then
     echo "no such profile: $profile (looked for $overlay)" >&2
     exit 1
   fi
-  link "$overlay" "$MISE_CONFIG_DIR/config.$profile.toml"
+done
+
+link() {
+  src="$1"
+  dest="$2"
+  if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+    backup="$dest.bak"
+    n=1
+    while [ -e "$backup" ]; do
+      backup="$dest.bak.$n"
+      n=$((n + 1))
+    done
+    mv "$dest" "$backup"
+    echo "backed up existing $dest -> $backup"
+  fi
+  rm -f "$dest"
+  ln -s "$src" "$dest"
+  echo "linked $dest -> $src"
+}
+
+link "$REPO_DIR/mise.toml" "$MISE_CONFIG_DIR/config.toml"
+
+for profile in "$@"; do
+  link "$REPO_DIR/mise.$profile.toml" "$MISE_CONFIG_DIR/config.$profile.toml"
 done
 
 echo

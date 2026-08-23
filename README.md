@@ -13,14 +13,14 @@ drifting apart.
 
 ```sh
 curl https://mise.run | sh
-eval "$(mise activate zsh)"   # add to ~/.zshrc — bash users: mise activate bash, in ~/.bashrc
+eval "$(mise activate zsh)"   # add to ~/.zshrc. Bash users: mise activate bash, in ~/.bashrc
 ```
 
 OS-level tools this toolchain doesn't manage (install with your package manager): `git`, `zsh`,
 `curl`, `docker`, a Nerd Font, `vim`, `btop`, `kcat` (`brew install btop kcat` /
 `apt install btop kcat`).
 
-Wire this repo into your machine — profiles: `java`, `go`, `python`, `node`, `cloud`, `ai`, `arch`
+Wire this repo into your machine. Profiles: `java`, `go`, `python`, `node`, `cloud`, `ai`, `arch`
 (pick `node` too if you want `ai`'s Kimi CLI):
 
 ```sh
@@ -30,8 +30,8 @@ cd ~/.config/pyahu-toolchain
 ```
 
 `install.sh` validates the profiles, then symlinks the base config to your mise global config and
-each profile to a mise environment file — mise's own config resolution, nothing custom. It backs
-up any real file already at a symlink target (`.bak`, `.bak.1`, ...), so it's safe to re-run.
+each profile to a mise environment file. It's mise's own config resolution, nothing custom, and it
+backs up any real file already at a symlink target (`.bak`, `.bak.1`, ...), so it's safe to re-run.
 Export the `MISE_ENV=...` line it prints in your current shell and add it to your shell rc, then
 run `mise install`:
 
@@ -44,7 +44,7 @@ Later, `git pull` in that clone updates the config immediately; run `mise instal
 anything newly pinned. Anything this machine needs outside the curated set goes in
 `~/.config/mise/config.local.toml`, which mise merges in automatically.
 
-Working in someone else's repo instead? Drop the base config as a project file — mise merges it
+Working in someone else's repo instead? Drop the base config as a project file. mise merges it
 with your global config, and the closer file wins:
 
 ```sh
@@ -84,26 +84,83 @@ Base is the minimal set (shell, unix utilities, git workflow, editor). Overlays 
 | mprocs | run/monitor multiple processes | 0.9 |
 | neovim | editor | 0.12 |
 
-**Java & Kotlin** (`mise.java.toml`, `MISE_ENV=java`): Temurin JDK 25, Maven 3, Gradle 9, Kotlin 2
-(replaces SDKMAN)
+**Java & Kotlin** (`mise.java.toml`, `MISE_ENV=java`), replaces SDKMAN
 
-**Go** (`mise.go.toml`, `MISE_ENV=go`): go 1.27, golangci-lint 2, delve (`dlv`), air, ko
+| Tool | Purpose | Pin |
+| ---- | ------- | --- |
+| java | Temurin JDK | 25 |
+| maven | build tool | 3 |
+| gradle | build tool | 9 |
+| kotlin | Kotlin compiler | 2 |
 
-**Python** (`mise.python.toml`, `MISE_ENV=python`): uv 0.12, ruff 0.16, ipython 9.16.1
+**Go** (`mise.go.toml`, `MISE_ENV=go`)
 
-**Node & frontend** (`mise.node.toml`, `MISE_ENV=node`): node 24 (LTS), pnpm 11, yarn 4, bun 1.4 —
-for Next.js, Vue, and general TypeScript work
+| Tool | Purpose | Pin |
+| ---- | ------- | --- |
+| go | Go toolchain | 1.27 |
+| golangci-lint | linter | 2 |
+| dlv | debugger | 1.27 |
+| air | live reload | 1 |
+| ko | container images for Go | 0.19 |
 
-**Cloud, Kubernetes & GitOps** (`mise.cloud.toml`, `MISE_ENV=cloud`): kubectl 1.36, kubectx,
-kubens, k9s, kind, helm 4, telepresence, kustomize 5, argocd 3, flux 2, sops, age, aws-cli 2,
-doctl, terraform 1.15, grpcurl, pgcli, mycli
+**Python** (`mise.python.toml`, `MISE_ENV=python`)
 
-**AI** (`mise.ai.toml`, `MISE_ENV=ai`): claude-code, codex, opencode, kimi-code — deliberately
-unpinned (these ship fixes weekly). kimi-code needs Node on `PATH`: activate it with
-`MISE_ENV=node,ai`
+| Tool | Purpose | Pin |
+| ---- | ------- | --- |
+| uv | package & venv manager | 0.12 |
+| ruff | linter & formatter | 0.16 |
+| ipython | REPL | 9.16.1 |
 
-**Architecture** (`mise.arch.toml`, `MISE_ENV=arch`): d2 for diagrams-as-code (structurizr-cli and
-plantuml are not in the mise registry — `brew install` them if you need C4 models)
+**Node & frontend** (`mise.node.toml`, `MISE_ENV=node`), for Next.js, Vue, and general TypeScript
+work
+
+| Tool | Purpose | Pin |
+| ---- | ------- | --- |
+| node | JS runtime (Active LTS) | 24 |
+| pnpm | package manager | 11 |
+| yarn | package manager | 4 |
+| bun | JS runtime & bundler | 1.4 |
+
+**Cloud, Kubernetes & GitOps** (`mise.cloud.toml`, `MISE_ENV=cloud`)
+
+| Tool | Purpose | Pin |
+| ---- | ------- | --- |
+| kubectl | Kubernetes CLI | 1.36 |
+| kubectx | switch Kubernetes contexts | 0.11 |
+| kubens | switch Kubernetes namespaces | 0.11 |
+| k9s | Kubernetes TUI | 0.51 |
+| kind | local Kubernetes clusters | 0.32 |
+| helm | Kubernetes package manager | 4 |
+| telepresence | local-to-cluster dev | 2 |
+| kustomize | Kubernetes config overlays | 5 |
+| argocd | GitOps CLI (ArgoCD) | 3 |
+| flux2 | GitOps CLI (Flux) | 2 |
+| sops | secrets encryption | 3 |
+| age | encryption tool | 1 |
+| awscli | AWS CLI | 2 |
+| doctl | DigitalOcean CLI | 1 |
+| terraform | infrastructure as code | 1.15 |
+| grpcurl | gRPC client | 1.9 |
+| pgcli | Postgres CLI | 4.5.0 |
+| mycli | MySQL CLI | 2.15.0 |
+
+**AI** (`mise.ai.toml`, `MISE_ENV=ai`), deliberately unpinned since these ship fixes weekly
+
+| Tool | Purpose | Pin |
+| ---- | ------- | --- |
+| claude-code | Anthropic Claude Code | latest |
+| codex | OpenAI Codex CLI | latest |
+| opencode | OpenCode | latest |
+| kimi-code | Kimi Code CLI, needs Node, stack `MISE_ENV=node,ai` | latest |
+
+**Architecture** (`mise.arch.toml`, `MISE_ENV=arch`)
+
+| Tool | Purpose | Pin |
+| ---- | ------- | --- |
+| d2 | diagrams-as-code | 0.7 |
+
+Not in the mise registry: `structurizr-cli` (C4 models) and `plantuml`. Install them with your OS
+package manager if you need them.
 
 ---
 
@@ -114,14 +171,14 @@ mise outdated   # see what's behind
 mise upgrade    # install the latest version within each pinned line
 ```
 
-That doesn't change this repo's pins — pull for those (`git pull` in the clone, or re-curl the
+That doesn't change this repo's pins. Pull for those (`git pull` in the clone, or re-curl the
 project file). Moving a pin to a new stable line is a PR; see [Contributing](#contributing).
 
 ---
 
 ## Contributing
 
-Want a tool added or a pin moved? See [CONTRIBUTING.md](CONTRIBUTING.md) — the short version:
+Want a tool added or a pin moved? See [CONTRIBUTING.md](CONTRIBUTING.md). The short version:
 tools must be in the mise registry, fit an overlay, and earn their place in a *curated* set.
 Every PR is validated by CI on Linux and macOS.
 
@@ -129,7 +186,7 @@ Every PR is validated by CI on Linux and macOS.
 
 ## Why mise
 
-mise keeps developer CLIs native on your `PATH`, pinned by small TOML files in git — no rebuilding
+mise keeps developer CLIs native on your `PATH`, pinned by small TOML files in git. No rebuilding
 a container image for every tool bump, no IDE cut off from your toolchain. Unlike per-language
 version managers (asdf, nvm, pyenv, rbenv, SDKMAN), it's one tool and one config format instead of
 one per language. Containers still earn their keep for isolated services and OS-level deps.

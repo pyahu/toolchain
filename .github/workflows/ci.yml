@@ -31,6 +31,50 @@ jobs:
         env:
           MISE_ENV: ${{ matrix.env }}
 
+  installer:
+    name: install.sh (linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        with:
+          install: false
+
+      - name: fresh install links everything and tools actually run
+        run: |
+          export MISE_CONFIG_DIR="$RUNNER_TEMP/mise-config"
+          ./install.sh java go python node cloud ai arch
+          MISE_ENV=java,go,python,node,cloud,ai,arch mise install
+          MISE_ENV=node,ai mise exec -- kimi --version
+          MISE_ENV=ai mise exec -- claude --version
+          MISE_ENV=ai mise exec -- codex --version
+          MISE_ENV=ai mise exec -- opencode --version
+
+      - name: re-running backs up real files without clobbering
+        run: |
+          export MISE_CONFIG_DIR="$RUNNER_TEMP/mise-config"
+          # config.arch.toml is a symlink from the previous step; remove it before
+          # writing, or the write would follow the link and edit this repo's file.
+          rm "$MISE_CONFIG_DIR/config.arch.toml"
+          echo "pre-existing local edit" > "$MISE_CONFIG_DIR/config.arch.toml"
+          ./install.sh arch
+          rm "$MISE_CONFIG_DIR/config.arch.toml"
+          echo "another pre-existing edit" > "$MISE_CONFIG_DIR/config.arch.toml"
+          ./install.sh arch
+          test -f "$MISE_CONFIG_DIR/config.arch.toml.bak"
+          test -f "$MISE_CONFIG_DIR/config.arch.toml.bak.1"
+          grep -qx "pre-existing local edit" "$MISE_CONFIG_DIR/config.arch.toml.bak"
+          grep -qx "another pre-existing edit" "$MISE_CONFIG_DIR/config.arch.toml.bak.1"
+
+      - name: an unknown profile aborts before linking anything
+        run: |
+          export MISE_CONFIG_DIR="$RUNNER_TEMP/mise-config-clean"
+          if ./install.sh java not-a-real-profile; then
+            echo "expected install.sh to fail on an unknown profile" >&2
+            exit 1
+          fi
+          test ! -e "$MISE_CONFIG_DIR/config.toml"
+
   macos:
     name: install (macos, everything)
     runs-on: macos-latest

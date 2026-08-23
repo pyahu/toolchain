@@ -9,16 +9,6 @@ One pinned set of CLI tools defined as a mise config. No Docker image, no manual
 pinned per repo and resolve to the **same versions on every machine**, so your team's workstations
 stop drifting apart.
 
-## Why mise (and not a Docker image)?
-
-This toolchain used to ship as a Docker image. It worked, but a container isolates you from your
-own machine: IDEs can't see the tools, credentials and SSH keys need forwarding, Docker-in-Docker
-gets awkward, and every tool bump means rebuilding and re-pulling a multi-GB image. With mise the
-tools are native binaries on your `PATH`, pinned by a small TOML file that lives in git — you get
-the reproducibility of the image without the wall between you and your tools.
-
----
-
 ## Install
 
 ```sh
@@ -97,8 +87,7 @@ kubens, k9s, kind, helm 4, telepresence, kustomize 5, argocd 3, flux 2, sops, ag
 doctl, terraform 1.15, grpcurl, pgcli, mycli
 
 **AI** (`mise.ai.toml`, `MISE_ENV=ai`): claude-code, codex, opencode, kimi-code — deliberately
-unpinned
-(these ship fixes weekly)
+unpinned (these ship fixes weekly)
 
 **Architecture** (`mise.arch.toml`, `MISE_ENV=arch`): d2 for diagrams-as-code (structurizr-cli and
 plantuml are not in the mise registry — `brew install` them if you need C4 models)
@@ -121,6 +110,18 @@ mise upgrade    # update within the pinned lines
 Want a tool added or a pin moved? See [CONTRIBUTING.md](CONTRIBUTING.md) — the short version:
 tools must be in the mise registry, fit an overlay, and earn their place in a *curated* set.
 Every PR is validated by CI on Linux and macOS.
+
+---
+
+## Why mise
+
+A Docker image gives you reproducibility but walls you off from your own machine: IDEs can't see
+the tools, credentials and SSH keys need forwarding, Docker-in-Docker gets awkward, and every tool
+bump means rebuilding and re-pulling a multi-GB image. Per-language version managers (asdf, nvm,
+pyenv, rbenv, SDKMAN) skip the container but leave you running a different tool, config file, and
+shell hook per language. mise replaces both: native binaries on your `PATH`, one tool, pinned by
+small TOML files that live in git — the reproducibility of a container without the wall, and one
+mental model instead of five.
 
 ---
 

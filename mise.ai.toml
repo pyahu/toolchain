@@ -7,3 +7,4 @@
 claude-code = "latest"   # Anthropic Claude Code
 codex       = "latest"   # OpenAI Codex CLI
 opencode    = "latest"   # OpenCode
+"npm:@moonshot-ai/kimi-code" = "latest"   # Kimi Code CLI (kimi)

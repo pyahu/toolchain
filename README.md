@@ -96,7 +96,8 @@ for Next.js, Vue, and general TypeScript work
 kubens, k9s, kind, helm 4, telepresence, kustomize 5, argocd 3, flux 2, sops, age, aws-cli 2,
 doctl, terraform 1.15, grpcurl, pgcli, mycli
 
-**AI** (`mise.ai.toml`, `MISE_ENV=ai`): claude-code, codex, opencode — deliberately unpinned
+**AI** (`mise.ai.toml`, `MISE_ENV=ai`): claude-code, codex, opencode, kimi-code — deliberately
+unpinned
 (these ship fixes weekly)
 
 **Architecture** (`mise.arch.toml`, `MISE_ENV=arch`): d2 for diagrams-as-code (structurizr-cli and

@@ -129,13 +129,10 @@ Every PR is validated by CI on Linux and macOS.
 
 ## Why mise
 
-A Docker image gives you reproducibility but walls you off from your own machine: IDEs can't see
-the tools, credentials and SSH keys need forwarding, Docker-in-Docker gets awkward, and every tool
-bump means rebuilding and re-pulling a multi-GB image. Per-language version managers (asdf, nvm,
-pyenv, rbenv, SDKMAN) skip the container but leave you running a different tool, config file, and
-shell hook per language. mise replaces both: native binaries on your `PATH`, one tool, pinned by
-small TOML files that live in git — the reproducibility of a container without the wall, and one
-mental model instead of five.
+mise keeps developer CLIs native on your `PATH`, pinned by small TOML files in git — no rebuilding
+a container image for every tool bump, no IDE cut off from your toolchain. Unlike per-language
+version managers (asdf, nvm, pyenv, rbenv, SDKMAN), it's one tool and one config format instead of
+one per language. Containers still earn their keep for isolated services and OS-level deps.
 
 ---
 

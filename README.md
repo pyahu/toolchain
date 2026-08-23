@@ -53,10 +53,33 @@ pinned versions, and puts them on your `PATH`. Run `mise ls` to see what is acti
 
 ---
 
-## Where to put the config
+## Setting up your machine (recommended)
 
-mise reads config from your **project** and from a **global** location, merging them (closer files
-win). Pick what fits:
+Clone the repo once and run the installer with the profiles you want. It symlinks the base config
+to your mise global config, and each profile to a mise environment file — the same mechanism mise
+already uses for project overlays, just applied globally:
+
+```sh
+git clone https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
+cd ~/.config/pyahu-toolchain
+./install.sh java go python node cloud ai   # pick the profiles you use
+```
+
+Then add the printed `export MISE_ENV=...` line to your shell rc so the profiles stay active in
+every terminal, and run `mise install`.
+
+Tools your machine needs that aren't part of the curated set (a one-off CLI, an internal tool)
+go in `~/.config/mise/config.local.toml` — mise merges it in automatically, and since it lives
+outside this repo it's never committed here. `mise doctor` and `mise config ls` always show you
+exactly which files are active.
+
+To pick up new pins later: `cd ~/.config/pyahu-toolchain && git pull` — the symlinks mean your
+machine updates immediately, no re-run needed.
+
+### Doing it by hand
+
+The installer is just a shortcut for mise's normal config resolution. mise reads config from your
+**project** and from a **global** location, merging them (closer files win):
 
 ### Per project (recommended, committed with your repo)
 
@@ -119,36 +142,37 @@ sticky for a project (or use `mise.toml` + `mise install -E <env>`).
 
 | Tool | Purpose | Pin |
 | ---- | ------- | --- |
-| starship | shell prompt | 1.24 |
-| fzf | fuzzy finder | 0.67 |
-| zoxide | smarter `cd` | 0.9 |
+| starship | shell prompt | 1.26 |
+| fzf | fuzzy finder | 0.74 |
+| zoxide | smarter `cd` | 0.10 |
 | ripgrep | fast grep (`rg`) | 15 |
 | fd | fast `find` | 10 |
 | bat | `cat` with syntax highlighting | 0.26 |
 | eza | modern `ls` | 0.23 |
 | dust | disk usage | 1 |
-| glow | markdown in the terminal | 2 |
-| yazi | terminal file manager | 25 |
+| glow | markdown in the terminal | 3 |
+| yazi | terminal file manager | 26 |
 | jq | JSON processor | 1.8 |
 | yq | YAML processor | 4 |
 | httpie | HTTP client (`http`) | 3.2.4 |
 | github-cli | GitHub CLI (`gh`) | 2 |
-| delta | better git diffs | 0.18 |
-| lazygit | git TUI | 0.58 |
-| lazydocker | docker TUI | 0.24 |
-| neovim | editor | 0.11 |
+| delta | better git diffs | 0.19 |
+| lazygit | git TUI | 0.64 |
+| lazydocker | docker TUI | 0.25 |
+| mprocs | run/monitor multiple processes | 0.9 |
+| neovim | editor | 0.12 |
 
-**Java & Kotlin** (`mise.java.toml`): Temurin JDK 25, Maven 3, Gradle 8, Kotlin 2 (replaces SDKMAN)
+**Java & Kotlin** (`mise.java.toml`): Temurin JDK 25, Maven 3, Gradle 9, Kotlin 2 (replaces SDKMAN)
 
-**Go** (`mise.go.toml`): go 1.24, golangci-lint 2, delve (`dlv`), air, ko
+**Go** (`mise.go.toml`): go 1.27, golangci-lint 2, delve (`dlv`), air, ko
 
-**Python** (`mise.python.toml`): uv 0.9, ruff 0.14, ipython 9.14.1
+**Python** (`mise.python.toml`): uv 0.12, ruff 0.16, ipython 9.16.1
 
-**Node & frontend** (`mise.node.toml`): node 24 (LTS), pnpm 11, yarn 4, bun 1.3 — for Next.js,
+**Node & frontend** (`mise.node.toml`): node 24 (LTS), pnpm 11, yarn 4, bun 1.4 — for Next.js,
 Vue, and general TypeScript work
 
-**Cloud, Kubernetes & GitOps** (`mise.cloud.toml`): kubectl 1.35, kubectx, kubens, k9s, kind,
-helm 4, telepresence, kustomize 5, argocd 3, flux 2, sops, age, aws-cli 2, doctl, terraform 1.14,
+**Cloud, Kubernetes & GitOps** (`mise.cloud.toml`): kubectl 1.36, kubectx, kubens, k9s, kind,
+helm 4, telepresence, kustomize 5, argocd 3, flux 2, sops, age, aws-cli 2, doctl, terraform 1.15,
 grpcurl, pgcli, mycli
 
 **AI** (`mise.ai.toml`): claude-code, codex, opencode — deliberately unpinned (these ship fixes

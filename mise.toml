@@ -44,4 +44,5 @@ lazygit      = "0.64"
 
 # containers & editor
 lazydocker = "0.25"
+mprocs     = "0.9"
 neovim     = "0.12"

@@ -142,6 +142,7 @@ work
 | age | encryption tool | 1 |
 | awscli | AWS CLI | 2 |
 | doctl | DigitalOcean CLI | 1 |
+| hcloud | Hetzner Cloud CLI | 1 |
 | oci-cli | Oracle Cloud CLI (`oci`) | 3.91.0 |
 | terraform | infrastructure as code | 1.15 |
 | grpcurl | gRPC client | 1.9 |

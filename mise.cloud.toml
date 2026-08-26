@@ -19,9 +19,10 @@ sops      = "3"
 age       = "1"
 
 # cloud
-awscli    = "2"
-doctl     = "1"
-terraform = "1.15"
+awscli         = "2"
+doctl          = "1"
+terraform      = "1.15"
+"pipx:oci-cli" = "3.91.0"
 
 # database clients & rpc
 grpcurl       = "1.9"

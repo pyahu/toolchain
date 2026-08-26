@@ -31,5 +31,5 @@ terraform      = "1.15"
 
 # database clients & rpc
 grpcurl       = "1.9"
-"pipx:pgcli"  = "4.5.0"
-"pipx:mycli"  = "2.15.0"
+"pipx:pgcli"  = "4.6.0"
+"pipx:mycli"  = "2.17.0"

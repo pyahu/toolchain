@@ -3,7 +3,7 @@
 # Kotlin projects usually get the compiler via Gradle; the standalone CLI is pinned here too.
 
 [tools]
-java   = "temurin-25"
+java   = "temurin-25.0.4+101.0.LTS"
 maven  = "3"
 gradle = "9"
 kotlin = "2"

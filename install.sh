@@ -53,9 +53,27 @@ link() {
 
 link "$REPO_DIR/mise.toml" "$MISE_CONFIG_DIR/config.toml"
 
+cloud_installed=0
 for profile in "$@"; do
   link "$REPO_DIR/mise.$profile.toml" "$MISE_CONFIG_DIR/config.$profile.toml"
+
+  # The cloud overlay puts $MISE_CONFIG_DIR/bin on PATH for these kubectl plugin
+  # shims, so `kubectl ctx` / `kubectl ns` work without a second package manager.
+  if [ "$profile" = cloud ]; then
+    cloud_installed=1
+    mkdir -p "$MISE_CONFIG_DIR/bin"
+    link "$REPO_DIR/bin/kubectl-ctx" "$MISE_CONFIG_DIR/bin/kubectl-ctx"
+    link "$REPO_DIR/bin/kubectl-ns" "$MISE_CONFIG_DIR/bin/kubectl-ns"
+  fi
 done
+
+# mise.cloud.toml can only name one path, so it uses mise's default config dir.
+if [ "$cloud_installed" = 1 ] && [ "$MISE_CONFIG_DIR" != "$HOME/.config/mise" ]; then
+  echo
+  echo "note: the cloud overlay adds \$HOME/.config/mise/bin to PATH, but your"
+  echo "MISE_CONFIG_DIR is $MISE_CONFIG_DIR — add $MISE_CONFIG_DIR/bin to PATH"
+  echo "yourself for 'kubectl ctx' and 'kubectl ns' to resolve."
+fi
 
 echo
 if [ "$#" -gt 0 ]; then

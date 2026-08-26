@@ -78,6 +78,8 @@ Base is the minimal set (shell, unix utilities, git workflow, editor). Overlays 
 | yq | YAML processor | 4 |
 | httpie | HTTP client (`http`) | 3.2.4 |
 | github-cli | GitHub CLI (`gh`) | 2 |
+| glab | GitLab CLI | 1 |
+| linear-cli | Linear issue tracker CLI (`linear`) | 2.5.0 |
 | delta | better git diffs | 0.19 |
 | lazygit | git TUI | 0.64 |
 | lazydocker | docker TUI | 0.25 |
@@ -126,8 +128,8 @@ work
 | Tool | Purpose | Pin |
 | ---- | ------- | --- |
 | kubectl | Kubernetes CLI | 1.36 |
-| kubectx | switch Kubernetes contexts | 0.11 |
-| kubens | switch Kubernetes namespaces | 0.11 |
+| kubectx | switch Kubernetes contexts, also `kubectl ctx` | 0.11 |
+| kubens | switch Kubernetes namespaces, also `kubectl ns` | 0.11 |
 | k9s | Kubernetes TUI | 0.51 |
 | kind | local Kubernetes clusters | 0.32 |
 | k3d | local Kubernetes clusters (k3s in Docker) | 5.9 |
@@ -140,6 +142,7 @@ work
 | age | encryption tool | 1 |
 | awscli | AWS CLI | 2 |
 | doctl | DigitalOcean CLI | 1 |
+| oci-cli | Oracle Cloud CLI (`oci`) | 3.91.0 |
 | terraform | infrastructure as code | 1.15 |
 | grpcurl | gRPC client | 1.9 |
 | pgcli | Postgres CLI | 4.5.0 |

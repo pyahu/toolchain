@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# kubectl plugin shim: `kubectl ctx` (and `k ctx`) runs the kubectx binary mise
+# installs, matching the krew plugin of the same name. Resolved through PATH so
+# it follows whatever version mise.cloud.toml pins.
+exec kubectx "$@"

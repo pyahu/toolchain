@@ -38,9 +38,11 @@ yq      = "4"
 "pipx:httpie" = "3.2.4"
 
 # git workflow
-"github-cli" = "2"
-delta        = "0.19"
-lazygit      = "0.64"
+"github-cli"            = "2"
+glab                    = "1"
+"ubi:schpet/linear-cli" = "2.5.0"
+delta                   = "0.19"
+lazygit                 = "0.64"
 
 # containers & editor
 lazydocker = "0.25"

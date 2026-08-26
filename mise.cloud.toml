@@ -26,6 +26,7 @@ age       = "1"
 # cloud
 awscli         = "2"
 doctl          = "1"
+hcloud         = "1"
 terraform      = "1.15"
 "pipx:oci-cli" = "3.91.0"
 

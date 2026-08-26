@@ -18,8 +18,8 @@ jobs:
       matrix:
         env: ["", "java", "go", "python", "node", "cloud", "ai", "arch"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v4
         with:
           install: false
       - name: mise install
@@ -35,8 +35,8 @@ jobs:
     name: install.sh (linux)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v4
         with:
           install: false
 
@@ -79,8 +79,8 @@ jobs:
     name: install (macos, everything)
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v4
         with:
           install: false
       - name: mise install

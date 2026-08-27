@@ -84,6 +84,7 @@ Base is the minimal set (shell, unix utilities, git workflow, editor). Overlays 
 | lazygit | git TUI | 0.64 |
 | lazydocker | docker TUI | 0.25 |
 | mprocs | run/monitor multiple processes | 0.9 |
+| tmux | terminal multiplexer | 3 |
 | neovim | editor | 0.12 |
 
 **Java & Kotlin** (`mise.java.toml`, `MISE_ENV=java`), replaces SDKMAN

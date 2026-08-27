@@ -44,7 +44,8 @@ glab                     = "1"
 delta                    = "0.19"
 lazygit                  = "0.64"
 
-# containers & editor
+# containers, multiplexer & editor
 lazydocker = "0.25"
 mprocs     = "0.9"
+tmux       = "3"
 neovim     = "0.12"

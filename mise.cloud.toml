@@ -7,11 +7,11 @@ _.path = ["{{env.HOME}}/.config/mise/bin"]
 
 [tools]
 # kubernetes
-kubectl      = "1.36"
+kubectl      = "1.37.0"
 kubectx      = "0.11"
 kubens       = "0.11"
 k9s          = "0.51"
-kind         = "0.32"
+kind         = "0.33.0"
 k3d          = "5.9"
 helm         = "4"
 telepresence = "2"
@@ -27,10 +27,10 @@ age       = "1"
 awscli         = "2"
 doctl          = "1"
 hcloud         = "1"
-terraform      = "1.15"
-"pipx:oci-cli" = "3.91.0"
+terraform      = "1.16.0"
+"pipx:oci-cli" = "3.92.0"
 
 # database clients & rpc
 grpcurl       = "1.9"
 "pipx:pgcli"  = "4.6.0"
-"pipx:mycli"  = "2.17.0"
+"pipx:mycli"  = "2.18.5"

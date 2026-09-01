@@ -2,7 +2,7 @@
 # Diagrams-as-code for design docs and C4 models.
 
 [tools]
-d2 = "0.7"    # declarative diagrams (https://d2lang.com)
+d2 = "v0.8.2"    # declarative diagrams (https://d2lang.com)
 
 # Not in the mise registry: structurizr-cli (C4 models) and plantuml — install
 # them with your OS package manager if you need them:

@@ -46,6 +46,7 @@ jobs:
           ./install.sh java go python node cloud ai arch
           MISE_ENV=java,go,python,node,cloud,ai,arch mise install
           MISE_ENV=node,ai mise exec -- kimi --version
+          MISE_ENV=node,ai mise exec -- pi --version
           MISE_ENV=ai mise exec -- claude --version
           MISE_ENV=ai mise exec -- codex --version
           MISE_ENV=ai mise exec -- opencode --version

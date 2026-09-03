@@ -8,3 +8,4 @@ claude-code = "latest"   # Anthropic Claude Code
 codex       = "latest"   # OpenAI Codex CLI
 opencode    = "latest"   # OpenCode
 "npm:@moonshot-ai/kimi-code" = "latest"   # Kimi Code CLI (kimi); needs Node, stack with MISE_ENV=node,ai
+"npm:@earendil-works/pi-coding-agent" = "latest"   # Pi coding agent (pi); needs Node >=22, stack with MISE_ENV=node,ai

@@ -21,7 +21,7 @@ OS-level tools this toolchain doesn't manage (install with your package manager)
 `apt install btop kcat`).
 
 Wire this repo into your machine. Profiles: `java`, `go`, `python`, `node`, `cloud`, `ai`, `arch`
-(pick `node` too if you want `ai`'s Kimi CLI):
+(pick `node` too if you want `ai`'s Kimi CLI or Pi):
 
 ```sh
 git clone https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
@@ -158,6 +158,7 @@ work
 | codex | OpenAI Codex CLI | latest |
 | opencode | OpenCode | latest |
 | kimi-code | Kimi Code CLI, needs Node, stack `MISE_ENV=node,ai` | latest |
+| pi-coding-agent | Pi coding agent (`pi`), needs Node, stack `MISE_ENV=node,ai` | latest |
 
 **Architecture** (`mise.arch.toml`, `MISE_ENV=arch`)
 

@@ -160,6 +160,12 @@ work
 | kimi-code | Kimi Code CLI, needs Node, stack `MISE_ENV=node,ai` | latest |
 | pi-coding-agent | Pi coding agent (`pi`), needs Node, stack `MISE_ENV=node,ai` | latest |
 
+Not installable by mise: `obsidian` (Obsidian CLI, the vault from the terminal — useful to give an
+agent a place to read and write notes). It ships inside the Obsidian desktop app since 1.12, so
+mise can't manage it: install Obsidian 1.12.7+ with the official installer, enable
+Settings → General → "Command line interface", and register it on your `PATH` when prompted. It
+talks to the running app over IPC, so Obsidian has to be open.
+
 **Architecture** (`mise.arch.toml`, `MISE_ENV=arch`)
 
 | Tool | Purpose | Pin |

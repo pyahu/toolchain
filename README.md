@@ -157,6 +157,7 @@ work
 | claude-code | Anthropic Claude Code | latest |
 | codex | OpenAI Codex CLI | latest |
 | opencode | OpenCode | latest |
+| ollama | local model runtime, `ollama serve` + `ollama run` | latest |
 | kimi-code | Kimi Code CLI, needs Node, stack `MISE_ENV=node,ai` | latest |
 | pi-coding-agent | Pi coding agent (`pi`), needs Node, stack `MISE_ENV=node,ai` | latest |
 

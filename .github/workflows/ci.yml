@@ -50,6 +50,7 @@ jobs:
           MISE_ENV=ai mise exec -- claude --version
           MISE_ENV=ai mise exec -- codex --version
           MISE_ENV=ai mise exec -- opencode --version
+          MISE_ENV=ai mise exec -- ollama --version
 
       - name: re-running backs up real files without clobbering
         run: |

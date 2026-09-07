@@ -149,6 +149,7 @@ work
 | grpcurl | gRPC client | 1.9 |
 | pgcli | Postgres CLI | 4.5.0 |
 | mycli | MySQL CLI | 2.15.0 |
+| pyahu | Pyahu CLI — local dev stack on k3d (`pyahu up`) | 0.6.1 |
 
 **AI** (`mise.ai.toml`, `MISE_ENV=ai`), deliberately unpinned since these ship fixes weekly
 

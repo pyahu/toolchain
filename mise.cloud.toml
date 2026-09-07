@@ -34,3 +34,9 @@ terraform      = "1.16.0"
 grpcurl       = "1.9"
 "pipx:pgcli"  = "4.6.0"
 "pipx:mycli"  = "2.18.5"
+
+# pyahu
+# Local dev stack on k3d (`pyahu up`), declared per repo in pyahu.yaml. Pinned to the
+# exact patch on purpose: the repos that consume it (e.g. unilog/all) pin the same
+# version, so every machine builds the same stack.
+"github:pyahu/cli" = "0.6.1"

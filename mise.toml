@@ -40,9 +40,9 @@ yq      = "4"
 # git workflow
 "github-cli"             = "2"
 glab                     = "1"
-"npm:@schpet/linear-cli" = "2.5.0"
+"npm:@schpet/linear-cli" = "2.6.0"
 delta                    = "0.19"
-lazygit                  = "0.64"
+lazygit                  = "0.65.0"
 
 # containers, multiplexer & editor
 lazydocker = "0.25"

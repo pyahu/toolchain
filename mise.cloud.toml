@@ -27,16 +27,16 @@ age       = "1"
 awscli         = "2"
 doctl          = "1"
 hcloud         = "1"
-terraform      = "1.16.0"
-"pipx:oci-cli" = "3.92.0"
+terraform      = "1.16.2"
+"pipx:oci-cli" = "3.92.1"
 
 # database clients & rpc
 grpcurl       = "1.9"
 "pipx:pgcli"  = "4.6.0"
-"pipx:mycli"  = "2.18.5"
+"pipx:mycli"  = "2.23.0"
 
 # pyahu
 # Local dev stack on k3d (`pyahu up`), declared per repo in pyahu.yaml. Pinned to the
 # exact patch on purpose: the repos that consume it (e.g. unilog/all) pin the same
 # version, so every machine builds the same stack.
-"github:pyahu/cli" = "0.8.0"
+"github:pyahu/cli" = "0.10.1"

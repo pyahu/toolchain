@@ -1,9 +1,9 @@
 # Pyahu Community — Cloud & Kubernetes overlay (MISE_ENV=cloud)
 
 [env]
-# kubectl plugin shims that install.sh links here, so `kubectl ctx` / `kubectl ns`
-# (and `k ctx` / `k ns`) drive kubectx and kubens the way the krew plugins do.
-_.path = ["{{env.HOME}}/.config/mise/bin"]
+# Resolve the shims from this repository, including when this file is symlinked
+# into mise's global config directory by install.sh.
+_.path = ["{{ config_source | canonicalize | dirname }}/bin"]
 
 [tools]
 # kubernetes

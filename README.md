@@ -29,20 +29,28 @@ cd ~/.config/pyahu-toolchain
 ./install.sh java go python node cloud ai   # pick the profiles you use
 ```
 
-`install.sh` validates the profiles, then symlinks the base config to your mise global config and
-each profile to a mise environment file. It's mise's own config resolution, nothing custom, and it
-backs up any real file already at a symlink target (`.bak`, `.bak.1`, ...), so it's safe to re-run.
-Export the `MISE_ENV=...` line it prints in your current shell and add it to your shell rc, then
-run `mise install`:
+`install.sh` validates every destination first, then adds the base config as an isolated mise
+`conf.d` fragment and each profile as a mise environment file. Your existing global `config.toml`
+is never replaced. The installer respects `MISE_CONFIG_DIR` and `XDG_CONFIG_HOME`, refuses to
+replace unrelated files or symlinks, and is safe to re-run. Export the `MISE_ENV=...` line it
+prints in your current shell and add it to your shell rc, then run `mise install`:
 
 ```sh
 export MISE_ENV=java,go,python,node,cloud,ai
 mise install
 ```
 
+Preview the filesystem changes with `./install.sh --dry-run java go`. If a destination reserved by
+this toolchain already exists, move it yourself or pass `--force` to preserve it as `.bak` before
+linking. `./install.sh --uninstall` removes only links that point into the current checkout and
+restores backups created by the installer. Re-running the installer also migrates links created by
+older releases: it restores the original global config from `.bak` and moves the base toolchain to
+its isolated `conf.d` fragment.
+
 Later, `git pull` in that clone updates the config immediately; run `mise install` again to fetch
-anything newly pinned. Anything this machine needs outside the curated set goes in
-`~/.config/mise/config.local.toml`, which mise merges in automatically.
+anything newly pinned. Anything this machine needs outside the curated set goes in the mise config
+directory's `config.local.toml` (usually `~/.config/mise/config.local.toml`), which mise merges in
+automatically.
 
 Working in someone else's repo instead? Drop the base config as a project file. mise merges it
 with your global config, and the closer file wins:

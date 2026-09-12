@@ -1,9 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
-  <title id="title">Pyahu Toolchain mark</title>
-  <desc id="desc">Three connected tool nodes inside a rounded square.</desc>
-  <rect width="128" height="128" rx="28" fill="#4051b5"/>
-  <path d="M38 41h28M62 41l26 23M38 87h28M66 87l22-23" fill="none" stroke="#c7d2fe" stroke-width="9" stroke-linecap="round"/>
-  <circle cx="34" cy="41" r="13" fill="#2dd4bf"/>
-  <circle cx="94" cy="64" r="13" fill="#f8fafc"/>
-  <circle cx="34" cy="87" r="13" fill="#2dd4bf"/>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pyahu">
+  <defs>
+    <linearGradient id="lg" x1="14" y1="10" x2="106" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#93C5FD"/>
+      <stop offset="0.5" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#lg)" fill-rule="evenodd"
+    d="M14 106V14h38c21 0 34 11.5 34 28.5S73 71 52 71H33v35H14Zm19-51h17c10.5 0 17-5.5 17-13.5S60.5 28 50 28H33v27Z"/>
+  <circle cx="100" cy="100" r="9" fill="url(#lg)"/>
 </svg>

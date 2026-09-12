@@ -7,7 +7,8 @@ The certified developer toolchain for [Pyahu Community](https://pyahu.io), manag
 
 A curated, composable set of CLI tools defined as mise configs. No development container and no
 language-specific version-manager stack. A small cross-stack baseline stays out of your way;
-workflow profiles add only the toolchains you choose.
+workflow profiles add only the toolchains you choose. Committed lockfiles keep stable profiles on
+the same resolved versions across supported machines.
 
 ## Install
 
@@ -25,7 +26,7 @@ Wire this repo into your machine. Profiles: `workstation`, `java`, `go`, `python
 ```sh
 git clone https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
 cd ~/.config/pyahu-toolchain
-./install.sh workstation java go python node cloud ai   # pick the profiles you use
+./install.sh workstation java go python node cloud   # pick the profiles you use
 ```
 
 `install.sh` validates every destination first, then adds the base config as an isolated mise
@@ -35,9 +36,16 @@ replace unrelated files or symlinks, and is safe to re-run. Export the `MISE_ENV
 prints in your current shell and add it to your shell rc, then run `mise install`:
 
 ```sh
-export MISE_ENV=workstation,java,go,python,node,cloud,ai
+export MISE_ENV=workstation,java,go,python,node,cloud
 mise install
 ```
+
+Global profile files use exact versions and intentionally do not install a global lockfile, which
+could collide with locks owned by the user's own mise configuration. The committed locks are for
+project checkouts and CI, where `mise install --locked` verifies the resolved artifacts.
+
+The `ai` profile is deliberately rolling and has no lockfile. Add it with `./install.sh ai`, include
+`ai` in `MISE_ENV`, and use plain `mise install` when you want those fast-moving tools.
 
 Preview the filesystem changes with `./install.sh --dry-run java go`. If a destination reserved by
 this toolchain already exists, move it yourself or pass `--force` to preserve it as `.bak` before
@@ -56,8 +64,9 @@ with your global config, and the closer file wins:
 
 ```sh
 curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/main/mise.toml
-mise install
-git add mise.toml && git commit -m "chore: pin toolchain with mise"
+curl -fsSL -o mise.lock https://raw.githubusercontent.com/pyahu/toolchain/main/mise.lock
+mise install --locked
+git add mise.toml mise.lock && git commit -m "chore: pin toolchain with mise"
 ```
 
 ---
@@ -195,12 +204,14 @@ package manager if you need them.
 ## Updating
 
 ```sh
-mise outdated   # see what's behind
-mise upgrade    # install the latest version within each pinned line
+mise outdated   # compare the exact stable pins with available releases
 ```
 
-That doesn't change this repo's pins. Pull for those (`git pull` in the clone, or re-curl the
-project file). Moving a pin to a new stable line is a PR; see [Contributing](#contributing).
+Stable versions move only through reviewed changes. Renovate proposes exact pin updates after a
+seven-day waiting period and refreshes locks weekly; maintainers can run
+`./scripts/update-locks.sh` after editing a pin. Pull those updates with `git pull` in the clone, or
+re-download both the project TOML and lockfile. See the [version and update
+policy](docs/updates.md) for the rolling AI exception and emergency security updates.
 
 ---
 

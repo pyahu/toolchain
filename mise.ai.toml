@@ -3,6 +3,10 @@
 # Deliberately unpinned: AI CLIs ship fixes weekly and old versions age badly,
 # so this overlay tracks latest instead of the pinned lines used elsewhere.
 
+[settings]
+# AI CLIs age quickly, but still avoid releases from the last 24 hours.
+minimum_release_age = "24h"
+
 [tools]
 claude-code = "latest"   # Anthropic Claude Code
 codex       = "latest"   # OpenAI Codex CLI

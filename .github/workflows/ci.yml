@@ -23,7 +23,12 @@ jobs:
         with:
           install: false
       - name: mise install
-        run: mise install
+        run: |
+          if [ "$MISE_ENV" = ai ]; then
+            mise install
+          else
+            mise install --locked
+          fi
         env:
           MISE_ENV: ${{ matrix.env }}
       - name: mise ls
@@ -47,7 +52,8 @@ jobs:
         run: |
           export MISE_CONFIG_DIR="$RUNNER_TEMP/mise-config"
           ./install.sh workstation java go python node cloud ai arch
-          MISE_ENV=workstation,java,go,python,node,cloud,ai,arch mise install
+          MISE_ENV=workstation,java,go,python,node,cloud,arch mise install
+          MISE_ENV=node,ai mise install
           MISE_ENV=node,ai mise exec -- kimi --version
           MISE_ENV=node,ai mise exec -- pi --version
           MISE_ENV=ai mise exec -- claude --version
@@ -64,9 +70,11 @@ jobs:
         with:
           install: false
       - name: mise install
-        run: mise install
+        run: |
+          MISE_ENV=workstation,java,go,python,node,cloud,arch mise install --locked
+          MISE_ENV=node,ai mise install
         env:
-          MISE_ENV: workstation,java,go,python,node,cloud,ai,arch
+          MISE_ENV: workstation,java,go,python,node,cloud,arch
       - name: mise ls
         run: mise ls
         env:

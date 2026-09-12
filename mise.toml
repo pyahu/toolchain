@@ -16,12 +16,17 @@
 #   MISE_ENV=arch          → + mise.arch.toml   (architecture / diagrams-as-code)
 #   MISE_ENV=java,cloud,ai → stack several profiles at once
 #
-# Versions track current stable lines; `mise outdated` / `mise upgrade` bumps them.
+# Stable profiles use exact reviewed versions; Renovate proposes updates.
 # Profile-specific prerequisites are documented in docs/profiles.md.
+
+[settings]
+# Applies to any non-exact local additions merged into this configuration.
+# Renovate independently enforces the stable profile's seven-day quarantine.
+minimum_release_age = "7d"
 
 [tools]
 # cross-stack primitives
-ripgrep = "15"
-fd      = "10"
-jq      = "1.8"
-yq      = "4"
+ripgrep = "15.2.0"
+fd      = "10.5.0"
+jq      = "1.8.2"
+yq      = "4.53.6"

@@ -3,27 +3,27 @@
 
 [tools]
 # shell & navigation
-starship = "1.26"
-fzf      = "0.74"
-zoxide   = "0.10"
+starship = "1.26.0"
+fzf      = "0.74.3"
+zoxide   = "0.10.0"
 
 # terminal utilities
-bat             = "0.26"
-eza             = "0.23"
-dust            = "1"
-glow            = "3"
-yazi            = "26"
+bat             = "0.26.1"
+eza             = "0.23.5"
+dust            = "1.2.5"
+glow            = "3.0.0"
+yazi            = "26.9.1"
 "pipx:httpie" = "3.2.4"
 
 # collaboration & git workflow
-"github-cli"             = "2"
-glab                     = "1"
+"github-cli"             = "2.100.0"
+glab                     = "1.116.0"
 "npm:@schpet/linear-cli" = "2.6.0"
-delta                    = "0.19"
+delta                    = "0.19.2"
 lazygit                  = "0.65.0"
 
 # containers, processes & editor
-lazydocker = "0.25"
-mprocs     = "0.9"
-tmux       = "3"
-neovim     = "0.12"
+lazydocker = "0.25.2"
+mprocs     = "0.9.6"
+tmux       = "3.7c"
+neovim     = "0.12.5"

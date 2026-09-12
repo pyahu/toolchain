@@ -10,8 +10,10 @@ on:
       - catalog.toml
       - mkdocs.yml
       - scripts/catalog.py
+      - scripts/cloudflare-build.sh
       - scripts/docs-check.py
       - scripts/site.sh
+      - wrangler.jsonc
   pull_request:
     paths:
       - .github/workflows/docs.yml
@@ -20,8 +22,10 @@ on:
       - catalog.toml
       - mkdocs.yml
       - scripts/catalog.py
+      - scripts/cloudflare-build.sh
       - scripts/docs-check.py
       - scripts/site.sh
+      - wrangler.jsonc
   workflow_dispatch:
 
 permissions:

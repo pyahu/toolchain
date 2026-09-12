@@ -1,9 +1,23 @@
 #!/usr/bin/env sh
-# Run the documentation site with pinned tools and no global Python setup.
+# Run the Astro Starlight documentation site with pinned dependencies.
 set -eu
 
-# The site is pinned to MkDocs 1.x, so the upstream MkDocs 2 migration warning is not actionable.
-export NO_MKDOCS_2_WARNING=true
+cd "$(dirname "$0")/../website"
 
-exec mise x uv@0.12.10 -- \
-  uvx --from mkdocs==1.6.1 --with mkdocs-material==9.7.7 mkdocs "$@"
+if [ ! -d node_modules ]; then
+  npm ci
+fi
+
+command_name="${1:-dev}"
+if [ "$#" -gt 0 ]; then
+  shift
+fi
+
+if [ "$command_name" = build ]; then
+  if [ "${1:-}" = --strict ]; then
+    shift
+  fi
+  npm run check
+fi
+
+exec npm run "$command_name" -- "$@"

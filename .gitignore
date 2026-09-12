@@ -1,1 +1,8 @@
 site/
+.wrangler/
+website/.astro/
+website/dist/
+website/node_modules/
+website/public/assets/
+website/src/assets/
+website/src/content/docs/

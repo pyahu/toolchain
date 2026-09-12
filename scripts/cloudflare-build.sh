@@ -2,9 +2,8 @@
 # Build the static documentation in Cloudflare Workers Builds.
 set -eu
 
-export NO_MKDOCS_2_WARNING=true
-
-exec pipx run --spec uv==0.12.10 uvx \
-  --from mkdocs==1.6.1 \
-  --with mkdocs-material==9.7.7 \
-  mkdocs build --strict
+cd "$(dirname "$0")/../website"
+npm ci
+npm run check
+npm run build
+exec ../scripts/site-check.py

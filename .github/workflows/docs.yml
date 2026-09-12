@@ -8,11 +8,13 @@ on:
       - docs/**
       - mise*.toml
       - catalog.toml
-      - mkdocs.yml
+      - website/**
       - scripts/catalog.py
       - scripts/cloudflare-build.sh
       - scripts/docs-check.py
       - scripts/site.sh
+      - scripts/site-check.py
+      - scripts/stage-site-docs.py
       - wrangler.jsonc
   pull_request:
     paths:
@@ -20,11 +22,13 @@ on:
       - docs/**
       - mise*.toml
       - catalog.toml
-      - mkdocs.yml
+      - website/**
       - scripts/catalog.py
       - scripts/cloudflare-build.sh
       - scripts/docs-check.py
       - scripts/site.sh
+      - scripts/site-check.py
+      - scripts/stage-site-docs.py
       - wrangler.jsonc
   workflow_dispatch:
 
@@ -32,11 +36,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages-${{ github.ref }}
+  group: docs-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-
-env:
-  MISE_VERSION: 2026.9.5
 
 jobs:
   build:
@@ -45,10 +46,17 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          version: ${{ env.MISE_VERSION }}
-          install: false
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: install website dependencies
+        run: |
+          npm ci
+          npm audit --audit-level=high
+        working-directory: website
 
       - name: validate sources
         run: |
@@ -56,31 +64,10 @@ jobs:
           ./scripts/docs-check.py
 
       - name: build site
-        run: ./scripts/site.sh build --strict
+        run: |
+          npm run check
+          npm run build
+        working-directory: website
 
-      - name: configure Pages
-        if: github.event_name != 'pull_request'
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
-
-      - name: upload Pages artifact
-        if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
-        with:
-          path: site
-
-  deploy:
-    name: deploy documentation
-    if: github.event_name != 'pull_request'
-    needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      - name: validate generated site
+        run: ./scripts/site-check.py

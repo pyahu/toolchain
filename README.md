@@ -3,7 +3,7 @@
 ![Pyahu Toolchain — a practical mise setup for everyday CLI tools](docs/assets/hero.svg)
 
 [![CI](https://github.com/pyahu/toolchain/actions/workflows/ci.yml/badge.svg)](https://github.com/pyahu/toolchain/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/badge/docs-read-4051b5)](https://pyahu.github.io/toolchain/)
+[![Docs](https://img.shields.io/badge/docs-read-4051b5)](https://toolchain.terson.workers.dev/)
 [![Release](https://img.shields.io/github/v/release/pyahu/toolchain)](https://github.com/pyahu/toolchain/releases/latest)
 [![License](https://img.shields.io/github/license/pyahu/toolchain)](LICENSE)
 
@@ -139,7 +139,7 @@ If something fails, start with [Troubleshooting](docs/troubleshooting.md). You c
 
 ## Documentation
 
-Read the guides on the [documentation website](https://pyahu.github.io/toolchain/) or directly on
+Read the guides on the [documentation website](https://toolchain.terson.workers.dev/) or directly on
 GitHub:
 
 - [Getting started](docs/getting-started.md)

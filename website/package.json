@@ -1,0 +1,23 @@
+{
+  "name": "@pyahu/toolchain-website",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "python3 ../scripts/stage-site-docs.py && astro dev",
+    "check": "python3 ../scripts/stage-site-docs.py && astro check",
+    "build": "python3 ../scripts/stage-site-docs.py && astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@astrojs/starlight": "0.42.0",
+    "@fontsource-variable/space-grotesk": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "astro": "7.3.2",
+    "typescript": "6.0.3"
+  }
+}

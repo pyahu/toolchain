@@ -5,6 +5,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Moved the documentation site to Astro and Starlight, matching the Pyahu CLI documentation stack
+  while retaining the Toolchain navigation, colors, and concise landing page.
+- Moved continuous deployment to Cloudflare Workers Builds and kept GitHub Actions as an independent
+  content, type, build, and link validation gate.
+
 ## [1.0.1] - 2026-09-12
 
 ### Changed

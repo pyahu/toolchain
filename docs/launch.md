@@ -13,7 +13,7 @@ is tested on Linux x64 and macOS arm64.
 > Pyahu Toolchain 1.0 is available. It starts with four everyday CLI tools and lets you add terminal,
 > Java, Go, Python, Node, cloud, AI, or architecture profiles through mise. Stable profiles use exact
 > versions, and the installer can preview or remove its changes without replacing your existing mise
-> config. Get started at https://pyahu.github.io/toolchain/
+> config. Get started at https://toolchain.terson.workers.dev/
 
 ## Longer introduction
 
@@ -25,7 +25,7 @@ is tested on Linux x64 and macOS arm64.
 > arm64. The installer adds separate config links, leaves an existing `config.toml` alone, supports a
 > dry-run, and can uninstall its own links. The AI profile is clearly marked as rolling rather than
 > presented as reproducible. Browse the profiles and try the versioned setup at
-> https://pyahu.github.io/toolchain/
+> https://toolchain.terson.workers.dev/
 
 ## Terminal walkthrough
 
@@ -67,7 +67,7 @@ The exact boundaries are in [Platform support](support.md).
 
 ## Links to share
 
-- Documentation: <https://pyahu.github.io/toolchain/>
+- Documentation: <https://toolchain.terson.workers.dev/>
 - Stable release: <https://github.com/pyahu/toolchain/releases/latest>
 - Repository: <https://github.com/pyahu/toolchain>
 - Bug report: <https://github.com/pyahu/toolchain/issues/new?template=bug.yml>

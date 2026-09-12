@@ -1,5 +1,7 @@
 # One setup for your everyday CLI tools
 
+![Pyahu Toolchain — a practical mise setup for everyday CLI tools](assets/hero.svg){ .toolchain-hero }
+
 Pyahu Toolchain is a ready-to-use mise configuration for developers who move between languages,
 cloud platforms, and terminal workflows.
 

@@ -8,6 +8,9 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   language: en
+  logo: assets/mark.svg
+  favicon: assets/mark.svg
+  font: false
   features:
     - content.code.copy
     - navigation.footer
@@ -41,6 +44,9 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.superfences
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: index.md
   - Start here:
@@ -56,7 +62,7 @@ nav:
       - Releases and upgrades: releases.md
       - Update policy: updates.md
   - Project:
-      - Launch kit: launch.md
+      - Sharing kit: launch.md
 
 extra:
   social:

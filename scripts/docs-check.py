@@ -6,6 +6,7 @@ from __future__ import annotations
 import re
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -19,6 +20,7 @@ DOCUMENTS = sorted(
 )
 LINK = re.compile(r"\[[^]]+\]\(([^)]+)\)")
 FENCE = re.compile(r"^```(sh|bash)\s*$")
+SVG_ASSETS = sorted((ROOT / "docs" / "assets").glob("*.svg"))
 
 
 def shell_blocks(document: Path) -> list[tuple[int, str]]:
@@ -76,13 +78,27 @@ def main() -> int:
                 detail = result.stderr.strip() or "invalid shell syntax"
                 failures.append(f"{document.relative_to(ROOT)}:{line}: {detail}")
 
+    for asset in SVG_ASSETS:
+        try:
+            root = ET.parse(asset).getroot()
+        except ET.ParseError as error:
+            failures.append(f"{asset.relative_to(ROOT)}: invalid SVG: {error}")
+            continue
+        if not root.tag.endswith("svg") or "viewBox" not in root.attrib:
+            failures.append(
+                f"{asset.relative_to(ROOT)}: expected an SVG root with a viewBox"
+            )
+        if any(element.tag.endswith("script") for element in root.iter()):
+            failures.append(f"{asset.relative_to(ROOT)}: scripts are not allowed")
+
     if failures:
         print("documentation validation failed:", file=sys.stderr)
         print("\n".join(f"- {failure}" for failure in failures), file=sys.stderr)
         return 1
     print(
         f"documentation passed: {len(DOCUMENTS)} files, "
-        f"{link_count} local links, {block_count} shell examples"
+        f"{link_count} local links, {block_count} shell examples, "
+        f"{len(SVG_ASSETS)} SVG assets"
     )
     return 0
 

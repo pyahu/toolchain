@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Pyahu Toolchain mark</title>
+  <desc id="desc">Three connected tool nodes inside a rounded square.</desc>
+  <rect width="128" height="128" rx="28" fill="#4051b5"/>
+  <path d="M38 41h28M62 41l26 23M38 87h28M66 87l22-23" fill="none" stroke="#c7d2fe" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="34" cy="41" r="13" fill="#2dd4bf"/>
+  <circle cx="94" cy="64" r="13" fill="#f8fafc"/>
+  <circle cx="34" cy="87" r="13" fill="#2dd4bf"/>
+</svg>

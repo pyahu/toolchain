@@ -1,52 +1,76 @@
-# Pyahu Toolchain 1.0 launch kit
+# Share Pyahu Toolchain
 
-## Announcement
+This page gives maintainers ready-to-use copy and a short demo. Keep the message concrete: what the
+project installs, how profiles work, which platforms are tested, and where the limits are.
 
-**Pyahu Toolchain 1.0 is available.** It is a curated catalog of 67 developer CLI tools managed by
-mise and organized into nine composable profiles. Start with four universal search/data primitives,
-then opt into workstation, Java, Go, Python, Node, cloud, AI, or architecture workflows.
+## One sentence
 
-Stable profiles use exact reviewed versions and checked-in Linux x64/macOS arm64 lock data. Every
-release gate installs the profiles, runs representative binaries on both certified platforms, and
-checks the safe, XDG-aware installer. The AI profile is explicitly rolling and isolated from that
-reproducibility promise.
+Pyahu Toolchain is a ready-to-use mise configuration with 67 developer CLI tools in 9 profiles. It
+is tested on Linux x64 and macOS arm64.
 
-Try the immutable `v1.0.0` release, read the [support contract](support.md), and tell us where the
-catalog fits—or does not fit—your workflow:
+## Short post
 
-- [Report a reproducible bug](https://github.com/pyahu/toolchain/issues/new?template=bug.yml)
-- [Propose a tool or profile change](https://github.com/pyahu/toolchain/issues/new?template=tool-proposal.yml)
-- [Ask a usage question](https://github.com/pyahu/toolchain/issues/new?template=question.yml)
-- [Report a vulnerability privately](https://github.com/pyahu/toolchain/security/advisories/new)
+> Pyahu Toolchain 1.0 is available. It starts with four everyday CLI tools and lets you add terminal,
+> Java, Go, Python, Node, cloud, AI, or architecture profiles through mise. Stable profiles use exact
+> versions, and the installer can preview or remove its changes without replacing your existing mise
+> config. Get started at https://pyahu.github.io/toolchain/
 
-Repository and release: <https://github.com/pyahu/toolchain> ·
-<https://github.com/pyahu/toolchain/releases/tag/v1.0.0>
+## Longer introduction
 
-## Terminal demo
+> Keeping a useful command-line setup aligned across languages and machines often means maintaining
+> several version managers or copying a large personal config. Pyahu Toolchain takes a smaller
+> approach: four base tools, optional profiles, and one mise workflow.
+>
+> The stable profiles use exact reviewed versions and are installed in CI on Linux x64 and macOS
+> arm64. The installer adds separate config links, leaves an existing `config.toml` alone, supports a
+> dry-run, and can uninstall its own links. The AI profile is clearly marked as rolling rather than
+> presented as reproducible. Browse the profiles and try the versioned setup at
+> https://pyahu.github.io/toolchain/
 
-From a release checkout, run:
+## Terminal walkthrough
+
+From a release checkout:
 
 ```sh
 ./scripts/demo.sh
 ```
 
-The demo prints the mise version, previews the selected profiles, links them into an isolated
-temporary configuration, shows the exact tools mise would install, and uninstalls the links. It does
-not download the catalog or touch the user's mise configuration, so it is suitable for a live demo
-or terminal recording.
+The demo uses a temporary mise configuration. It previews the base and Python profile, creates the
+config links, asks mise what it would install, and removes the links again. It does not change the
+user's mise configuration or download the catalog tools.
 
-A short presentation flow:
+For a short recording:
 
-1. Show the four-tool base and profile map in the README.
-2. Run `./scripts/demo.sh` and point out the dry-run and isolated destination.
-3. Show a stable lockfile entry with its platform URL/checksum and contrast `mise.ai.toml`.
-4. Open the green CI run and the certification contract.
-5. End on the three public feedback forms and private security channel.
+1. Show the README header and the nine-profile table.
+2. Run `./scripts/demo.sh` in a clean terminal.
+3. Open the [profile guide](profiles.md) and [support page](support.md).
+4. End on the documentation URL and feedback links.
 
-## Suggested release post
+## Facts you can quote
 
-> Pyahu Toolchain 1.0 turns mise into a curated, composable developer workstation contract: 67
-> tools, nine opt-in profiles, exact stable pins, cross-platform locks, and tested Linux/macOS
-> installs. It stays native on your PATH, preserves your existing mise config, and can be previewed
-> or uninstalled safely. Try a versioned release and help us improve the catalog through structured
-> bug reports and tool proposals.
+- 67 tools in the current catalog.
+- Four tools in the always-active base.
+- Nine profiles in total; eight stable and one rolling.
+- Linux x64 and macOS arm64 are the certified CI platforms.
+- Stable profiles use exact versions and committed project lockfiles.
+- The installer supports dry-run, conflict detection, backups, and uninstall.
+- Existing global `config.toml` files are not replaced.
+
+## Avoid these claims
+
+- Do not call every upstream tool or dependency audited.
+- Do not claim full reproducibility for npm, pipx, Go, plugin installers, or the AI profile.
+- Do not advertise native Windows support.
+- Do not say the toolchain replaces containers, project dependency locks, or dotfiles.
+
+The exact boundaries are in [Platform support](support.md).
+
+## Links to share
+
+- Documentation: <https://pyahu.github.io/toolchain/>
+- Stable release: <https://github.com/pyahu/toolchain/releases/latest>
+- Repository: <https://github.com/pyahu/toolchain>
+- Bug report: <https://github.com/pyahu/toolchain/issues/new?template=bug.yml>
+- Tool proposal: <https://github.com/pyahu/toolchain/issues/new?template=tool-proposal.yml>
+- Question: <https://github.com/pyahu/toolchain/issues/new?template=question.yml>
+- Private security report: <https://github.com/pyahu/toolchain/security/advisories/new>

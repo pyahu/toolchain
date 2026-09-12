@@ -1,5 +1,7 @@
 # Pyahu Toolchain
 
+![Pyahu Toolchain — a practical mise setup for everyday CLI tools](docs/assets/hero.svg)
+
 [![CI](https://github.com/pyahu/toolchain/actions/workflows/ci.yml/badge.svg)](https://github.com/pyahu/toolchain/actions/workflows/ci.yml)
 [![Docs](https://img.shields.io/badge/docs-read-4051b5)](https://pyahu.github.io/toolchain/)
 [![Release](https://img.shields.io/github/v/release/pyahu/toolchain)](https://github.com/pyahu/toolchain/releases/latest)
@@ -158,3 +160,5 @@ Contributions are welcome when a tool solves a real gap and fits a clear profile
 The project uses the [MIT License](LICENSE), follows the [Code of Conduct](CODE_OF_CONDUCT.md), and
 accepts private security reports through [GitHub Security
 Advisories](https://github.com/pyahu/toolchain/security/advisories/new).
+
+Maintainers can use the concise copy and demo in the [sharing kit](docs/launch.md).

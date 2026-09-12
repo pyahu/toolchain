@@ -15,6 +15,8 @@ CATALOG = ROOT / "catalog.toml"
 README = ROOT / "README.md"
 PROFILES = ROOT / "docs" / "profiles.md"
 CATALOG_DOC = ROOT / "docs" / "catalog.md"
+LAUNCH = ROOT / "docs" / "launch.md"
+HERO = ROOT / "docs" / "assets" / "hero.svg"
 
 
 def replace_block(text: str, name: str, body: str) -> str:
@@ -101,6 +103,22 @@ def render_summary(profiles: list[dict]) -> str:
     return f"**Current catalog:** {tool_count} tools across {len(profiles)} profiles."
 
 
+def validate_public_facts(profiles: list[dict]) -> None:
+    tool_count = sum(len(profile["tools"]) for profile in profiles)
+    profile_count = len(profiles)
+    expected = {
+        LAUNCH: [f"{tool_count} developer CLI tools", f"{profile_count} profiles"],
+        HERO: [f">{tool_count} tools<", f">{profile_count} profiles<"],
+    }
+    for document, facts in expected.items():
+        content = document.read_text()
+        missing = [fact for fact in facts if fact not in content]
+        if missing:
+            raise ValueError(
+                f"{document.relative_to(ROOT)} has stale public facts: {missing}"
+            )
+
+
 def render_profile_map(profiles: list[dict]) -> str:
     lines = [
         "| Profile | Intended user | Adds | Suggested profiles | Prerequisites |",
@@ -123,6 +141,7 @@ def render_profile_map(profiles: list[dict]) -> str:
 
 
 def expected_files(profiles: list[dict]) -> dict[Path, str]:
+    validate_public_facts(profiles)
     readme = replace_block(
         README.read_text(), "catalog-summary", render_summary(profiles)
     )

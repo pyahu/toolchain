@@ -1,256 +1,154 @@
 # Pyahu Toolchain
 
 [![CI](https://github.com/pyahu/toolchain/actions/workflows/ci.yml/badge.svg)](https://github.com/pyahu/toolchain/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/pyahu/toolchain)](https://github.com/pyahu/toolchain/releases/latest)
+[![License](https://img.shields.io/github/license/pyahu/toolchain)](LICENSE)
 
-The certified developer toolchain for [Pyahu Community](https://pyahu.io), managed by
-[mise](https://mise.jdx.dev).
+A ready-to-use [mise](https://mise.jdx.dev) setup for developers who work across languages and
+cloud tools.
 
-A curated, composable set of CLI tools defined as mise configs. No development container and no
-language-specific version-manager stack. A small cross-stack baseline stays out of your way;
-workflow profiles add only the toolchains you choose. Committed lockfiles keep stable profiles on
-the same resolved versions across supported machines.
+Start with four useful command-line tools, then add only the profiles you need. Stable tools use
+reviewed versions, and the same setup is tested on Linux and macOS before each release.
 
-“Certified” means the declared versions install and representative commands run through a defined
-release gate on Linux x64 and macOS arm64. Read the [certification and support
-contract](docs/support.md) for the precise guarantee, exclusions, and platform matrix; use the
-[troubleshooting guide](docs/troubleshooting.md) for diagnosis and rollback.
+<!-- catalog-summary:start -->
+**Current catalog:** 67 tools across 9 profiles.
+<!-- catalog-summary:end -->
 
-## Install
+## Why use it?
 
-The current stable release is `v1.0.0`. Use its immutable tag; mutable `main` is for contributors.
-The [release guide](docs/releases.md) covers archives, upgrades, and rollback.
+- **One tool manager:** mise installs the CLI tools for every profile.
+- **Pick your stack:** Java, Go, Python, Node, cloud, AI, and terminal tools are optional.
+- **Predictable versions:** stable profiles use exact pins and checked-in lockfiles.
+- **Safe setup:** the installer does not replace your existing mise configuration.
+- **Easy to leave:** preview every change and uninstall the links at any time.
 
-```sh
-curl https://mise.run | sh
-eval "$(mise activate zsh)"   # add to ~/.zshrc. Bash users: mise activate bash, in ~/.bashrc
-```
+This is a shared CLI baseline. It does not replace project dependency files, containers, dotfiles,
+cloud credentials, or tool-specific configuration.
 
-The installer needs `git`, `curl`, and a POSIX shell. Individual profiles can have additional
-prerequisites; see the [Profile guide](docs/profiles.md).
+## Quick start
 
-Wire this repo into your machine. Profiles: `workstation`, `java`, `go`, `python`, `node`, `cloud`,
-`ai`, `arch` (pick `node` too if you want `ai`'s Kimi CLI or Pi):
+Install [mise](https://mise.jdx.dev/getting-started.html), then clone the current stable release:
 
 ```sh
 git clone --branch v1.0.0 --depth 1 \
   https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
 cd ~/.config/pyahu-toolchain
-./install.sh workstation java go python node cloud   # pick the profiles you use
 ```
 
-`install.sh` validates every destination first, then adds the base config as an isolated mise
-`conf.d` fragment and each profile as a mise environment file. Your existing global `config.toml`
-is never replaced. The installer respects `MISE_CONFIG_DIR` and `XDG_CONFIG_HOME`, refuses to
-replace unrelated files or symlinks, and is safe to re-run. Export the `MISE_ENV=...` line it
-prints in your current shell and add it to your shell rc, then run `mise install`:
+Choose a few profiles. This example adds terminal, Node, and cloud tools:
 
 ```sh
-export MISE_ENV=workstation,java,go,python,node,cloud
+./install.sh workstation node cloud
+export MISE_ENV=workstation,node,cloud
+mise install
+mise exec -- rg --version
+```
+
+Add the `MISE_ENV` line printed by the installer to your shell startup file. Follow the mise
+[shell activation guide](https://mise.jdx.dev/getting-started.html#activate-mise) to make installed
+tools available directly on `PATH`.
+
+Want to see the changes first?
+
+```sh
+./install.sh --dry-run workstation node cloud
+```
+
+See the [profile guide](docs/profiles.md) for prerequisites and the
+[troubleshooting guide](docs/troubleshooting.md) for verification and uninstall help.
+
+## Pick only what you need
+
+The base profile is always active. Every other profile is optional and can be combined through
+`MISE_ENV`.
+
+| Profile | What it adds | Good starting point for |
+| ------- | ------------ | ----------------------- |
+| Base | `rg`, `fd`, `jq`, `yq` | Any developer or CI runner |
+| `workstation` | Shell navigation, Git clients, TUIs, editor | Daily terminal work |
+| `java` | Temurin, Maven, Gradle, Kotlin | JVM projects |
+| `go` | Go, linting, debugging, reload, image builds | Go services and CLIs |
+| `python` | uv, Ruff, IPython | Python projects and exploration |
+| `node` | Node.js, pnpm, Yarn, Bun | JavaScript and TypeScript projects |
+| `cloud` | Kubernetes, GitOps, cloud, IaC, database CLIs | Platform and cloud work |
+| `ai` | Hosted and local coding agents | Optional AI-assisted workflows |
+| `arch` | D2 | Diagrams as code |
+
+Read the [profile guide](docs/profiles.md) for prerequisites and selection notes, or browse the
+[complete tool catalog](docs/catalog.md).
+
+## Stable and rolling profiles
+
+Base, workstation, Java, Go, Python, Node, cloud, and architecture tools use exact versions. Their
+lockfiles record Linux x64 and macOS arm64 artifacts when the mise backend provides that data.
+
+The `ai` profile is different. Its tools follow recent upstream releases after a short delay, so
+two installs on different days may select different versions. It has no lockfile and is kept
+outside the stable reproducibility promise.
+
+```sh
+./install.sh node ai
+export MISE_ENV=node,ai
 mise install
 ```
 
-Global profile files use exact versions and intentionally do not install a global lockfile, which
-could collide with locks owned by the user's own mise configuration. The committed locks are for
-project checkouts and CI, where `mise install --locked` verifies the resolved artifacts.
+Node is recommended with AI because Kimi and Pi use it.
 
-The `ai` profile is deliberately rolling and has no lockfile. Add it with `./install.sh ai`, include
-`ai` in `MISE_ENV`, and use plain `mise install` when you want those fast-moving tools.
+## What the installer changes
 
-Preview the filesystem changes with `./install.sh --dry-run java go`. If a destination reserved by
-this toolchain already exists, move it yourself or pass `--force` to preserve it as `.bak` before
-linking. `./install.sh --uninstall` removes only links that point into the current checkout and
-restores backups created by the installer. Re-running the installer also migrates links created by
-older releases: it restores the original global config from `.bak` and moves the base toolchain to
-its isolated `conf.d` fragment.
+`install.sh` adds symlinks inside the mise config directory, normally `~/.config/mise`. The base
+goes into `conf.d`; selected profiles become `config.<profile>.toml` environment files.
 
-To select a newer release, fetch its tag and switch the checkout as described in the [release
-guide](docs/releases.md), then run `mise install` again. Anything this machine needs outside the
-curated set goes in the mise config directory's `config.local.toml` (usually
-`~/.config/mise/config.local.toml`), which mise merges in automatically.
+It does not replace `config.toml`. It validates all destinations before writing, respects
+`MISE_CONFIG_DIR` and `XDG_CONFIG_HOME`, and refuses unrelated files or links. Use `--force` only
+after reviewing the backup behavior in [Troubleshooting](docs/troubleshooting.md).
 
-Working in someone else's repo instead? Drop the base config as a project file. mise merges it
-with your global config, and the closer file wins:
+Remove links created by this checkout with:
+
+```sh
+./install.sh --dry-run --uninstall
+./install.sh --uninstall
+```
+
+Downloaded tools remain in the mise cache but become inactive.
+
+## Use the base in one project
+
+If you only want the four base tools in a repository, copy both files from the same immutable tag:
 
 ```sh
 curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0/mise.toml
 curl -fsSL -o mise.lock https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0/mise.lock
 mise install --locked
-git add mise.toml mise.lock && git commit -m "chore: pin toolchain with mise"
 ```
 
----
+Commit both files to the project. Its local mise configuration can override your global setup.
 
-## What's in the box
+## Support
 
-Base is a four-tool, non-opinionated foundation. Overlays stack on top via `MISE_ENV`, e.g.
-`MISE_ENV=workstation,java,cloud mise install`. See the [Profile guide](docs/profiles.md) for the
-audience, dependencies, and selection rationale behind every profile.
-The tables below are generated from `catalog.toml` and the live mise configurations; CI rejects
-stale names, purposes, dependencies, or versions.
+Releases are tested on Linux x64 and macOS arm64. Other platforms have different support levels;
+Windows is not currently supported. The [support page](docs/support.md) explains exactly what the
+CI checks and where the guarantee stops.
 
-<!-- catalog:start -->
-**Base** (`mise.toml`, always active)
+If something fails, start with [Troubleshooting](docs/troubleshooting.md). You can also
+[report a bug](https://github.com/pyahu/toolchain/issues/new?template=bug.yml),
+[suggest a tool](https://github.com/pyahu/toolchain/issues/new?template=tool-proposal.yml), or
+[ask a question](https://github.com/pyahu/toolchain/issues/new?template=question.yml).
 
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| ripgrep | fast grep (`rg`) | 15.2.0 |
-| fd | fast `find` | 10.5.0 |
-| jq | JSON processor | 1.8.2 |
-| yq | YAML processor | 4.53.6 |
+## Documentation
 
-**Terminal workstation** (`mise.workstation.toml`, `MISE_ENV=workstation`)
-
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| starship | shell prompt | 1.26.0 |
-| fzf | fuzzy finder | 0.74.3 |
-| zoxide | smarter `cd` | 0.10.0 |
-| bat | `cat` with syntax highlighting | 0.26.1 |
-| eza | modern `ls` | 0.23.5 |
-| dust | disk usage | 1.2.5 |
-| glow | Markdown in the terminal | 3.0.0 |
-| yazi | terminal file manager | 26.9.1 |
-| HTTPie | HTTP client (`http`) | 3.2.4 |
-| GitHub CLI | GitHub CLI (`gh`) | 2.100.0 |
-| GitLab CLI | GitLab CLI (`glab`) | 1.116.0 |
-| Linear CLI | Linear issue tracker CLI (`linear`) | 2.6.0 |
-| delta | better Git diffs | 0.19.2 |
-| lazygit | Git TUI | 0.65.0 |
-| lazydocker | Docker TUI | 0.25.2 |
-| mprocs | run and monitor multiple processes | 0.9.6 |
-| tmux | terminal multiplexer | 3.7c |
-| Neovim | terminal editor | 0.12.5 |
-
-**Java and Kotlin** (`mise.java.toml`, `MISE_ENV=java`)
-
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| Temurin JDK | OpenJDK distribution | temurin-25.0.4+101.0.LTS |
-| Maven | JVM build tool | 3.9.16 |
-| Gradle | JVM build tool | 9.7.1 |
-| Kotlin | Kotlin compiler and REPL | 2.4.10 |
-
-**Go** (`mise.go.toml`, `MISE_ENV=go`)
-
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| Go | Go toolchain | 1.27.1 |
-| golangci-lint | Go linter runner | 2.13.2 |
-| Delve | Go debugger (`dlv`) | 1.27.1 |
-| Air | Go live reload | 1.67.4 |
-| ko | container images for Go | 0.19.1 |
-
-**Python** (`mise.python.toml`, `MISE_ENV=python`)
-
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| uv | Python package and environment manager | 0.12.10 |
-| Ruff | Python linter and formatter | 0.16.6 |
-| IPython | Python REPL | 9.17.1 |
-
-**Node and frontend** (`mise.node.toml`, `MISE_ENV=node`)
-
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| Node.js | JavaScript runtime | 24.20.0 |
-| pnpm | JavaScript package manager | 11.25.0 |
-| Yarn | JavaScript package manager | 4.18.0 |
-| Bun | JavaScript runtime and bundler | 1.4.2 |
-
-**Cloud, Kubernetes, and GitOps** (`mise.cloud.toml`, `MISE_ENV=cloud`)
-
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| kubectl | Kubernetes CLI | 1.37.0 |
-| kubectx | switch Kubernetes contexts; also `kubectl ctx` | 0.11.0 |
-| kubens | switch Kubernetes namespaces; also `kubectl ns` | 0.11.0 |
-| k9s | Kubernetes TUI | 0.51.0 |
-| kind | upstream Kubernetes clusters in Docker | 0.33.0 |
-| k3d | k3s clusters in Docker | 5.9.0 |
-| Helm | Kubernetes package manager | 4.2.4 |
-| Telepresence | local-to-cluster development | 2.31.2 |
-| Kustomize | Kubernetes configuration overlays | 5.8.1 |
-| Argo CD CLI | Argo CD GitOps client | 3.5.2 |
-| Flux CLI | Flux GitOps client | 2.9.5 |
-| SOPS | structured secrets encryption | 3.13.3 |
-| age | encryption tool | 1.3.2 |
-| AWS CLI | AWS cloud client | 2.36.44 |
-| doctl | DigitalOcean cloud client | 1.168.0 |
-| hcloud | Hetzner Cloud client | 1.67.0 |
-| Terraform | infrastructure as code | 1.16.2 |
-| OCI CLI | Oracle Cloud client (`oci`) | 3.92.1 |
-| grpcurl | gRPC client | 1.9.4 |
-| pgcli | PostgreSQL interactive client | 4.6.0 |
-| mycli | MySQL interactive client | 2.23.0 |
-| Pyahu CLI | local development stack (`pyahu up`) | 0.10.1 |
-
-**AI** (`mise.ai.toml`, `MISE_ENV=ai`, rolling)
-
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| Claude Code | Anthropic coding agent | latest |
-| Codex CLI | OpenAI coding agent | latest |
-| OpenCode | provider-flexible coding agent | latest |
-| Ollama | local model runtime | latest |
-| Kimi Code | coding agent (`kimi`); add `node` | latest |
-| Pi coding agent | extensible coding agent (`pi`); add `node` | latest |
-
-**Architecture** (`mise.arch.toml`, `MISE_ENV=arch`)
-
-| Tool | Purpose | Version |
-| ---- | ------- | ------- |
-| D2 | diagrams as code | v0.9.0 |
-<!-- catalog:end -->
-
----
-
-## Updating
-
-```sh
-mise outdated   # compare the exact stable pins with available releases
-```
-
-Stable versions move only through reviewed releases. Renovate proposes exact pin updates after a
-seven-day waiting period and refreshes locks weekly; maintainers can run
-`./scripts/update-locks.sh` after editing a pin. Upgrade the clone or re-download both project files
-from the new tag. See the [version and update policy](docs/updates.md) for the rolling AI exception
-and emergency security updates.
-
----
+- [Profiles and prerequisites](docs/profiles.md)
+- [Complete tool catalog](docs/catalog.md)
+- [Troubleshooting and rollback](docs/troubleshooting.md)
+- [Releases and upgrades](docs/releases.md)
+- [Version and update policy](docs/updates.md)
+- [Certification and platform support](docs/support.md)
 
 ## Contributing
 
-Want a tool added or a pin moved? See [CONTRIBUTING.md](CONTRIBUTING.md). The short version:
-tools must be in the mise registry, fit an overlay, and earn their place in a *curated* set.
-Every PR is validated by CI on Linux and macOS.
+Contributions are welcome when a tool solves a real gap and fits a clear profile. Read
+[CONTRIBUTING.md](CONTRIBUTING.md) before proposing additions or version changes.
 
-Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). See
-[MAINTAINERS.md](MAINTAINERS.md) for ownership and response targets, and report vulnerabilities
-privately according to [SECURITY.md](SECURITY.md).
-
-Ready-to-share announcement copy and a safe terminal walkthrough live in the [1.0 launch
-kit](docs/launch.md).
-
----
-
-## Why mise
-
-Pyahu Toolchain keeps developer CLIs native on `PATH` while sharing reviewed versions across
-repositories and machines. It complements, rather than eliminates, the other common approaches:
-
-| Approach | Best at | Trade-off relative to Pyahu Toolchain |
-| -------- | ------- | ------------------------------------- |
-| Pyahu Toolchain + mise | One composable, cross-language CLI baseline | Does not isolate the host OS or application services |
-| Personal dotfiles | Individual shell and application preferences | Usually person-specific; Pyahu supplies a shared, tested catalog without owning dotfiles |
-| Dev containers | Reproducible OS libraries, services, and isolation | Image rebuilds and editor/container integration add weight; use them when OS isolation matters |
-| asdf | Extensible multi-language version management | Similar plugin model; this project standardizes on mise's TOML environments, locks, and task-free native workflow |
-| Language-specific managers | Deep ecosystem-native behavior | Multiple managers and config formats are needed for a polyglot stack |
-
-Containers still earn their place for isolated services and OS-level dependencies. Dotfiles remain
-the right home for personal preferences. This repository owns only the shared CLI contract.
-
----
-
-## License
-
-MIT. See [LICENSE](LICENSE).
+The project uses the [MIT License](LICENSE), follows the [Code of Conduct](CODE_OF_CONDUCT.md), and
+accepts private security reports through [GitHub Security
+Advisories](https://github.com/pyahu/toolchain/security/advisories/new).

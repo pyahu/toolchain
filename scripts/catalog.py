@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "catalog.toml"
 README = ROOT / "README.md"
 PROFILES = ROOT / "docs" / "profiles.md"
+CATALOG_DOC = ROOT / "docs" / "catalog.md"
 
 
 def replace_block(text: str, name: str, body: str) -> str:
@@ -72,7 +73,7 @@ def load_catalog() -> list[dict]:
     return profiles
 
 
-def render_readme(profiles: list[dict]) -> str:
+def render_catalog(profiles: list[dict]) -> str:
     lines = []
     for profile in profiles:
         selector = (
@@ -93,6 +94,11 @@ def render_readme(profiles: list[dict]) -> str:
             lines.append(f"| {tool['name']} | {tool['purpose']} | {tool['version']} |")
         lines.append("")
     return "\n".join(lines)
+
+
+def render_summary(profiles: list[dict]) -> str:
+    tool_count = sum(len(profile["tools"]) for profile in profiles)
+    return f"**Current catalog:** {tool_count} tools across {len(profiles)} profiles."
 
 
 def render_profile_map(profiles: list[dict]) -> str:
@@ -136,12 +142,17 @@ def render_rationale(profiles: list[dict]) -> str:
 
 
 def expected_files(profiles: list[dict]) -> dict[Path, str]:
-    readme = replace_block(README.read_text(), "catalog", render_readme(profiles))
+    readme = replace_block(
+        README.read_text(), "catalog-summary", render_summary(profiles)
+    )
+    catalog = replace_block(
+        CATALOG_DOC.read_text(), "catalog", render_catalog(profiles)
+    )
     guide = replace_block(
         PROFILES.read_text(), "profile-map", render_profile_map(profiles)
     )
     guide = replace_block(guide, "rationale", render_rationale(profiles))
-    return {README: readme, PROFILES: guide}
+    return {README: readme, CATALOG_DOC: catalog, PROFILES: guide}
 
 
 def main() -> int:

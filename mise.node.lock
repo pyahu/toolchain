@@ -2,6 +2,17 @@
 
 lockfile_version = 1
 
+[[tools."aqua:yarnpkg/berry"]]
+version = "4.18.0"
+backend = "aqua:yarnpkg/berry"
+specifiers = ["4.18.0"]
+
+[tools."aqua:yarnpkg/berry"."platforms.linux-x64"]
+url = "https://repo.yarnpkg.com/4.18.0/packages/yarnpkg-cli/bin/yarn.js"
+
+[tools."aqua:yarnpkg/berry"."platforms.macos-arm64"]
+url = "https://repo.yarnpkg.com/4.18.0/packages/yarnpkg-cli/bin/yarn.js"
+
 [[tools.bun]]
 version = "1.4.2"
 backend = "core:bun"
@@ -65,11 +76,3 @@ checksum = "sha256:cdcf7130ed2e7aa324c7c76ab597de66db0529b6b1e0db9e489bde538fdc0
 url = "https://github.com/pnpm/pnpm/releases/download/v11.25.0/pnpm-darwin-arm64.tar.gz"
 url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/535298948"
 provenance = "github-attestations"
-
-[[tools.yarn]]
-version = "4.18.0"
-backend = "vfox:mise-plugins/vfox-yarn"
-specifiers = [
-    "4",
-    "4.18.0",
-]

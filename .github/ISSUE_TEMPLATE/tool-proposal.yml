@@ -1,0 +1,68 @@
+name: Tool proposal
+description: Propose adding, replacing, moving, or removing a curated tool
+title: "proposal: "
+labels: [enhancement]
+body:
+  - type: input
+    id: tool
+    attributes:
+      label: Tool and upstream project
+      placeholder: tool-name — https://github.com/owner/project
+    validations:
+      required: true
+  - type: dropdown
+    id: change
+    attributes:
+      label: Proposed change
+      options:
+        - Add a tool
+        - Replace an existing tool
+        - Move a tool between profiles
+        - Remove a tool
+    validations:
+      required: true
+  - type: input
+    id: profile
+    attributes:
+      label: Target profile
+      description: Explain explicitly if you believe this belongs in the minimal base.
+      placeholder: workstation
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and community use case
+      description: Describe the recurring workflow this solves and who needs it.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and overlap
+      description: Compare existing catalog tools and explain any intentional overlap.
+    validations:
+      required: true
+  - type: input
+    id: mise
+    attributes:
+      label: mise registry or backend
+      placeholder: registry name or backend:package
+    validations:
+      required: true
+  - type: textarea
+    id: support
+    attributes:
+      label: Platform and maintenance evidence
+      description: Linux x64/macOS arm64 support, release cadence, license, and upstream health.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Proposal checks
+      options:
+        - label: I read CONTRIBUTING.md and the profile selection rationale.
+          required: true
+        - label: I am willing to help validate this on supported platforms.
+          required: true

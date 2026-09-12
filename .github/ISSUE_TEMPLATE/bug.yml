@@ -1,0 +1,72 @@
+name: Bug report
+description: Report a reproducible installation, configuration, or runtime problem
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Pyahu Toolchain. Do not disclose vulnerabilities here; use SECURITY.md.
+  - type: input
+    id: version
+    attributes:
+      label: Toolchain version
+      description: Release tag or commit SHA. Run `git rev-parse HEAD` if unsure.
+      placeholder: v1.0.0 or 0123456
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: Operating system, version, and architecture.
+      placeholder: Ubuntu 24.04 x86_64
+    validations:
+      required: true
+  - type: input
+    id: mise
+    attributes:
+      label: mise version
+      description: Output of `mise --version`.
+    validations:
+      required: true
+  - type: input
+    id: profiles
+    attributes:
+      label: Active profiles
+      description: Value of `MISE_ENV`, or “base only”.
+      placeholder: workstation,node,cloud
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Minimal commands and inputs needed to reproduce the problem. Remove secrets.
+      placeholder: |
+        1. Run ...
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Relevant diagnostics
+      description: Relevant output from the troubleshooting guide. Remove credentials and tokens.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I checked existing issues and the troubleshooting guide.
+          required: true
+        - label: This report does not contain secrets or undisclosed vulnerability details.
+          required: true

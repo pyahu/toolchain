@@ -1,0 +1,19 @@
+name: Question or support request
+description: Ask about usage, compatibility, or profile selection
+title: "question: "
+labels: [question]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Include the goal, relevant profile, and what you already tried.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission check
+      options:
+        - label: I checked the README, support contract, troubleshooting guide, and existing issues.
+          required: true

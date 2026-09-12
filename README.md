@@ -220,6 +220,10 @@ Want a tool added or a pin moved? See [CONTRIBUTING.md](CONTRIBUTING.md). The sh
 tools must be in the mise registry, fit an overlay, and earn their place in a *curated* set.
 Every PR is validated by CI on Linux and macOS.
 
+Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). See
+[MAINTAINERS.md](MAINTAINERS.md) for ownership and response targets, and report vulnerabilities
+privately according to [SECURITY.md](SECURITY.md).
+
 ---
 
 ## Why mise

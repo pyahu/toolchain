@@ -12,6 +12,7 @@ from urllib.parse import unquote, urljoin, urlsplit
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "website" / "dist"
 SITE_ORIGIN = "https://toolchain.terson.workers.dev"
+REDIRECTS = DIST / "_redirects"
 
 
 class DocumentParser(HTMLParser):
@@ -79,11 +80,30 @@ def main() -> int:
                 ):
                     failures.append(f"{route}: missing fragment {target}")
 
+    if REDIRECTS.exists():
+        for number, line in enumerate(REDIRECTS.read_text().splitlines(), 1):
+            if not line or line.startswith("#"):
+                continue
+            fields = line.split()
+            if len(fields) != 3 or fields[2] != "301":
+                failures.append(f"_redirects:{number}: expected SOURCE TARGET 301")
+                continue
+            destination = output_path(fields[1]).resolve()
+            if (
+                not destination.is_relative_to(DIST.resolve())
+                or not destination.exists()
+            ):
+                failures.append(
+                    f"_redirects:{number}: missing redirect target {fields[1]}"
+                )
+
     required = [
         DIST / "index.html",
         DIST / "404.html",
-        DIST / "getting-started" / "index.html",
-        DIST / "catalog" / "index.html",
+        DIST / "docs" / "index.html",
+        DIST / "docs" / "getting-started" / "index.html",
+        DIST / "docs" / "catalog" / "index.html",
+        REDIRECTS,
         DIST / "pagefind" / "pagefind.js",
         DIST / "sitemap-index.xml",
     ]

@@ -11,7 +11,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "docs"
-CONTENT = ROOT / "website" / "src" / "content" / "docs"
+CONTENT_ROOT = ROOT / "website" / "src" / "content" / "docs"
+CONTENT = CONTENT_ROOT / "docs"
 SOURCE_ASSETS = SOURCE / "assets"
 PUBLIC_ASSETS = ROOT / "website" / "public" / "assets"
 ASTRO_ASSETS = ROOT / "website" / "src" / "assets"
@@ -22,7 +23,7 @@ LOCAL_DOC_LINK = re.compile(r"]\(([a-z0-9-]+)\.md(#[^)]+)?\)")
 def rewrite_local_link(match: re.Match[str]) -> str:
     page = match.group(1)
     fragment = match.group(2) or ""
-    route = "/" if page == "index" else f"/{page}/"
+    route = "/docs/" if page == "index" else f"/docs/{page}/"
     return f"]({route}{fragment})"
 
 
@@ -46,8 +47,8 @@ def stage_document(source: Path) -> None:
             "[Get started](getting-started.md){ .md-button .md-button--primary }\n"
             "[Browse profiles](profiles.md){ .md-button }",
             '<div class="toolchain-actions">\n'
-            '  <a href="/getting-started/">Get started</a>\n'
-            '  <a href="/profiles/">Browse profiles</a>\n'
+            '  <a href="/docs/getting-started/">Get started</a>\n'
+            '  <a href="/docs/profiles/">Browse profiles</a>\n'
             "</div>",
         )
 
@@ -57,11 +58,14 @@ def stage_document(source: Path) -> None:
         f"---\ntitle: {json.dumps(title)}\n"
         f"editUrl: {json.dumps(edit_url)}\n{draft}---\n\n"
     )
-    (CONTENT / source.name).write_text(frontmatter + body)
+    target = (
+        CONTENT_ROOT / source.name if source.name == "404.md" else CONTENT / source.name
+    )
+    target.write_text(frontmatter + body)
 
 
 def main() -> int:
-    shutil.rmtree(CONTENT, ignore_errors=True)
+    shutil.rmtree(CONTENT_ROOT, ignore_errors=True)
     shutil.rmtree(PUBLIC_ASSETS, ignore_errors=True)
     shutil.rmtree(ASTRO_ASSETS, ignore_errors=True)
     CONTENT.mkdir(parents=True)
@@ -72,7 +76,9 @@ def main() -> int:
 
     shutil.copytree(SOURCE_ASSETS, PUBLIC_ASSETS)
     shutil.copy2(SOURCE_ASSETS / "mark.svg", ASTRO_ASSETS / "mark.svg")
-    print(f"staged {len(list(CONTENT.glob('*.md')))} documentation pages")
+    print(
+        f"staged {len(list(CONTENT_ROOT.rglob('*.md')))} documentation pages under /docs"
+    )
     return 0
 
 

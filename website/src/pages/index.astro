@@ -1,0 +1,125 @@
+---
+import Icon from "../components/Icon.astro";
+import LandingLayout from "../layouts/LandingLayout.astro";
+
+const profiles = [
+  { name: "base", detail: "rg · fd · jq · yq", tone: "essential" },
+  { name: "workstation", detail: "shell · git · editor" },
+  { name: "java", detail: "Temurin · Maven · Gradle" },
+  { name: "go", detail: "Go · lint · debug" },
+  { name: "python", detail: "uv · Ruff · IPython" },
+  { name: "node", detail: "Node.js · pnpm · Bun" },
+  { name: "cloud", detail: "Kubernetes · GitOps · IaC" },
+  { name: "ai", detail: "agent CLIs · Ollama", tone: "rolling" },
+  { name: "arch", detail: "diagrams as code" },
+];
+
+const benefits = [
+  { icon: "layers", title: "Start small", text: "The base has four everyday tools. Add language, cloud, AI, or workstation profiles only when you need them." },
+  { icon: "shield", title: "Use reviewed versions", text: "Stable profiles use exact pins and checked-in lockfiles instead of changing silently between installations." },
+  { icon: "terminal", title: "Keep your mise setup", text: "The installer adds managed links and leaves your existing config.toml in place. Preview or remove the changes at any time." },
+] as const;
+---
+
+<LandingLayout title="Pyahu Toolchain — one setup for everyday CLI tools" description="A curated mise configuration with optional profiles for languages, cloud platforms, terminal workflows, and AI tools.">
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow"><span class="signal"></span>Curated for mise</p>
+        <h1>Your everyday CLI tools. <span>One reproducible setup.</span></h1>
+        <p class="hero-copy">Pyahu Toolchain gives developers a practical baseline for languages, cloud platforms, and terminal work. Start with four essentials, then add only the profiles that fit your stack.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#install">Install the toolchain <Icon name="arrow" size={18} /></a>
+          <a class="button quiet" href="/docs/">Read the docs</a>
+        </div>
+        <ul class="trust-list" aria-label="Project guarantees">
+          <li><Icon name="check" size={16} />Exact stable pins</li>
+          <li><Icon name="check" size={16} />Linux and macOS CI</li>
+          <li><Icon name="check" size={16} />Safe uninstall</li>
+        </ul>
+      </div>
+
+      <div class="setup-panel" aria-label="Example setup">
+        <div class="panel-bar"><span></span><span></span><span></span><code>~/.config/pyahu-toolchain</code></div>
+        <div class="setup-body">
+          <p class="setup-label">Choose a useful starting set</p>
+          <pre><code><span class="prompt">$</span> ./install.sh workstation node cloud
+<span class="prompt">$</span> export MISE_ENV=workstation,node,cloud
+<span class="prompt">$</span> mise install</code></pre>
+          <div class="setup-result"><span class="result-mark"><Icon name="check" size={17} /></span><div><strong>Profiles active</strong><p>base + workstation + node + cloud</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-section" id="why" aria-labelledby="why-title">
+    <div class="section-heading">
+      <p class="eyebrow">A shared baseline, not a black box</p>
+      <h2 id="why-title">Spend less time rebuilding your terminal.</h2>
+      <p class="section-lead">The configuration is versioned, readable, and designed to coexist with project-level mise files.</p>
+    </div>
+    <div class="benefit-grid">
+      {benefits.map((benefit) => (
+        <article class="benefit-card"><Icon name={benefit.icon} size={25} /><h3>{benefit.title}</h3><p>{benefit.text}</p></article>
+      ))}
+    </div>
+    <aside class="scope-note"><strong>Clear boundary.</strong> Toolchain installs CLI tools. It does not manage your dotfiles, cloud credentials, project dependencies, or tool-specific configuration.</aside>
+  </section>
+
+  <section class="section profiles-section" id="profiles" aria-labelledby="profiles-title">
+    <div class="profiles-copy">
+      <p class="eyebrow">Pick your stack</p>
+      <h2 id="profiles-title">Profiles that work together.</h2>
+      <p>Every setup includes the small base profile. The others are additive, so a Python developer and a platform engineer do not need to install the same toolset.</p>
+      <a class="text-link" href="/docs/profiles/">Compare profiles and prerequisites <Icon name="arrow" size={16} /></a>
+    </div>
+    <div class="profile-grid">
+      {profiles.map((profile) => (
+        <article class:list={["profile-card", profile.tone && `is-${profile.tone}`]}>
+          <div><code>{profile.name}</code>{profile.tone === "essential" && <span>always included</span>}{profile.tone === "rolling" && <span>rolling</span>}</div>
+          <p>{profile.detail}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section proof-section" aria-labelledby="proof-title">
+    <div class="section-heading">
+      <p class="eyebrow">Predictable where it matters</p>
+      <h2 id="proof-title">Know what you are installing.</h2>
+    </div>
+    <div class="proof-grid">
+      <article><strong>Stable profiles</strong><p>Exact versions, reviewed updates, and lockfiles for supported artifacts.</p></article>
+      <article><strong>Rolling AI profile</strong><p>Kept separate because agent CLIs need recent releases and may change between installs.</p></article>
+      <article><strong>Tested paths</strong><p>Linux x64 and macOS arm64 installs run in CI before changes land.</p></article>
+    </div>
+    <a class="text-link" href="/docs/support/">Read the exact support boundary <Icon name="arrow" size={16} /></a>
+  </section>
+
+  <section class="section install-section" id="install" aria-labelledby="install-title">
+    <div class="install-copy">
+      <p class="eyebrow">Get started</p>
+      <h2 id="install-title">Install a stable release.</h2>
+      <p>Keep the checkout because mise links back to it. The dry run shows every filesystem change before you apply it.</p>
+      <div class="install-links"><a class="text-link" href="/docs/getting-started/">Follow the complete guide <Icon name="arrow" size={16} /></a><a class="text-link" href="https://github.com/pyahu/toolchain/releases/latest">Latest release <Icon name="github" size={16} /></a></div>
+    </div>
+    <div class="install-panel">
+      <div class="panel-bar"><span></span><span></span><span></span><code>terminal</code></div>
+      <pre><code><span class="comment"># Clone the current stable release</span>
+<span class="prompt">$</span> git clone --branch v1.0.1 --depth 1 \
+    https://github.com/pyahu/toolchain.git \
+    ~/.config/pyahu-toolchain
+<span class="prompt">$</span> cd ~/.config/pyahu-toolchain
+
+<span class="comment"># Preview, then install selected profiles</span>
+<span class="prompt">$</span> ./install.sh --dry-run workstation node cloud
+<span class="prompt">$</span> ./install.sh workstation node cloud</code></pre>
+    </div>
+  </section>
+
+  <section class="final-cta" aria-labelledby="final-title">
+    <p class="eyebrow">Explore before installing</p>
+    <h2 id="final-title">Find every tool, version, and profile in the catalog.</h2>
+    <div class="hero-actions center"><a class="button primary" href="/docs/catalog/">Browse the tool catalog</a><a class="button quiet" href="https://github.com/pyahu/toolchain">View on GitHub</a></div>
+  </section>
+</LandingLayout>

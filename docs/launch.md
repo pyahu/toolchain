@@ -67,7 +67,7 @@ The exact boundaries are in [Platform support](support.md).
 
 ## Links to share
 
-- Documentation: <https://toolchain.terson.workers.dev/>
+- Documentation: <https://toolchain.terson.workers.dev/docs/>
 - Stable release: <https://github.com/pyahu/toolchain/releases/latest>
 - Repository: <https://github.com/pyahu/toolchain>
 - Bug report: <https://github.com/pyahu/toolchain/issues/new?template=bug.yml>

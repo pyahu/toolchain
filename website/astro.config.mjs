@@ -26,30 +26,31 @@ export default defineConfig({
         {
           label: "Start here",
           items: [
-            { label: "Getting started", slug: "getting-started" },
-            { label: "Choose profiles", slug: "profiles" },
-            { label: "Common recipes", slug: "recipes" }
+            { label: "Overview", slug: "docs" },
+            { label: "Getting started", slug: "docs/getting-started" },
+            { label: "Choose profiles", slug: "docs/profiles" },
+            { label: "Common recipes", slug: "docs/recipes" }
           ]
         },
         {
           label: "Help",
           items: [
-            { label: "Troubleshooting", slug: "troubleshooting" },
-            { label: "FAQ", slug: "faq" }
+            { label: "Troubleshooting", slug: "docs/troubleshooting" },
+            { label: "FAQ", slug: "docs/faq" }
           ]
         },
         {
           label: "Reference",
           items: [
-            { label: "Tool catalog", slug: "catalog" },
-            { label: "Platform support", slug: "support" },
-            { label: "Releases and upgrades", slug: "releases" },
-            { label: "Update policy", slug: "updates" }
+            { label: "Tool catalog", slug: "docs/catalog" },
+            { label: "Platform support", slug: "docs/support" },
+            { label: "Releases and upgrades", slug: "docs/releases" },
+            { label: "Update policy", slug: "docs/updates" }
           ]
         },
         {
           label: "Project",
-          items: [{ label: "Sharing kit", slug: "launch" }]
+          items: [{ label: "Sharing kit", slug: "docs/launch" }]
         }
       ]
     })

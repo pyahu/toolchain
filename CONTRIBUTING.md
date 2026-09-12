@@ -35,3 +35,24 @@ Mention anything that changed behavior (breaking flags, renamed commands) in the
 downstream projects know what to expect. The `ai` overlay is deliberately unpinned and unlocked —
 no bump PRs are needed there. See the [version and update policy](docs/updates.md) for the weekly
 maintenance and emergency paths.
+
+## Running the checks
+
+Before submitting a change, run the same focused checks used by CI:
+
+```sh
+mise fmt --check
+mise x ruff@0.14.5 -- ruff check scripts
+mise x ruff@0.14.5 -- ruff format --check scripts
+mise x shellcheck@0.11.0 -- shellcheck install.sh bin/* tests/*.sh scripts/*.sh
+mise x actionlint@1.7.12 shellcheck@0.11.0 -- actionlint
+./scripts/catalog.py --check
+./scripts/docs-check.py
+./scripts/release-check.sh
+./tests/install.sh
+./tests/shims.sh
+```
+
+The GitHub Actions matrix then installs each profile on Linux, installs the complete catalog on
+macOS, executes representative binaries, and exercises a clean global install/uninstall lifecycle
+on both certified platforms.

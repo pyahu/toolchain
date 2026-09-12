@@ -35,6 +35,11 @@ jobs:
       - name: ShellCheck
         run: mise x shellcheck@0.11.0 -- shellcheck install.sh bin/* tests/*.sh scripts/*.sh
 
+      - name: Python lint and formatting
+        run: |
+          mise x ruff@0.14.5 -- ruff check scripts
+          mise x ruff@0.14.5 -- ruff format --check scripts
+
       - name: workflow lint
         run: mise x actionlint@1.7.12 shellcheck@0.11.0 -- actionlint
 
@@ -42,7 +47,9 @@ jobs:
         run: mise x node@24.20.0 -- npx --yes --package renovate@44.82.3 renovate-config-validator --strict renovate.json
 
       - name: documentation consistency
-        run: ./scripts/catalog.py --check
+        run: |
+          ./scripts/catalog.py --check
+          ./scripts/docs-check.py
 
       - name: release metadata
         run: ./scripts/release-check.sh
@@ -122,6 +129,9 @@ jobs:
           MISE_ENV=ai mise exec -- codex --version
           MISE_ENV=ai mise exec -- opencode --version
           MISE_ENV=ai mise exec -- ollama --version
+          ./install.sh --uninstall
+          test ! -e "$MISE_CONFIG_DIR/conf.d/pyahu-toolchain.toml"
+          test ! -e "$MISE_CONFIG_DIR/config.cloud.toml"
 
   macos:
     name: install (macos, everything)
@@ -150,3 +160,12 @@ jobs:
           mise exec -- d2 --version
         env:
           MISE_ENV: workstation,java,go,python,node,cloud,ai,arch
+      - name: global installer lifecycle
+        run: |
+          export MISE_CONFIG_DIR="$RUNNER_TEMP/mise-lifecycle"
+          ./install.sh workstation java go python node cloud ai arch
+          MISE_ENV=workstation,java,go,python,node,cloud,arch mise install
+          MISE_ENV=node,ai mise install
+          ./install.sh --uninstall
+          test ! -e "$MISE_CONFIG_DIR/conf.d/pyahu-toolchain.toml"
+          test ! -e "$MISE_CONFIG_DIR/config.cloud.toml"

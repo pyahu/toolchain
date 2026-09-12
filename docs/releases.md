@@ -26,7 +26,7 @@ The recommended distribution is a Git checkout at a release tag. Keep the direct
 creates symlinks to files inside it.
 
 ```sh
-PYAHU_TOOLCHAIN_VERSION=v1.0.0-rc.1
+PYAHU_TOOLCHAIN_VERSION=v1.0.0
 git clone --branch "$PYAHU_TOOLCHAIN_VERSION" --depth 1 \
   https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
 cd ~/.config/pyahu-toolchain
@@ -37,14 +37,14 @@ Release pages also provide a project-owned tar archive and SHA-256 file. Verify 
 run the same installer from the extracted directory:
 
 ```sh
-shasum -a 256 -c pyahu-toolchain-1.0.0-rc.1.tar.gz.sha256
-tar -xzf pyahu-toolchain-1.0.0-rc.1.tar.gz
+shasum -a 256 -c pyahu-toolchain-1.0.0.tar.gz.sha256
+tar -xzf pyahu-toolchain-1.0.0.tar.gz
 ```
 
 For a project that only needs the base, download both files from the same immutable tag:
 
 ```sh
-PYAHU_TOOLCHAIN_VERSION=v1.0.0-rc.1
+PYAHU_TOOLCHAIN_VERSION=v1.0.0
 PYAHU_TOOLCHAIN_RAW="https://raw.githubusercontent.com/pyahu/toolchain/$PYAHU_TOOLCHAIN_VERSION"
 curl -fsSL -o mise.toml "$PYAHU_TOOLCHAIN_RAW/mise.toml"
 curl -fsSL -o mise.lock "$PYAHU_TOOLCHAIN_RAW/mise.lock"

@@ -5,6 +5,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-12
+
+### Added
+
+- First stable community release, promoted after the complete RC installation, documentation,
+  security, governance, packaging, and cross-platform validation checklist passed.
+
 ## [1.0.0-rc.1] - 2026-09-12
 
 ### Added
@@ -27,5 +34,6 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - Pinned workflow actions to reviewed commit SHAs and enabled private vulnerability reporting.
 - Added strict lock installation where backend artifact metadata supports it.
 
-[Unreleased]: https://github.com/pyahu/toolchain/compare/v1.0.0-rc.1...HEAD
+[Unreleased]: https://github.com/pyahu/toolchain/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/pyahu/toolchain/compare/v1.0.0-rc.1...v1.0.0
 [1.0.0-rc.1]: https://github.com/pyahu/toolchain/releases/tag/v1.0.0-rc.1

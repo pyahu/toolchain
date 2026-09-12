@@ -17,9 +17,8 @@ contract](docs/support.md) for the precise guarantee, exclusions, and platform m
 
 ## Install
 
-The current release candidate is `v1.0.0-rc.1`. Use its immutable tag for evaluation; mutable
-`main` is for contributors. The [release guide](docs/releases.md) covers archives, upgrades, and
-rollback.
+The current stable release is `v1.0.0`. Use its immutable tag; mutable `main` is for contributors.
+The [release guide](docs/releases.md) covers archives, upgrades, and rollback.
 
 ```sh
 curl https://mise.run | sh
@@ -33,7 +32,7 @@ Wire this repo into your machine. Profiles: `workstation`, `java`, `go`, `python
 `ai`, `arch` (pick `node` too if you want `ai`'s Kimi CLI or Pi):
 
 ```sh
-git clone --branch v1.0.0-rc.1 --depth 1 \
+git clone --branch v1.0.0 --depth 1 \
   https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
 cd ~/.config/pyahu-toolchain
 ./install.sh workstation java go python node cloud   # pick the profiles you use
@@ -73,8 +72,8 @@ Working in someone else's repo instead? Drop the base config as a project file. 
 with your global config, and the closer file wins:
 
 ```sh
-curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0-rc.1/mise.toml
-curl -fsSL -o mise.lock https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0-rc.1/mise.lock
+curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0/mise.toml
+curl -fsSL -o mise.lock https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0/mise.lock
 mise install --locked
 git add mise.toml mise.lock && git commit -m "chore: pin toolchain with mise"
 ```
@@ -228,6 +227,9 @@ Every PR is validated by CI on Linux and macOS.
 Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). See
 [MAINTAINERS.md](MAINTAINERS.md) for ownership and response targets, and report vulnerabilities
 privately according to [SECURITY.md](SECURITY.md).
+
+Ready-to-share announcement copy and a safe terminal walkthrough live in the [1.0 launch
+kit](docs/launch.md).
 
 ---
 

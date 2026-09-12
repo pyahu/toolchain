@@ -54,8 +54,7 @@ Want to see the changes first?
 ./install.sh --dry-run workstation node cloud
 ```
 
-See the [profile guide](docs/profiles.md) for prerequisites and the
-[troubleshooting guide](docs/troubleshooting.md) for verification and uninstall help.
+See [Getting started](docs/getting-started.md) for a guided setup, verification, and uninstall.
 
 ## Pick only what you need
 
@@ -101,7 +100,7 @@ goes into `conf.d`; selected profiles become `config.<profile>.toml` environment
 
 It does not replace `config.toml`. It validates all destinations before writing, respects
 `MISE_CONFIG_DIR` and `XDG_CONFIG_HOME`, and refuses unrelated files or links. Use `--force` only
-after reviewing the backup behavior in [Troubleshooting](docs/troubleshooting.md).
+after reviewing the backup behavior in [Getting started](docs/getting-started.md).
 
 Remove links created by this checkout with:
 
@@ -137,8 +136,11 @@ If something fails, start with [Troubleshooting](docs/troubleshooting.md). You c
 
 ## Documentation
 
+- [Getting started](docs/getting-started.md)
 - [Profiles and prerequisites](docs/profiles.md)
 - [Complete tool catalog](docs/catalog.md)
+- [Common recipes](docs/recipes.md)
+- [Frequently asked questions](docs/faq.md)
 - [Troubleshooting and rollback](docs/troubleshooting.md)
 - [Releases and upgrades](docs/releases.md)
 - [Version and update policy](docs/updates.md)

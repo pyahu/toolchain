@@ -1,66 +1,49 @@
-# Certification and support
+# Platform support
 
-Pyahu Toolchain uses **certified** in a narrow, testable sense. At every accepted commit on `main`:
+“Certified” has a narrow meaning here: the project runs a defined set of automated checks on every
+accepted change. It is a test level, not a promise that upstream tools have no bugs.
 
-- every stable tool has an exact reviewed version;
-- stable lockfiles contain resolution data for Linux x64 and macOS arm64;
-- each stable profile installs in strict locked mode on Linux, the complete stable stack does the
-  same on macOS, and the rolling AI profile installs separately on both;
-- a representative executable from every profile is invoked after installation;
-- the global installer's XDG, conflict, dry-run, idempotency, migration, and uninstall behavior is
-  tested;
-- mise formatting, shell lint, workflow lint, Renovate validation, shim behavior, and generated
-  documentation checks pass.
+## What CI checks
 
-The [current CI result](https://github.com/pyahu/toolchain/actions/workflows/ci.yml) is the evidence
-for that contract. A release is made only from a green `main` commit.
+- Every stable profile installs from exact versions and lock data.
+- Every profile runs at least one representative command.
+- A complete install runs on Linux x64 and macOS arm64.
+- The installer is tested for dry-run, repeat runs, conflicts, backups, migration, and uninstall.
+- Configuration, scripts, workflows, generated pages, and documentation examples pass their
+  linters and consistency checks.
 
-Certification does **not** mean that every command or combination of commands has been tested, that
-upstream projects are vulnerability-free, or that the toolchain replaces application dependency
-locks. npm, pipx, Go, and plugin-based installers may resolve transitive dependencies or execute
-upstream installer code. A mise lockfile improves top-level artifact reproducibility where the
-backend supports it; it is not an offline or fully hermetic build guarantee.
+The [current CI workflow](https://github.com/pyahu/toolchain/actions/workflows/ci.yml) shows the
+result for `main`. Releases are created only from a green commit.
 
 ## Supported platforms
 
-| Platform | Level | What is validated |
-| -------- | ----- | ----------------- |
-| Linux x64 (`ubuntu-latest`) | Certified | Every profile independently, strict stable locks, global installer, quality suite |
-| macOS arm64 (`macos-latest`) | Certified | Complete stable and rolling stack, strict stable locks, representative binaries |
-| Other glibc Linux x64 distributions | Best effort | Expected to work when profile OS prerequisites are available; not a release gate |
-| Linux arm64 and macOS x64 | Community supported | Contributions welcome; lock artifacts and CI coverage are not currently promised |
-| Windows | Unsupported | The POSIX-shell and symlink installer is not designed or tested for native Windows |
+| Platform | Support | What to expect |
+| -------- | ------- | -------------- |
+| Linux x64 | Certified | Every profile and the full installer lifecycle run in CI |
+| macOS arm64 | Certified | The complete stable and rolling setup runs in CI |
+| Other glibc Linux x64 distributions | Best effort | Usually works when OS prerequisites are present |
+| Linux arm64 and macOS x64 | Community supported | No committed lock or CI guarantee yet |
+| Windows | Unsupported | The installer depends on a POSIX shell and symlinks |
 
-The exact OS image behind GitHub's `*-latest` label can change. Consult the green workflow linked
-above for the commit you intend to use. The certification baseline uses mise `2026.9.5`; newer mise
-versions are expected to remain compatible but become the baseline only after CI is deliberately
-updated.
+CI currently uses mise `2026.9.5`. A newer mise release may work, but it becomes part of the tested
+baseline only when the workflow is updated.
 
-Only the latest Pyahu Toolchain release receives routine fixes. Older tags remain available for
-rollback, but fixes are not normally backported.
+## Stable versus rolling
 
-## Stability contract
+Base, workstation, Java, Go, Python, Node, cloud, and architecture tools have exact versions.
+Lockfiles record artifact URLs and checksums when the backend exposes them.
 
-Stable profiles (`base`, `workstation`, `java`, `go`, `python`, `node`, `cloud`, and `arch`) use
-exact versions. Their project lockfiles additionally record supported artifact URLs and checksums
-when the backend provides them. Version changes pass review and the complete release gates.
+The AI profile follows recent releases and has no lockfile. It is tested separately for
+installation, but its resolved versions can change. See the [update policy](updates.md).
 
-The `ai` profile is a rolling compatibility channel. Its tools resolve `latest` after a 24-hour
-release delay, it has no lockfile, and two clean installs on different days can select different
-versions. The profile is installation-tested but intentionally offers no version-reproduction
-guarantee. See the [update policy](updates.md) for cadence and emergency changes.
+## What is outside the guarantee
 
-## Compatibility boundaries
+- Not every command or combination of tools is tested.
+- A lockfile does not make npm, pipx, Go, or plugin installers fully offline or hermetic.
+- The project does not configure shells, editors, Git, cloud accounts, clusters, or databases.
+- Docker, credentials, fonts, desktop apps, and profile-specific OS packages are not installed.
+- Project-level `mise.toml` files can override the global versions.
+- Older releases remain available for rollback but do not normally receive fixes.
 
-- The installer requires Git, a POSIX shell, and mise. Tool downloads generally require HTTPS
-  access to GitHub and the relevant language or vendor registries.
-- Profile prerequisites are listed in the [profile guide](profiles.md). Docker, cluster access,
-  cloud credentials, databases, fonts, and desktop applications are outside this repository.
-- Configurations are additive mise environments. Project-level `mise.toml` files can override a
-  global selection according to normal mise precedence.
-- Global installation intentionally links configuration files but not repository lockfiles, so it
-  does not take ownership of a user's global lock. Exact stable pins retain predictable versions.
-- The toolchain does not configure shells, editors, Git credentials, Kubernetes contexts, cloud
-  accounts, or the tools themselves.
-
-For failure diagnosis and safe recovery, use the [troubleshooting and rollback guide](troubleshooting.md).
+For setup problems, use [Troubleshooting](troubleshooting.md). Report suspected supply-chain or
+installer vulnerabilities through the private process in [SECURITY.md](../SECURITY.md).

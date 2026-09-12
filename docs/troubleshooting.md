@@ -1,8 +1,7 @@
-# Troubleshooting and rollback
+# Troubleshooting
 
-## Establish the active configuration
-
-Start with commands that expose state without changing it:
+Start with read-only commands. They usually show whether the problem is mise activation, a missing
+profile, or a project override:
 
 ```sh
 mise --version
@@ -12,37 +11,51 @@ printf '%s\n' "${MISE_ENV:-<not set>}"
 mise ls --current
 ```
 
-The supported baseline is recorded in the [support contract](support.md). `mise config` should show
-`conf.d/pyahu-toolchain.toml` plus one `config.<profile>.toml` for each enabled profile. If a profile
-is missing, export the comma-separated value printed by the installer and put the same line in your
-shell startup file:
+## An installed tool is not on `PATH`
+
+Check that mise is activated in your shell startup file. For zsh, the line is:
+
+```sh
+eval "$(mise activate zsh)"
+```
+
+Use `bash` instead of `zsh` when needed. Restart the shell, or test without activation:
+
+```sh
+mise exec -- rg --version
+```
+
+## A profile is missing
+
+`mise config` should list `conf.d/pyahu-toolchain.toml` and one `config.<profile>.toml` file for
+each installed profile. `MISE_ENV` must also contain the profile name:
 
 ```sh
 export MISE_ENV=workstation,node,cloud
 mise install
 ```
 
-Run `mise activate zsh` or `mise activate bash` in the appropriate shell startup file if installed
-tools do not appear on `PATH`. `mise exec -- TOOL --version` is a useful activation-independent
-check.
+Kimi and Pi need both `node` and `ai`. The AI profile is rolling, so install it without `--locked`.
 
-## Installer destinations and conflicts
+## The installer reports a conflict
 
-The effective destination is `$MISE_CONFIG_DIR` when set, otherwise
-`${XDG_CONFIG_HOME:-$HOME/.config}/mise`. Preview the exact paths before changing anything:
+Preview the exact destination first:
 
 ```sh
 ./install.sh --dry-run workstation node
 ```
 
-The installer refuses an unrelated existing file or symlink. Move it yourself after inspecting it,
-or use `--force` to preserve it beside the destination as `.bak` (then `.bak.1`, and so on). Never
-delete an unfamiliar config merely to make installation pass.
+The destination is `$MISE_CONFIG_DIR` when set. Otherwise it is
+`${XDG_CONFIG_HOME:-$HOME/.config}/mise`.
+
+The installer will not replace an unrelated file or symlink. Inspect and move it yourself, or use
+`--force` to preserve it beside the destination as `.bak`, `.bak.1`, and so on. Do not delete a
+configuration you do not recognize just to make installation pass.
 
 ## A tool fails to install
 
-Confirm that the selected version and backend are the ones in this repository, then collect verbose
-output locally without publishing tokens or credentials:
+Check the profile prerequisites, network or proxy access, free disk space, and the upstream service.
+Then inspect the selected backend and retry with useful diagnostics:
 
 ```sh
 mise config
@@ -50,8 +63,7 @@ mise ls-remote TOOL
 mise install --verbose TOOL@VERSION
 ```
 
-Check the profile prerequisites, network access, proxy configuration, free disk space, and upstream
-service status. For a stable project checkout, do not regenerate locks just to bypass a failure:
+For a stable project checkout, keep the reviewed lockfile intact:
 
 ```sh
 git status --short
@@ -59,25 +71,25 @@ git pull --ff-only
 mise install --locked
 ```
 
-A dirty or locally regenerated lockfile is no longer the reviewed release artifact. Restore it from
-the selected Git commit before retrying.
+Do not regenerate a release lockfile merely to bypass a failed download.
 
-## Common profile-specific cases
+## The wrong version is active
 
-- `kimi` or `pi` is missing: enable both `node` and `ai`, then run plain `mise install` because AI is
-  rolling.
-- `kubectl ctx` or `kubectl ns` is missing: ensure `cloud` is active and confirm the repository's
-  `bin` directory appears in `mise env --shell sh`.
-- `kind`, `k3d`, or `pyahu up` cannot start a cluster: install and start a supported Docker engine.
-- Ollama installs but cannot load a model: model storage and memory requirements are machine- and
-  model-specific and are outside the certification contract.
-- A project selects another tool version: inspect `mise config`; project configs normally take
-  precedence over the global Pyahu selection.
+Run `mise config` from the directory where the problem happens. A project-level `mise.toml` normally
+wins over the global Pyahu setup. That is expected and lets each repository choose its own runtime.
 
-## Roll back safely
+## Cloud or local-model tools fail after installation
 
-For a versioned checkout, moving the checkout to an older release updates the existing installer
-symlinks without replacing user configuration:
+- kind, k3d, and `pyahu up` need a running Docker engine.
+- Kubernetes and cloud CLIs need credentials and contexts configured outside this project.
+- Ollama model requirements depend on the model and machine; installing the CLI does not download a
+  model.
+- `kubectl ctx` and `kubectl ns` need the `cloud` profile and the repository `bin` directory in the
+  mise environment.
+
+## Roll back
+
+Switch a versioned checkout to an older release. Existing installer links follow the checkout:
 
 ```sh
 git fetch --tags
@@ -85,17 +97,16 @@ git switch --detach vX.Y.Z
 mise install
 ```
 
-Return to current releases with `git switch main && git pull --ff-only`. If only one tool is broken,
-prefer reporting the failure and selecting a known-good release tag over editing a generated
-lockfile locally.
+Prefer a known-good tag over editing a generated lockfile.
 
-To remove Pyahu Toolchain configuration entirely:
+## Uninstall
+
+Preview first, then remove only links owned by this checkout:
 
 ```sh
 ./install.sh --dry-run --uninstall
 ./install.sh --uninstall
 ```
 
-Uninstall removes only symlinks owned by the current checkout and restores installer-created
-backups. Downloaded tools remain in mise's cache but become inactive; remove a cached tool separately
-with `mise uninstall TOOL@VERSION` only after verifying the exact target.
+Backups created by the installer are restored. Downloaded tools stay in the mise cache but are no
+longer active.

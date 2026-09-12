@@ -5,6 +5,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Reworked the README around a shorter first-use path and moved the complete catalog to its own
+  generated page.
+- Added practical getting-started, recipe, and FAQ guides and simplified profile, support, and
+  troubleshooting documentation.
+
 ## [1.0.0] - 2026-09-12
 
 ### Added

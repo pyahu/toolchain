@@ -122,25 +122,6 @@ def render_profile_map(profiles: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def render_rationale(profiles: list[dict]) -> str:
-    lines = []
-    for profile in profiles:
-        lines.extend(
-            [
-                f"### {profile['title']}",
-                "",
-                "| Tool | Selection rationale |",
-                "| ---- | ------------------- |",
-            ]
-        )
-        for tool in profile["tools"]:
-            lines.append(f"| {tool['name']} | {tool['rationale']} |")
-        lines.append("")
-        if note := profile.get("note"):
-            lines.extend([note, ""])
-    return "\n".join(lines)
-
-
 def expected_files(profiles: list[dict]) -> dict[Path, str]:
     readme = replace_block(
         README.read_text(), "catalog-summary", render_summary(profiles)
@@ -151,7 +132,6 @@ def expected_files(profiles: list[dict]) -> dict[Path, str]:
     guide = replace_block(
         PROFILES.read_text(), "profile-map", render_profile_map(profiles)
     )
-    guide = replace_block(guide, "rationale", render_rationale(profiles))
     return {README: readme, CATALOG_DOC: catalog, PROFILES: guide}
 
 

@@ -15,8 +15,9 @@ collection of everything that exists. Before opening a PR, check that the tool:
 3. **Fits an overlay.** Base is deliberately minimal — new tools usually belong in a
    `mise.<env>.toml` overlay, or a new overlay if a whole workflow is missing.
 
-Open the PR with the tool pinned to an exact reviewed release and a one-line comment saying what it
-does. CI must pass on Linux and macOS.
+Open the PR with the tool pinned to an exact reviewed release and add its display name, purpose, and
+rationale to `catalog.toml`. Regenerate the public tables with `./scripts/catalog.py`. CI must pass
+on Linux and macOS.
 
 ## Bumping a pin
 

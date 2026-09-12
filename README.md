@@ -76,128 +76,122 @@ git add mise.toml mise.lock && git commit -m "chore: pin toolchain with mise"
 Base is a four-tool, non-opinionated foundation. Overlays stack on top via `MISE_ENV`, e.g.
 `MISE_ENV=workstation,java,cloud mise install`. See the [Profile guide](docs/profiles.md) for the
 audience, dependencies, and selection rationale behind every profile.
+The tables below are generated from `catalog.toml` and the live mise configurations; CI rejects
+stale names, purposes, dependencies, or versions.
 
-**Base** (`mise.toml`)
+<!-- catalog:start -->
+**Base** (`mise.toml`, always active)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| ripgrep | fast grep (`rg`) | 15 |
-| fd | fast `find` | 10 |
-| jq | JSON processor | 1.8 |
-| yq | YAML processor | 4 |
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| ripgrep | fast grep (`rg`) | 15.2.0 |
+| fd | fast `find` | 10.5.0 |
+| jq | JSON processor | 1.8.2 |
+| yq | YAML processor | 4.53.6 |
 
 **Terminal workstation** (`mise.workstation.toml`, `MISE_ENV=workstation`)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| starship | shell prompt | 1.26 |
-| fzf | fuzzy finder | 0.74 |
-| zoxide | smarter `cd` | 0.10 |
-| bat | `cat` with syntax highlighting | 0.26 |
-| eza | modern `ls` | 0.23 |
-| dust | disk usage | 1 |
-| glow | markdown in the terminal | 3 |
-| yazi | terminal file manager | 26 |
-| httpie | HTTP client (`http`) | 3.2.4 |
-| github-cli | GitHub CLI (`gh`) | 2 |
-| glab | GitLab CLI | 1 |
-| linear-cli | Linear issue tracker CLI (`linear`) | 2.5.0 |
-| delta | better git diffs | 0.19 |
-| lazygit | git TUI | 0.64 |
-| lazydocker | docker TUI | 0.25 |
-| mprocs | run/monitor multiple processes | 0.9 |
-| tmux | terminal multiplexer | 3 |
-| neovim | editor | 0.12 |
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| starship | shell prompt | 1.26.0 |
+| fzf | fuzzy finder | 0.74.3 |
+| zoxide | smarter `cd` | 0.10.0 |
+| bat | `cat` with syntax highlighting | 0.26.1 |
+| eza | modern `ls` | 0.23.5 |
+| dust | disk usage | 1.2.5 |
+| glow | Markdown in the terminal | 3.0.0 |
+| yazi | terminal file manager | 26.9.1 |
+| HTTPie | HTTP client (`http`) | 3.2.4 |
+| GitHub CLI | GitHub CLI (`gh`) | 2.100.0 |
+| GitLab CLI | GitLab CLI (`glab`) | 1.116.0 |
+| Linear CLI | Linear issue tracker CLI (`linear`) | 2.6.0 |
+| delta | better Git diffs | 0.19.2 |
+| lazygit | Git TUI | 0.65.0 |
+| lazydocker | Docker TUI | 0.25.2 |
+| mprocs | run and monitor multiple processes | 0.9.6 |
+| tmux | terminal multiplexer | 3.7c |
+| Neovim | terminal editor | 0.12.5 |
 
-**Java & Kotlin** (`mise.java.toml`, `MISE_ENV=java`), replaces SDKMAN
+**Java and Kotlin** (`mise.java.toml`, `MISE_ENV=java`)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| java | Temurin JDK | 25 |
-| maven | build tool | 3 |
-| gradle | build tool | 9 |
-| kotlin | Kotlin compiler | 2 |
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| Temurin JDK | OpenJDK distribution | temurin-25.0.4+101.0.LTS |
+| Maven | JVM build tool | 3.9.16 |
+| Gradle | JVM build tool | 9.7.1 |
+| Kotlin | Kotlin compiler and REPL | 2.4.10 |
 
 **Go** (`mise.go.toml`, `MISE_ENV=go`)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| go | Go toolchain | 1.27 |
-| golangci-lint | linter | 2 |
-| dlv | debugger | 1.27 |
-| air | live reload | 1 |
-| ko | container images for Go | 0.19 |
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| Go | Go toolchain | 1.27.1 |
+| golangci-lint | Go linter runner | 2.13.2 |
+| Delve | Go debugger (`dlv`) | 1.27.1 |
+| Air | Go live reload | 1.67.4 |
+| ko | container images for Go | 0.19.1 |
 
 **Python** (`mise.python.toml`, `MISE_ENV=python`)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| uv | package & venv manager | 0.12 |
-| ruff | linter & formatter | 0.16 |
-| ipython | REPL | 9.16.1 |
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| uv | Python package and environment manager | 0.12.10 |
+| Ruff | Python linter and formatter | 0.16.6 |
+| IPython | Python REPL | 9.17.1 |
 
-**Node & frontend** (`mise.node.toml`, `MISE_ENV=node`), for Next.js, Vue, and general TypeScript
-work
+**Node and frontend** (`mise.node.toml`, `MISE_ENV=node`)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| node | JS runtime (Active LTS) | 24 |
-| pnpm | package manager | 11 |
-| yarn | package manager | 4 |
-| bun | JS runtime & bundler | 1.4 |
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| Node.js | JavaScript runtime | 24.20.0 |
+| pnpm | JavaScript package manager | 11.25.0 |
+| Yarn | JavaScript package manager | 4.18.0 |
+| Bun | JavaScript runtime and bundler | 1.4.2 |
 
-**Cloud, Kubernetes & GitOps** (`mise.cloud.toml`, `MISE_ENV=cloud`)
+**Cloud, Kubernetes, and GitOps** (`mise.cloud.toml`, `MISE_ENV=cloud`)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| kubectl | Kubernetes CLI | 1.36 |
-| kubectx | switch Kubernetes contexts, also `kubectl ctx` | 0.11 |
-| kubens | switch Kubernetes namespaces, also `kubectl ns` | 0.11 |
-| k9s | Kubernetes TUI | 0.51 |
-| kind | local Kubernetes clusters | 0.32 |
-| k3d | local Kubernetes clusters (k3s in Docker) | 5.9 |
-| helm | Kubernetes package manager | 4 |
-| telepresence | local-to-cluster dev | 2 |
-| kustomize | Kubernetes config overlays | 5 |
-| argocd | GitOps CLI (ArgoCD) | 3 |
-| flux2 | GitOps CLI (Flux) | 2 |
-| sops | secrets encryption | 3 |
-| age | encryption tool | 1 |
-| awscli | AWS CLI | 2 |
-| doctl | DigitalOcean CLI | 1 |
-| hcloud | Hetzner Cloud CLI | 1 |
-| oci-cli | Oracle Cloud CLI (`oci`) | 3.91.0 |
-| terraform | infrastructure as code | 1.15 |
-| grpcurl | gRPC client | 1.9 |
-| pgcli | Postgres CLI | 4.5.0 |
-| mycli | MySQL CLI | 2.15.0 |
-| pyahu | Pyahu CLI — local dev stack on k3d (`pyahu up`) | 0.8.0 |
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| kubectl | Kubernetes CLI | 1.37.0 |
+| kubectx | switch Kubernetes contexts; also `kubectl ctx` | 0.11.0 |
+| kubens | switch Kubernetes namespaces; also `kubectl ns` | 0.11.0 |
+| k9s | Kubernetes TUI | 0.51.0 |
+| kind | upstream Kubernetes clusters in Docker | 0.33.0 |
+| k3d | k3s clusters in Docker | 5.9.0 |
+| Helm | Kubernetes package manager | 4.2.4 |
+| Telepresence | local-to-cluster development | 2.31.2 |
+| Kustomize | Kubernetes configuration overlays | 5.8.1 |
+| Argo CD CLI | Argo CD GitOps client | 3.5.2 |
+| Flux CLI | Flux GitOps client | 2.9.5 |
+| SOPS | structured secrets encryption | 3.13.3 |
+| age | encryption tool | 1.3.2 |
+| AWS CLI | AWS cloud client | 2.36.44 |
+| doctl | DigitalOcean cloud client | 1.168.0 |
+| hcloud | Hetzner Cloud client | 1.67.0 |
+| Terraform | infrastructure as code | 1.16.2 |
+| OCI CLI | Oracle Cloud client (`oci`) | 3.92.1 |
+| grpcurl | gRPC client | 1.9.4 |
+| pgcli | PostgreSQL interactive client | 4.6.0 |
+| mycli | MySQL interactive client | 2.23.0 |
+| Pyahu CLI | local development stack (`pyahu up`) | 0.10.1 |
 
-**AI** (`mise.ai.toml`, `MISE_ENV=ai`), deliberately unpinned since these ship fixes weekly
+**AI** (`mise.ai.toml`, `MISE_ENV=ai`, rolling)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| claude-code | Anthropic Claude Code | latest |
-| codex | OpenAI Codex CLI | latest |
-| opencode | OpenCode | latest |
-| ollama | local model runtime, `ollama serve` + `ollama run` | latest |
-| kimi-code | Kimi Code CLI, needs Node, stack `MISE_ENV=node,ai` | latest |
-| pi-coding-agent | Pi coding agent (`pi`), needs Node, stack `MISE_ENV=node,ai` | latest |
-
-Not installable by mise: `obsidian` (Obsidian CLI, the vault from the terminal — useful to give an
-agent a place to read and write notes). It ships inside the Obsidian desktop app since 1.12, so
-mise can't manage it: install Obsidian 1.12.7+ with the official installer, enable
-Settings → General → "Command line interface", and register it on your `PATH` when prompted. It
-talks to the running app over IPC, so Obsidian has to be open.
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| Claude Code | Anthropic coding agent | latest |
+| Codex CLI | OpenAI coding agent | latest |
+| OpenCode | provider-flexible coding agent | latest |
+| Ollama | local model runtime | latest |
+| Kimi Code | coding agent (`kimi`); add `node` | latest |
+| Pi coding agent | extensible coding agent (`pi`); add `node` | latest |
 
 **Architecture** (`mise.arch.toml`, `MISE_ENV=arch`)
 
-| Tool | Purpose | Pin |
-| ---- | ------- | --- |
-| d2 | diagrams-as-code | 0.7 |
-
-Not in the mise registry: `structurizr-cli` (C4 models) and `plantuml`. Install them with your OS
-package manager if you need them.
+| Tool | Purpose | Version |
+| ---- | ------- | ------- |
+| D2 | diagrams as code | v0.9.0 |
+<!-- catalog:end -->
 
 ---
 

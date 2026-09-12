@@ -1,0 +1,490 @@
+schema = 1
+
+[[profiles]]
+id = "base"
+title = "Base"
+file = "mise.toml"
+audience = "Any developer or automation runner"
+adds = "Search and JSON/YAML processing"
+prerequisites = "None beyond mise"
+rolling = false
+
+[[profiles.tools]]
+key = "ripgrep"
+name = "ripgrep"
+purpose = "fast grep (`rg`)"
+rationale = "Fast, predictable source-tree search used by humans, scripts, editors, and agents."
+
+[[profiles.tools]]
+key = "fd"
+name = "fd"
+purpose = "fast `find`"
+rationale = "Provides readable file discovery while preserving `find` for portable scripts."
+
+[[profiles.tools]]
+key = "jq"
+name = "jq"
+purpose = "JSON processor"
+rationale = "The standard automation primitive for inspecting and transforming JSON."
+
+[[profiles.tools]]
+key = "yq"
+name = "yq"
+purpose = "YAML processor"
+rationale = "Gives YAML workflows the same query and transformation capability as jq."
+
+[[profiles]]
+id = "workstation"
+title = "Terminal workstation"
+file = "mise.workstation.toml"
+audience = "Developers who want the full Pyahu terminal experience"
+adds = "Shell navigation, readable output, collaboration clients, TUIs, tmux, Neovim"
+prerequisites = "Git; Nerd Font recommended for the best prompt/editor rendering"
+rolling = false
+
+[[profiles.tools]]
+key = "starship"
+name = "starship"
+purpose = "shell prompt"
+rationale = "Supplies one cross-shell prompt configuration instead of shell-specific prompt frameworks."
+
+[[profiles.tools]]
+key = "fzf"
+name = "fzf"
+purpose = "fuzzy finder"
+rationale = "Powers interactive selection in the shell and integrates with many other terminal tools."
+
+[[profiles.tools]]
+key = "zoxide"
+name = "zoxide"
+purpose = "smarter `cd`"
+rationale = "Makes frequent directory navigation faster without replacing normal `cd`."
+
+[[profiles.tools]]
+key = "bat"
+name = "bat"
+purpose = "`cat` with syntax highlighting"
+rationale = "Improves interactive file reading with syntax and Git context while leaving `cat` available."
+
+[[profiles.tools]]
+key = "eza"
+name = "eza"
+purpose = "modern `ls`"
+rationale = "Adds human-friendly directory and Git views while leaving portable `ls` scripts untouched."
+
+[[profiles.tools]]
+key = "dust"
+name = "dust"
+purpose = "disk usage"
+rationale = "Makes interactive disk-usage investigation easier than raw `du` output."
+
+[[profiles.tools]]
+key = "glow"
+name = "glow"
+purpose = "Markdown in the terminal"
+rationale = "Renders repository Markdown without leaving the terminal."
+
+[[profiles.tools]]
+key = "yazi"
+name = "yazi"
+purpose = "terminal file manager"
+rationale = "Provides fast visual file navigation for terminal-first workflows."
+
+[[profiles.tools]]
+key = "pipx:httpie"
+name = "HTTPie"
+purpose = "HTTP client (`http`)"
+rationale = "Offers a readable interactive HTTP client; curl remains the portable bootstrap dependency."
+
+[[profiles.tools]]
+key = "github-cli"
+name = "GitHub CLI"
+purpose = "GitHub CLI (`gh`)"
+rationale = "Supports repositories, pull requests, releases, and Actions hosted on GitHub."
+
+[[profiles.tools]]
+key = "glab"
+name = "GitLab CLI"
+purpose = "GitLab CLI (`glab`)"
+rationale = "Is retained alongside GitHub CLI because the community works with both forges."
+
+[[profiles.tools]]
+key = "npm:@schpet/linear-cli"
+name = "Linear CLI"
+purpose = "Linear issue tracker CLI (`linear`)"
+rationale = "Connects issue workflows to the terminal and automation agents."
+
+[[profiles.tools]]
+key = "delta"
+name = "delta"
+purpose = "better Git diffs"
+rationale = "Improves Git diff readability and integrates with standard Git commands."
+
+[[profiles.tools]]
+key = "lazygit"
+name = "lazygit"
+purpose = "Git TUI"
+rationale = "Provides an optional visual Git workflow without replacing the Git CLI."
+
+[[profiles.tools]]
+key = "lazydocker"
+name = "lazydocker"
+purpose = "Docker TUI"
+rationale = "Provides an optional visual view of local Docker workloads."
+
+[[profiles.tools]]
+key = "mprocs"
+name = "mprocs"
+purpose = "run and monitor multiple processes"
+rationale = "Runs and monitors several local development processes in one terminal."
+
+[[profiles.tools]]
+key = "tmux"
+name = "tmux"
+purpose = "terminal multiplexer"
+rationale = "Keeps long-running terminal workspaces persistent and remotely accessible."
+
+[[profiles.tools]]
+key = "neovim"
+name = "Neovim"
+purpose = "terminal editor"
+rationale = "Defines the community's optional terminal editor without imposing it in the base profile."
+
+[[profiles]]
+id = "java"
+title = "Java and Kotlin"
+file = "mise.java.toml"
+audience = "JVM application developers"
+adds = "Temurin, Maven, Gradle, Kotlin"
+prerequisites = "`kcat` remains an optional OS package for Kafka work"
+rolling = false
+note = "Maven and Gradle overlap intentionally: both build systems exist in supported JVM repositories."
+
+[[profiles.tools]]
+key = "java"
+name = "Temurin JDK"
+purpose = "OpenJDK distribution"
+rationale = "Uses a widely deployed OpenJDK distribution with an LTS line."
+
+[[profiles.tools]]
+key = "maven"
+name = "Maven"
+purpose = "JVM build tool"
+rationale = "Supports Maven-based Spring Boot and other JVM repositories."
+
+[[profiles.tools]]
+key = "gradle"
+name = "Gradle"
+purpose = "JVM build tool"
+rationale = "Supports Gradle-based Java and Kotlin repositories."
+
+[[profiles.tools]]
+key = "kotlin"
+name = "Kotlin"
+purpose = "Kotlin compiler and REPL"
+rationale = "Makes the standalone compiler and REPL available outside Gradle builds."
+
+[[profiles]]
+id = "go"
+title = "Go"
+file = "mise.go.toml"
+audience = "Go service and CLI developers"
+adds = "Go, linting, debugging, reload, image builds"
+prerequisites = "Docker only when publishing images with `ko`"
+rolling = false
+
+[[profiles.tools]]
+key = "go"
+name = "Go"
+purpose = "Go toolchain"
+rationale = "Provides the compiler, standard tooling, and module workflow."
+
+[[profiles.tools]]
+key = "golangci-lint"
+name = "golangci-lint"
+purpose = "Go linter runner"
+rationale = "Standardizes a broad, fast lint suite behind one command."
+
+[[profiles.tools]]
+key = "go:github.com/go-delve/delve/cmd/dlv"
+name = "Delve"
+purpose = "Go debugger (`dlv`)"
+rationale = "Provides the debugger used by editors and command-line sessions."
+
+[[profiles.tools]]
+key = "air"
+name = "Air"
+purpose = "Go live reload"
+rationale = "Supplies the common edit/rebuild/restart loop for local services."
+
+[[profiles.tools]]
+key = "ko"
+name = "ko"
+purpose = "container images for Go"
+rationale = "Builds minimal container images directly from Go packages without a Dockerfile."
+
+[[profiles]]
+id = "python"
+title = "Python"
+file = "mise.python.toml"
+audience = "Python application and data developers"
+adds = "uv, Ruff, IPython"
+prerequisites = "None"
+rolling = false
+
+[[profiles.tools]]
+key = "uv"
+name = "uv"
+purpose = "Python package and environment manager"
+rationale = "Consolidates Python installation, environments, dependencies, and tool execution."
+
+[[profiles.tools]]
+key = "ruff"
+name = "Ruff"
+purpose = "Python linter and formatter"
+rationale = "Consolidates fast linting and formatting for supported Python repositories."
+
+[[profiles.tools]]
+key = "pipx:ipython"
+name = "IPython"
+purpose = "Python REPL"
+rationale = "Provides a productive exploratory REPL without affecting application dependencies."
+
+[[profiles]]
+id = "node"
+title = "Node and frontend"
+file = "mise.node.toml"
+audience = "TypeScript, Next.js, and Vue developers"
+adds = "Node and package managers used by supported repositories"
+prerequisites = "None"
+rolling = false
+note = "The package managers intentionally coexist because a repository's committed lockfile determines which one is used."
+
+[[profiles.tools]]
+key = "node"
+name = "Node.js"
+purpose = "JavaScript runtime"
+rationale = "Supplies the active LTS runtime used by supported frontend and TypeScript projects."
+
+[[profiles.tools]]
+key = "pnpm"
+name = "pnpm"
+purpose = "JavaScript package manager"
+rationale = "Is the default efficient package manager for current Pyahu JavaScript repositories."
+
+[[profiles.tools]]
+key = "aqua:yarnpkg/berry"
+name = "Yarn"
+purpose = "JavaScript package manager"
+rationale = "Preserves compatibility with supported repositories whose lockfile and plugins require Yarn."
+
+[[profiles.tools]]
+key = "bun"
+name = "Bun"
+purpose = "JavaScript runtime and bundler"
+rationale = "Supports repositories and experiments that use Bun as a runtime or bundler."
+
+[[profiles]]
+id = "cloud"
+title = "Cloud, Kubernetes, and GitOps"
+file = "mise.cloud.toml"
+audience = "Platform engineers and contributors running the Pyahu local stack"
+adds = "Kubernetes, local clusters, GitOps, encryption, cloud providers, IaC, database clients, Pyahu CLI"
+prerequisites = "Docker for kind, k3d, and `pyahu up`; `kcat` is an optional OS package"
+rolling = false
+note = "kind and k3d serve different local-cluster workflows; Argo CD and Flux cover different managed clusters; the database clients target different protocols. Provider CLIs reflect the infrastructure currently operated by Pyahu contributors."
+
+[[profiles.tools]]
+key = "kubectl"
+name = "kubectl"
+purpose = "Kubernetes CLI"
+rationale = "Is the canonical Kubernetes API command-line client."
+
+[[profiles.tools]]
+key = "kubectx"
+name = "kubectx"
+purpose = "switch Kubernetes contexts; also `kubectl ctx`"
+rationale = "Makes explicit context switching safer and faster."
+
+[[profiles.tools]]
+key = "kubens"
+name = "kubens"
+purpose = "switch Kubernetes namespaces; also `kubectl ns`"
+rationale = "Makes namespace switching visible and ergonomic."
+
+[[profiles.tools]]
+key = "k9s"
+name = "k9s"
+purpose = "Kubernetes TUI"
+rationale = "Provides an operational Kubernetes view for interactive diagnosis."
+
+[[profiles.tools]]
+key = "kind"
+name = "kind"
+purpose = "upstream Kubernetes clusters in Docker"
+rationale = "Creates disposable upstream-Kubernetes clusters suited to conformance and integration tests."
+
+[[profiles.tools]]
+key = "k3d"
+name = "k3d"
+purpose = "k3s clusters in Docker"
+rationale = "Runs lightweight k3s clusters and is the local substrate used by Pyahu CLI."
+
+[[profiles.tools]]
+key = "helm"
+name = "Helm"
+purpose = "Kubernetes package manager"
+rationale = "Installs and packages the charts used by supported platform workloads."
+
+[[profiles.tools]]
+key = "telepresence"
+name = "Telepresence"
+purpose = "local-to-cluster development"
+rationale = "Connects local processes to cluster networks for development and debugging."
+
+[[profiles.tools]]
+key = "kustomize"
+name = "Kustomize"
+purpose = "Kubernetes configuration overlays"
+rationale = "Builds environment-specific Kubernetes manifests without a template language."
+
+[[profiles.tools]]
+key = "argocd"
+name = "Argo CD CLI"
+purpose = "Argo CD GitOps client"
+rationale = "Supports teams and clusters standardized on Argo CD."
+
+[[profiles.tools]]
+key = "flux2"
+name = "Flux CLI"
+purpose = "Flux GitOps client"
+rationale = "Supports teams and clusters standardized on Flux."
+
+[[profiles.tools]]
+key = "sops"
+name = "SOPS"
+purpose = "structured secrets encryption"
+rationale = "Encrypts structured secrets while keeping encrypted files reviewable in Git."
+
+[[profiles.tools]]
+key = "age"
+name = "age"
+purpose = "encryption tool"
+rationale = "Supplies the small encryption primitive used by SOPS and local workflows."
+
+[[profiles.tools]]
+key = "awscli"
+name = "AWS CLI"
+purpose = "AWS cloud client"
+rationale = "Supports workloads and infrastructure hosted on AWS."
+
+[[profiles.tools]]
+key = "doctl"
+name = "doctl"
+purpose = "DigitalOcean cloud client"
+rationale = "Supports workloads and infrastructure hosted on DigitalOcean."
+
+[[profiles.tools]]
+key = "hcloud"
+name = "hcloud"
+purpose = "Hetzner Cloud client"
+rationale = "Supports workloads and infrastructure hosted on Hetzner Cloud."
+
+[[profiles.tools]]
+key = "terraform"
+name = "Terraform"
+purpose = "infrastructure as code"
+rationale = "Provides the established IaC workflow used by current infrastructure repositories."
+
+[[profiles.tools]]
+key = "pipx:oci-cli"
+name = "OCI CLI"
+purpose = "Oracle Cloud client (`oci`)"
+rationale = "Supports workloads and infrastructure hosted on Oracle Cloud."
+
+[[profiles.tools]]
+key = "grpcurl"
+name = "grpcurl"
+purpose = "gRPC client"
+rationale = "Makes gRPC APIs inspectable and scriptable during development and incidents."
+
+[[profiles.tools]]
+key = "pipx:pgcli"
+name = "pgcli"
+purpose = "PostgreSQL interactive client"
+rationale = "Provides completion and readable output for PostgreSQL-compatible databases."
+
+[[profiles.tools]]
+key = "pipx:mycli"
+name = "mycli"
+purpose = "MySQL interactive client"
+rationale = "Provides the equivalent interactive workflow for MySQL-compatible databases."
+
+[[profiles.tools]]
+key = "github:pyahu/cli"
+name = "Pyahu CLI"
+purpose = "local development stack (`pyahu up`)"
+rationale = "Recreates the community's declared local application stack on k3d."
+
+[[profiles]]
+id = "ai"
+title = "AI"
+file = "mise.ai.toml"
+audience = "Developers using local or hosted coding agents"
+adds = "Agent CLIs and Ollama"
+prerequisites = "Add `node` for Kimi and Pi; sufficient RAM and storage for local Ollama models"
+recommended_profiles = ["node"]
+rolling = true
+note = "These agents coexist as an evaluation bench rather than a single-vendor default. This profile intentionally follows its separately documented rolling update contract."
+
+[[profiles.tools]]
+key = "claude-code"
+name = "Claude Code"
+purpose = "Anthropic coding agent"
+rationale = "Supports Anthropic-based agent workflows used by community contributors."
+
+[[profiles.tools]]
+key = "codex"
+name = "Codex CLI"
+purpose = "OpenAI coding agent"
+rationale = "Supports OpenAI-based agent workflows used by community contributors."
+
+[[profiles.tools]]
+key = "opencode"
+name = "OpenCode"
+purpose = "provider-flexible coding agent"
+rationale = "Provides an open, provider-flexible terminal agent."
+
+[[profiles.tools]]
+key = "ollama"
+name = "Ollama"
+purpose = "local model runtime"
+rationale = "Runs local models when source code or experiments should remain on the workstation."
+
+[[profiles.tools]]
+key = "npm:@moonshot-ai/kimi-code"
+name = "Kimi Code"
+purpose = "coding agent (`kimi`); add `node`"
+rationale = "Adds the Kimi coding workflow used for long-context or alternative-model evaluation."
+
+[[profiles.tools]]
+key = "npm:@earendil-works/pi-coding-agent"
+name = "Pi coding agent"
+purpose = "extensible coding agent (`pi`); add `node`"
+rationale = "Adds a small extensible agent for scripted and experimental workflows."
+
+[[profiles]]
+id = "arch"
+title = "Architecture"
+file = "mise.arch.toml"
+audience = "Software architects and developers maintaining diagrams as code"
+adds = "D2"
+prerequisites = "Structurizr CLI and PlantUML remain optional OS packages"
+rolling = false
+note = "Structurizr CLI and PlantUML are documented but not declared because they lack an approved mise entry that works across every supported platform."
+
+[[profiles.tools]]
+key = "d2"
+name = "D2"
+purpose = "diagrams as code"
+rationale = "Produces reviewable diagrams from text with a small standalone CLI."

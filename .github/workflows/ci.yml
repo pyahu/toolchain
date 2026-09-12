@@ -45,6 +45,9 @@ jobs:
         with:
           install: false
 
+      - name: catalog consistency
+        run: ./scripts/catalog.py --check
+
       - name: installer behavior
         run: ./tests/install.sh
 

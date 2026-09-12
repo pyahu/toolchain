@@ -1,6 +1,7 @@
 # Pyahu Toolchain
 
 [![CI](https://github.com/pyahu/toolchain/actions/workflows/ci.yml/badge.svg)](https://github.com/pyahu/toolchain/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-read-4051b5)](https://pyahu.github.io/toolchain/)
 [![Release](https://img.shields.io/github/v/release/pyahu/toolchain)](https://github.com/pyahu/toolchain/releases/latest)
 [![License](https://img.shields.io/github/license/pyahu/toolchain)](LICENSE)
 
@@ -135,6 +136,9 @@ If something fails, start with [Troubleshooting](docs/troubleshooting.md). You c
 [ask a question](https://github.com/pyahu/toolchain/issues/new?template=question.yml).
 
 ## Documentation
+
+Read the guides on the [documentation website](https://pyahu.github.io/toolchain/) or directly on
+GitHub:
 
 - [Getting started](docs/getting-started.md)
 - [Profiles and prerequisites](docs/profiles.md)

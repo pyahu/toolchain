@@ -11,6 +11,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   generated page.
 - Added practical getting-started, recipe, and FAQ guides and simplified profile, support, and
   troubleshooting documentation.
+- Added a searchable documentation site with a pinned local build and GitHub Pages deployment.
 
 ## [1.0.0] - 2026-09-12
 

@@ -1,9 +1,1 @@
-# mise local, uncommitted overrides
-mise.local.toml
-.mise.local.toml
-mise.*.local.toml
-.mise.*.local.toml
-mise.local.lock
-.mise.local.lock
-mise.*.local.lock
-.mise.*.local.lock
+site/

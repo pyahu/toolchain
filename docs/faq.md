@@ -30,7 +30,8 @@ the same way as stable profiles.
 
 No. Versions and installation behavior are reviewed and tested, but the project does not audit all
 upstream source code or transitive dependencies. See [Platform support](support.md) for the exact
-boundary and [SECURITY.md](../SECURITY.md) for private reports.
+boundary and the [security policy](https://github.com/pyahu/toolchain/blob/main/SECURITY.md) for
+private reports.
 
 ## Can I add private tools without changing the project?
 

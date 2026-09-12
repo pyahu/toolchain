@@ -46,4 +46,5 @@ installation, but its resolved versions can change. See the [update policy](upda
 - Older releases remain available for rollback but do not normally receive fixes.
 
 For setup problems, use [Troubleshooting](troubleshooting.md). Report suspected supply-chain or
-installer vulnerabilities through the private process in [SECURITY.md](../SECURITY.md).
+installer vulnerabilities through the private process in the
+[security policy](https://github.com/pyahu/toolchain/blob/main/SECURITY.md).

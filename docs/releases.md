@@ -56,7 +56,8 @@ change without the consumer selecting a new version.
 
 ## Upgrade or roll back
 
-Inspect [CHANGELOG.md](../CHANGELOG.md) and select a release. In a versioned checkout:
+Inspect the [changelog](https://github.com/pyahu/toolchain/blob/main/CHANGELOG.md) and select a
+release. In a versioned checkout:
 
 ```sh
 git fetch --tags

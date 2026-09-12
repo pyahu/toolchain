@@ -92,7 +92,9 @@ loads it only when selected.
 
 ## Update or roll back
 
-Choose a release from the [changelog](../CHANGELOG.md), then move the checkout to that tag:
+Choose a release from the
+[changelog](https://github.com/pyahu/toolchain/blob/main/CHANGELOG.md), then move the checkout to
+that tag:
 
 ```sh
 git fetch --tags

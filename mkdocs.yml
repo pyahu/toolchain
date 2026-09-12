@@ -1,0 +1,67 @@
+site_name: Pyahu Toolchain
+site_description: A curated mise setup for developer CLI tools
+site_url: https://pyahu.github.io/toolchain/
+repo_url: https://github.com/pyahu/toolchain
+repo_name: pyahu/toolchain
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  features:
+    - content.code.copy
+    - navigation.footer
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Use dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Use light mode
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Start here:
+      - Getting started: getting-started.md
+      - Choose profiles: profiles.md
+      - Common recipes: recipes.md
+  - Help:
+      - Troubleshooting: troubleshooting.md
+      - FAQ: faq.md
+  - Reference:
+      - Tool catalog: catalog.md
+      - Platform support: support.md
+      - Releases and upgrades: releases.md
+      - Update policy: updates.md
+  - Project:
+      - Launch kit: launch.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/pyahu/toolchain
+      name: Pyahu Toolchain on GitHub
+
+copyright: MIT licensed · Pyahu Community

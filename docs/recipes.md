@@ -57,7 +57,7 @@ authentication, and billing settings before use.
 Copy the base config and lock from one release tag:
 
 ```sh
-PYAHU_TOOLCHAIN_VERSION=v1.0.0
+PYAHU_TOOLCHAIN_VERSION=v1.0.1
 PYAHU_TOOLCHAIN_RAW="https://raw.githubusercontent.com/pyahu/toolchain/$PYAHU_TOOLCHAIN_VERSION"
 curl -fsSL -o mise.toml "$PYAHU_TOOLCHAIN_RAW/mise.toml"
 curl -fsSL -o mise.lock "$PYAHU_TOOLCHAIN_RAW/mise.lock"

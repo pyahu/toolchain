@@ -23,7 +23,7 @@ Clone the current release into a directory you plan to keep. The installer creat
 this checkout.
 
 ```sh
-git clone --branch v1.0.0 --depth 1 \
+git clone --branch v1.0.1 --depth 1 \
   https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
 cd ~/.config/pyahu-toolchain
 ```

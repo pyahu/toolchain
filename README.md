@@ -33,7 +33,7 @@ cloud credentials, or tool-specific configuration.
 Install [mise](https://mise.jdx.dev/getting-started.html), then clone the current stable release:
 
 ```sh
-git clone --branch v1.0.0 --depth 1 \
+git clone --branch v1.0.1 --depth 1 \
   https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
 cd ~/.config/pyahu-toolchain
 ```
@@ -119,8 +119,8 @@ Downloaded tools remain in the mise cache but become inactive.
 If you only want the four base tools in a repository, copy both files from the same immutable tag:
 
 ```sh
-curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0/mise.toml
-curl -fsSL -o mise.lock https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0/mise.lock
+curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/v1.0.1/mise.toml
+curl -fsSL -o mise.lock https://raw.githubusercontent.com/pyahu/toolchain/v1.0.1/mise.lock
 mise install --locked
 ```
 

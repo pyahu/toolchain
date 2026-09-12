@@ -44,6 +44,9 @@ jobs:
       - name: documentation consistency
         run: ./scripts/catalog.py --check
 
+      - name: release metadata
+        run: ./scripts/release-check.sh
+
       - name: installer behavior
         run: ./tests/install.sh
 

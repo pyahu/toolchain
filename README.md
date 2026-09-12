@@ -17,6 +17,10 @@ contract](docs/support.md) for the precise guarantee, exclusions, and platform m
 
 ## Install
 
+The current release candidate is `v1.0.0-rc.1`. Use its immutable tag for evaluation; mutable
+`main` is for contributors. The [release guide](docs/releases.md) covers archives, upgrades, and
+rollback.
+
 ```sh
 curl https://mise.run | sh
 eval "$(mise activate zsh)"   # add to ~/.zshrc. Bash users: mise activate bash, in ~/.bashrc
@@ -29,7 +33,8 @@ Wire this repo into your machine. Profiles: `workstation`, `java`, `go`, `python
 `ai`, `arch` (pick `node` too if you want `ai`'s Kimi CLI or Pi):
 
 ```sh
-git clone https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
+git clone --branch v1.0.0-rc.1 --depth 1 \
+  https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
 cd ~/.config/pyahu-toolchain
 ./install.sh workstation java go python node cloud   # pick the profiles you use
 ```
@@ -59,17 +64,17 @@ restores backups created by the installer. Re-running the installer also migrate
 older releases: it restores the original global config from `.bak` and moves the base toolchain to
 its isolated `conf.d` fragment.
 
-Later, `git pull` in that clone updates the config immediately; run `mise install` again to fetch
-anything newly pinned. Anything this machine needs outside the curated set goes in the mise config
-directory's `config.local.toml` (usually `~/.config/mise/config.local.toml`), which mise merges in
-automatically.
+To select a newer release, fetch its tag and switch the checkout as described in the [release
+guide](docs/releases.md), then run `mise install` again. Anything this machine needs outside the
+curated set goes in the mise config directory's `config.local.toml` (usually
+`~/.config/mise/config.local.toml`), which mise merges in automatically.
 
 Working in someone else's repo instead? Drop the base config as a project file. mise merges it
 with your global config, and the closer file wins:
 
 ```sh
-curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/main/mise.toml
-curl -fsSL -o mise.lock https://raw.githubusercontent.com/pyahu/toolchain/main/mise.lock
+curl -fsSL -o mise.toml https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0-rc.1/mise.toml
+curl -fsSL -o mise.lock https://raw.githubusercontent.com/pyahu/toolchain/v1.0.0-rc.1/mise.lock
 mise install --locked
 git add mise.toml mise.lock && git commit -m "chore: pin toolchain with mise"
 ```
@@ -206,11 +211,11 @@ stale names, purposes, dependencies, or versions.
 mise outdated   # compare the exact stable pins with available releases
 ```
 
-Stable versions move only through reviewed changes. Renovate proposes exact pin updates after a
+Stable versions move only through reviewed releases. Renovate proposes exact pin updates after a
 seven-day waiting period and refreshes locks weekly; maintainers can run
-`./scripts/update-locks.sh` after editing a pin. Pull those updates with `git pull` in the clone, or
-re-download both the project TOML and lockfile. See the [version and update
-policy](docs/updates.md) for the rolling AI exception and emergency security updates.
+`./scripts/update-locks.sh` after editing a pin. Upgrade the clone or re-download both project files
+from the new tag. See the [version and update policy](docs/updates.md) for the rolling AI exception
+and emergency security updates.
 
 ---
 

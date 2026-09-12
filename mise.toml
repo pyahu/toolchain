@@ -3,9 +3,10 @@
 # Developer CLI tools managed by mise (https://mise.jdx.dev): no Docker image,
 # pinned per repo, identical on every machine.
 #
-# This file is the "minimal" baseline: shell, modern unix utilities, git workflow,
-# containers helper, and an editor. Stack language/cloud overlays on top with MISE_ENV.
+# This file is the minimal, non-opinionated baseline: source search and structured-data
+# processing. Stack workflow profiles on top with MISE_ENV.
 #
+#   MISE_ENV=workstation   → + terminal UX, git clients, TUIs, editor
 #   MISE_ENV=java          → + mise.java.toml   (Java & Kotlin)
 #   MISE_ENV=go            → + mise.go.toml
 #   MISE_ENV=python        → + mise.python.toml
@@ -16,36 +17,11 @@
 #   MISE_ENV=java,cloud,ai → stack several profiles at once
 #
 # Versions track current stable lines; `mise outdated` / `mise upgrade` bumps them.
-# OS-level prerequisites not managed here: git, zsh, curl, docker, a Nerd Font, vim,
-# and btop (no macOS binaries in the mise registry — `brew install btop` / `apt install btop`).
+# Profile-specific prerequisites are documented in docs/profiles.md.
 
 [tools]
-# shell & prompt
-starship = "1.26"
-fzf      = "0.74"
-zoxide   = "0.10"
-
-# modern unix utilities
+# cross-stack primitives
 ripgrep = "15"
 fd      = "10"
-bat     = "0.26"
-eza     = "0.23"
-dust    = "1"
-glow    = "3"
-yazi    = "26"
 jq      = "1.8"
 yq      = "4"
-"pipx:httpie" = "3.2.4"
-
-# git workflow
-"github-cli"             = "2"
-glab                     = "1"
-"npm:@schpet/linear-cli" = "2.6.0"
-delta                    = "0.19"
-lazygit                  = "0.65.0"
-
-# containers, multiplexer & editor
-lazydocker = "0.25"
-mprocs     = "0.9"
-tmux       = "3"
-neovim     = "0.12"

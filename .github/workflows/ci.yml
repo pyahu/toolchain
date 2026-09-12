@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        env: ["", "java", "go", "python", "node", "cloud", "ai", "arch"]
+        env: ["", "workstation", "java", "go", "python", "node", "cloud", "ai", "arch"]
     steps:
       - uses: actions/checkout@v7
       - uses: jdx/mise-action@v4
@@ -46,8 +46,8 @@ jobs:
       - name: fresh install links everything and tools actually run
         run: |
           export MISE_CONFIG_DIR="$RUNNER_TEMP/mise-config"
-          ./install.sh java go python node cloud ai arch
-          MISE_ENV=java,go,python,node,cloud,ai,arch mise install
+          ./install.sh workstation java go python node cloud ai arch
+          MISE_ENV=workstation,java,go,python,node,cloud,ai,arch mise install
           MISE_ENV=node,ai mise exec -- kimi --version
           MISE_ENV=node,ai mise exec -- pi --version
           MISE_ENV=ai mise exec -- claude --version
@@ -66,8 +66,8 @@ jobs:
       - name: mise install
         run: mise install
         env:
-          MISE_ENV: java,go,python,node,cloud,ai,arch
+          MISE_ENV: workstation,java,go,python,node,cloud,ai,arch
       - name: mise ls
         run: mise ls
         env:
-          MISE_ENV: java,go,python,node,cloud,ai,arch
+          MISE_ENV: workstation,java,go,python,node,cloud,ai,arch

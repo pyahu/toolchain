@@ -5,9 +5,9 @@
 The certified developer toolchain for [Pyahu Community](https://pyahu.io), managed by
 [mise](https://mise.jdx.dev).
 
-One pinned set of CLI tools defined as a mise config. No Docker image, no manual setup. Tools are
-pinned per repo to the **same stable lines on every machine**, so your team's workstations stop
-drifting apart.
+A curated, composable set of CLI tools defined as mise configs. No development container and no
+language-specific version-manager stack. A small cross-stack baseline stays out of your way;
+workflow profiles add only the toolchains you choose.
 
 ## Install
 
@@ -16,17 +16,16 @@ curl https://mise.run | sh
 eval "$(mise activate zsh)"   # add to ~/.zshrc. Bash users: mise activate bash, in ~/.bashrc
 ```
 
-OS-level tools this toolchain doesn't manage (install with your package manager): `git`, `zsh`,
-`curl`, `docker`, a Nerd Font, `vim`, `btop`, `kcat` (`brew install btop kcat` /
-`apt install btop kcat`).
+The installer needs `git`, `curl`, and a POSIX shell. Individual profiles can have additional
+prerequisites; see the [Profile guide](docs/profiles.md).
 
-Wire this repo into your machine. Profiles: `java`, `go`, `python`, `node`, `cloud`, `ai`, `arch`
-(pick `node` too if you want `ai`'s Kimi CLI or Pi):
+Wire this repo into your machine. Profiles: `workstation`, `java`, `go`, `python`, `node`, `cloud`,
+`ai`, `arch` (pick `node` too if you want `ai`'s Kimi CLI or Pi):
 
 ```sh
 git clone https://github.com/pyahu/toolchain.git ~/.config/pyahu-toolchain
 cd ~/.config/pyahu-toolchain
-./install.sh java go python node cloud ai   # pick the profiles you use
+./install.sh workstation java go python node cloud ai   # pick the profiles you use
 ```
 
 `install.sh` validates every destination first, then adds the base config as an isolated mise
@@ -36,7 +35,7 @@ replace unrelated files or symlinks, and is safe to re-run. Export the `MISE_ENV
 prints in your current shell and add it to your shell rc, then run `mise install`:
 
 ```sh
-export MISE_ENV=java,go,python,node,cloud,ai
+export MISE_ENV=workstation,java,go,python,node,cloud,ai
 mise install
 ```
 
@@ -65,25 +64,31 @@ git add mise.toml && git commit -m "chore: pin toolchain with mise"
 
 ## What's in the box
 
-Base is the minimal set (shell, unix utilities, git workflow, editor). Overlays stack on top via
-`MISE_ENV`, e.g. `MISE_ENV=java,cloud,ai mise install`.
+Base is a four-tool, non-opinionated foundation. Overlays stack on top via `MISE_ENV`, e.g.
+`MISE_ENV=workstation,java,cloud mise install`. See the [Profile guide](docs/profiles.md) for the
+audience, dependencies, and selection rationale behind every profile.
 
 **Base** (`mise.toml`)
+
+| Tool | Purpose | Pin |
+| ---- | ------- | --- |
+| ripgrep | fast grep (`rg`) | 15 |
+| fd | fast `find` | 10 |
+| jq | JSON processor | 1.8 |
+| yq | YAML processor | 4 |
+
+**Terminal workstation** (`mise.workstation.toml`, `MISE_ENV=workstation`)
 
 | Tool | Purpose | Pin |
 | ---- | ------- | --- |
 | starship | shell prompt | 1.26 |
 | fzf | fuzzy finder | 0.74 |
 | zoxide | smarter `cd` | 0.10 |
-| ripgrep | fast grep (`rg`) | 15 |
-| fd | fast `find` | 10 |
 | bat | `cat` with syntax highlighting | 0.26 |
 | eza | modern `ls` | 0.23 |
 | dust | disk usage | 1 |
 | glow | markdown in the terminal | 3 |
 | yazi | terminal file manager | 26 |
-| jq | JSON processor | 1.8 |
-| yq | YAML processor | 4 |
 | httpie | HTTP client (`http`) | 3.2.4 |
 | github-cli | GitHub CLI (`gh`) | 2 |
 | glab | GitLab CLI | 1 |

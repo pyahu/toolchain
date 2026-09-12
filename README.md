@@ -10,6 +10,11 @@ language-specific version-manager stack. A small cross-stack baseline stays out 
 workflow profiles add only the toolchains you choose. Committed lockfiles keep stable profiles on
 the same resolved versions across supported machines.
 
+“Certified” means the declared versions install and representative commands run through a defined
+release gate on Linux x64 and macOS arm64. Read the [certification and support
+contract](docs/support.md) for the precise guarantee, exclusions, and platform matrix; use the
+[troubleshooting guide](docs/troubleshooting.md) for diagnosis and rollback.
+
 ## Install
 
 ```sh
@@ -219,10 +224,19 @@ Every PR is validated by CI on Linux and macOS.
 
 ## Why mise
 
-mise keeps developer CLIs native on your `PATH`, pinned by small TOML files in git. No rebuilding
-a container image for every tool bump, no IDE cut off from your toolchain. Unlike per-language
-version managers (asdf, nvm, pyenv, rbenv, SDKMAN), it's one tool and one config format instead of
-one per language. Containers still earn their keep for isolated services and OS-level deps.
+Pyahu Toolchain keeps developer CLIs native on `PATH` while sharing reviewed versions across
+repositories and machines. It complements, rather than eliminates, the other common approaches:
+
+| Approach | Best at | Trade-off relative to Pyahu Toolchain |
+| -------- | ------- | ------------------------------------- |
+| Pyahu Toolchain + mise | One composable, cross-language CLI baseline | Does not isolate the host OS or application services |
+| Personal dotfiles | Individual shell and application preferences | Usually person-specific; Pyahu supplies a shared, tested catalog without owning dotfiles |
+| Dev containers | Reproducible OS libraries, services, and isolation | Image rebuilds and editor/container integration add weight; use them when OS isolation matters |
+| asdf | Extensible multi-language version management | Similar plugin model; this project standardizes on mise's TOML environments, locks, and task-free native workflow |
+| Language-specific managers | Deep ecosystem-native behavior | Multiple managers and config formats are needed for a polyglot stack |
+
+Containers still earn their place for isolated services and OS-level dependencies. Dotfiles remain
+the right home for personal preferences. This repository owns only the shared CLI contract.
 
 ---
 

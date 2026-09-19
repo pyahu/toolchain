@@ -4,7 +4,7 @@
 [tools]
 # shell & navigation
 starship = "1.26.0"
-fzf      = "0.74.3"
+fzf      = "0.74.4"
 zoxide   = "0.10.0"
 
 # terminal utilities
@@ -17,7 +17,7 @@ yazi            = "26.9.1"
 
 # collaboration & git workflow
 "github-cli"             = "2.100.0"
-glab                     = "1.116.0"
+glab                     = "v1.117.0"
 "npm:@schpet/linear-cli" = "2.6.0"
 delta                    = "0.19.2"
 lazygit                  = "0.65.0"

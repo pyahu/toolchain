@@ -4,23 +4,23 @@
 [tools]
 # shell & navigation
 starship = "1.26.0"
-fzf      = "0.74.3"
+fzf      = "0.74.4"
 zoxide   = "0.10.0"
 
 # terminal utilities
 bat             = "0.26.1"
 eza             = "0.23.5"
-dust            = "1.2.5"
+dust            = "1.2.6"
 glow            = "3.0.0"
 yazi            = "26.9.1"
 "pipx:httpie" = "3.2.4"
 
 # collaboration & git workflow
-"github-cli"             = "2.100.0"
-glab                     = "1.116.0"
+"github-cli"             = "2.101.0"
+glab                     = "v1.118.0"
 "npm:@schpet/linear-cli" = "2.6.0"
 delta                    = "0.19.2"
-lazygit                  = "0.65.0"
+lazygit                  = "0.65.1"
 
 # containers, processes & editor
 lazydocker = "0.25.2"

@@ -13,30 +13,30 @@ kubens = "0.11.0"
 k9s = "0.51.0"
 kind = "0.33.0"
 k3d = "5.9.0"
-helm = "4.2.4"
+helm = "4.3.0"
 telepresence = "2.31.2"
 
 # gitops
 kustomize = "5.8.1"
-argocd = "3.5.2"
+argocd = "3.5.3"
 flux2 = "2.9.5"
 sops = "3.13.3"
 age = "1.3.2"
 
 # cloud
-awscli = "2.36.44"
-doctl = "1.168.0"
-hcloud = "1.67.0"
-terraform = "1.16.2"
-"pipx:oci-cli" = "3.92.1"
+awscli = "2.36.49"
+doctl = "1.169.0"
+hcloud = "1.68.0"
+terraform = "1.16.3"
+"pipx:oci-cli" = "3.93.0"
 
 # database clients & rpc
 grpcurl = "1.9.4"
-"pipx:pgcli" = "4.6.0"
-"pipx:mycli" = "2.23.0"
+"pipx:pgcli" = "4.7.0"
+"pipx:mycli" = "2.25.2"
 
 # pyahu
 # Local dev stack on k3d (`pyahu up`), declared per repo in pyahu.yaml. Pinned to the
 # exact patch on purpose: the repos that consume it (e.g. unilog/all) pin the same
 # version, so every machine builds the same stack.
-"github:pyahu/cli" = "0.10.1"
+"github:pyahu/cli" = "v0.11.0"

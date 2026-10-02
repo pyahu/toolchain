@@ -75,7 +75,7 @@ def load_catalog() -> list[dict]:
     return profiles
 
 
-def render_catalog(profiles: list[dict]) -> str:
+def render_catalog(profiles: list[dict], *, show_versions: bool = False) -> str:
     lines = []
     for profile in profiles:
         selector = (
@@ -93,7 +93,14 @@ def render_catalog(profiles: list[dict]) -> str:
             ]
         )
         for tool in profile["tools"]:
-            lines.append(f"| {tool['name']} | {tool['purpose']} | {tool['version']} |")
+            version = tool["version"]
+            if not show_versions:
+                label = "latest" if profile["rolling"] else "Exact pin"
+                config_url = (
+                    "https://github.com/pyahu/toolchain/blob/main/" + profile["file"]
+                )
+                version = f"[{label}]({config_url})"
+            lines.append(f"| {tool['name']} | {tool['purpose']} | {version} |")
         lines.append("")
     return "\n".join(lines)
 

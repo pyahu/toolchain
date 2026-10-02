@@ -24,6 +24,11 @@ lockfile.
 
 ## Routine updates
 
+The `mise*.toml` files are the single source of tool versions. The GitHub catalog links to those
+pins, and the documentation website renders exact versions from the same files during each build.
+Renovate pin updates do not need to edit a second copy of the version in Markdown. Catalog metadata
+and generated profile tables are still checked for consistency.
+
 Renovate checks on Monday mornings, groups stable pin changes, waits seven days before proposing
 eligible releases, and performs weekly mise lockfile maintenance. Every update must pass the Linux
 profile matrix and the complete macOS installation before merge.

@@ -8,6 +8,8 @@ import re
 import shutil
 from pathlib import Path
 
+from catalog import load_catalog, render_catalog, replace_block
+
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "docs"
@@ -29,6 +31,10 @@ def rewrite_local_link(match: re.Match[str]) -> str:
 
 def stage_document(source: Path) -> None:
     text = source.read_text()
+    if source.name == "catalog.md":
+        text = replace_block(
+            text, "catalog", render_catalog(load_catalog(), show_versions=True)
+        )
     match = TITLE.match(text)
     if match is None:
         raise ValueError(f"{source.relative_to(ROOT)} must start with one H1")

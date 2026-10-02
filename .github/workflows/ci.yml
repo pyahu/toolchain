@@ -50,6 +50,7 @@ jobs:
         run: |
           ./scripts/catalog.py --check
           ./scripts/docs-check.py
+          python3 scripts/test-catalog.py
 
       - name: release metadata
         run: ./scripts/release-check.sh

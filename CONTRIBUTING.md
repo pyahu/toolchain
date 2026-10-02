@@ -48,6 +48,7 @@ mise x shellcheck@0.11.0 -- shellcheck install.sh bin/* tests/*.sh scripts/*.sh
 mise x actionlint@1.7.12 shellcheck@0.11.0 -- actionlint
 ./scripts/catalog.py --check
 ./scripts/docs-check.py
+python3 scripts/test-catalog.py
 ./scripts/release-check.sh
 ./tests/install.sh
 ./tests/shims.sh

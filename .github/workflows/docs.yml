@@ -15,6 +15,7 @@ on:
       - scripts/site.sh
       - scripts/site-check.py
       - scripts/stage-site-docs.py
+      - scripts/test-catalog.py
       - wrangler.jsonc
   pull_request:
     paths:
@@ -29,6 +30,7 @@ on:
       - scripts/site.sh
       - scripts/site-check.py
       - scripts/stage-site-docs.py
+      - scripts/test-catalog.py
       - wrangler.jsonc
   workflow_dispatch:
 
@@ -62,6 +64,7 @@ jobs:
         run: |
           ./scripts/catalog.py --check
           ./scripts/docs-check.py
+          python3 scripts/test-catalog.py
 
       - name: build site
         run: |

@@ -16,7 +16,7 @@ yazi            = "26.9.1"
 "pipx:httpie" = "3.2.4"
 
 # collaboration & git workflow
-"github-cli"             = "2.100.0"
+"github-cli"             = "2.102.0"
 glab                     = "1.116.0"
 "npm:@schpet/linear-cli" = "2.6.0"
 delta                    = "0.19.2"

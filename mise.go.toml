@@ -3,7 +3,7 @@
 
 [tools]
 go = "1.27.1"
-"golangci-lint" = "2.13.2"
-"go:github.com/go-delve/delve/cmd/dlv" = "1.27.1" # debugger (dlv)
+golangci-lint = "2.14.0"
+"go:github.com/go-delve/delve/cmd/dlv" = "1.27.2" # debugger (dlv)
 air = "1.67.4"                                    # live reload
 ko = "0.19.1"                                     # container images for Go

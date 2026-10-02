@@ -11,6 +11,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   while retaining the Toolchain navigation, colors, and concise landing page.
 - Moved continuous deployment to Cloudflare Workers Builds and kept GitHub Actions as an independent
   content, type, build, and link validation gate.
+- Bumped stable pins and refreshed lockfiles. Majors to note: Node 24 to 26 and pnpm 11 to 12 in
+  `node`; Pyahu CLI 0.10.1 to 0.12.3 in `cloud`. Kotlin now installs from the compiler zip
+  (`asset_pattern`), and `awscli` exposes its binaries through `symlink_bins`.
 
 ## [1.0.1] - 2026-09-12
 

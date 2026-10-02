@@ -23,99 +23,75 @@ url_api = "https://api.github.com/repos/FiloSottile/age/releases/assets/53554189
 provenance = "github-attestations"
 
 [[tools.argocd]]
-version = "3.5.2"
+version = "3.5.3"
 backend = "aqua:argoproj/argo-cd"
-specifiers = [
-    "3",
-    "3.5.2",
-]
+specifiers = ["3.5.3"]
 
 [tools.argocd."platforms.linux-x64"]
-checksum = "sha256:d87058531d2aed735100636dd7664bdd49b862588993b571385c49494f9832c1"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.2/argocd-linux-amd64"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/532097221"
-
-[tools.argocd."platforms.linux-x64".provenance.slsa]
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.2/argocd-cli.intoto.jsonl"
+checksum = "sha256:b860f73f57cbddd993cd446f5236d797c1b1ac8554857b2683d2669f17e765b4"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.3/argocd-linux-amd64"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/562896826"
 
 [tools.argocd."platforms.macos-arm64"]
-checksum = "sha256:6ef581f2d66b3edd178d31705639fa9b58ce820559d83cf78fef50759d821c77"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.2/argocd-darwin-arm64"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/532097446"
-
-[tools.argocd."platforms.macos-arm64".provenance.slsa]
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.2/argocd-cli.intoto.jsonl"
+checksum = "sha256:76efc71c00bc3ffeda5daa277d990e3d89b3628b2440fc7dd38aca79c63b15e0"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.3/argocd-darwin-arm64"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/562896606"
 
 [[tools.awscli]]
-version = "2.36.44"
+version = "2.37.8"
 backend = "aqua:aws/aws-cli"
-specifiers = [
-    "2",
-    "2.36.44",
-]
+specifiers = ["2.37.8"]
 
 [tools.awscli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.44.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.37.8.zip"
 
 [tools.awscli."platforms.macos-arm64"]
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.44.pkg"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.37.8.pkg"
 
 [[tools.doctl]]
-version = "1.168.0"
+version = "1.177.0"
 backend = "aqua:digitalocean/doctl"
-specifiers = [
-    "1",
-    "1.168.0",
-]
+specifiers = ["1.177.0"]
 
 [tools.doctl."platforms.linux-x64"]
-checksum = "sha256:ad817330e1a12fd60729f105d8c39af31ca845f221a60886a1b2215f74d9b35d"
-url = "https://github.com/digitalocean/doctl/releases/download/v1.168.0/doctl-1.168.0-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/digitalocean/doctl/releases/assets/538016513"
+checksum = "sha256:34d3954721bfb8cdb42032e78d98274f157426fa6332511ae356edcce59dade3"
+url = "https://github.com/digitalocean/doctl/releases/download/v1.177.0/doctl-1.177.0-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/digitalocean/doctl/releases/assets/603785957"
 
 [tools.doctl."platforms.macos-arm64"]
-checksum = "sha256:c945952e174146f120593b48d840680b652974b3a3bd19789b1bccfec4d98564"
-url = "https://github.com/digitalocean/doctl/releases/download/v1.168.0/doctl-1.168.0-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/digitalocean/doctl/releases/assets/538016485"
+checksum = "sha256:8fd0046662e8421684349458c5c23de5b1beacbfd9d2b0cd8309dc190a12bc34"
+url = "https://github.com/digitalocean/doctl/releases/download/v1.177.0/doctl-1.177.0-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/digitalocean/doctl/releases/assets/603786020"
 
 [[tools.flux2]]
-version = "2.9.5"
+version = "2.9.6"
 backend = "aqua:fluxcd/flux2"
-specifiers = [
-    "2",
-    "2.9.5",
-]
+specifiers = ["2.9.6"]
 
 [tools.flux2."platforms.linux-x64"]
-checksum = "sha256:b853df82adfd7736f580692f9f734473d571606307139f8fd20c2a80dd1ff473"
-url = "https://github.com/fluxcd/flux2/releases/download/v2.9.5/flux_2.9.5_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/fluxcd/flux2/releases/assets/538282891"
-
-[tools.flux2."platforms.linux-x64".provenance.slsa]
-url = "https://github.com/fluxcd/flux2/releases/download/v2.9.5/provenance.intoto.jsonl"
+checksum = "sha256:b4d22673e9246cbd628881f1a9ef3b090085dced291e42d804555cee8e8d42c5"
+url = "https://github.com/fluxcd/flux2/releases/download/v2.9.6/flux_2.9.6_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/fluxcd/flux2/releases/assets/602941244"
 
 [tools.flux2."platforms.macos-arm64"]
-checksum = "sha256:2869ef7151a6f1b27e6b5d2a6804f3ef23c7bdaa06a74e00d3fe5bfc646547fd"
-url = "https://github.com/fluxcd/flux2/releases/download/v2.9.5/flux_2.9.5_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/fluxcd/flux2/releases/assets/538282876"
-
-[tools.flux2."platforms.macos-arm64".provenance.slsa]
-url = "https://github.com/fluxcd/flux2/releases/download/v2.9.5/provenance.intoto.jsonl"
+checksum = "sha256:7008a758da4b8d57c5845aad6552f256d4d23630c2b2de2ca8da362f9a48c126"
+url = "https://github.com/fluxcd/flux2/releases/download/v2.9.6/flux_2.9.6_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/fluxcd/flux2/releases/assets/602941251"
 
 [[tools."github:pyahu/cli"]]
-version = "0.10.1"
+version = "0.12.3"
 backend = "github:pyahu/cli"
-specifiers = ["0.10.1"]
+specifiers = ["0.12.3"]
 
 [tools."github:pyahu/cli"."platforms.linux-x64"]
-checksum = "sha256:9dfcbc31ea9574d1c0e7ee4469e0765a080cdd3e5cd706b765fc4e3989fb8a04"
-url = "https://github.com/pyahu/cli/releases/download/v0.10.1/pyahu_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/pyahu/cli/releases/assets/551406799"
+checksum = "sha256:696010daaf52dcc0b2d136e0173e19db4ad23228072bd474634d779c1296e4a7"
+url = "https://github.com/pyahu/cli/releases/download/v0.12.3/pyahu_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/pyahu/cli/releases/assets/584587566"
 
 [tools."github:pyahu/cli"."platforms.macos-arm64"]
-checksum = "sha256:22620da390bb580ca46eb2aafb1c802a257b4a6a662c47e02bd0375d5d057edb"
-url = "https://github.com/pyahu/cli/releases/download/v0.10.1/pyahu_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/pyahu/cli/releases/assets/551406802"
+checksum = "sha256:a12ea0254b6e766dd0296c2d8ae4c89e4b6f472907117292c272db05459b5d22"
+url = "https://github.com/pyahu/cli/releases/download/v0.12.3/pyahu_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/pyahu/cli/releases/assets/584587563"
 
 [[tools.grpcurl]]
 version = "1.9.4"
@@ -136,38 +112,32 @@ url = "https://github.com/fullstorydev/grpcurl/releases/download/v1.9.4/grpcurl_
 url_api = "https://api.github.com/repos/fullstorydev/grpcurl/releases/assets/538422750"
 
 [[tools.hcloud]]
-version = "1.67.0"
+version = "1.69.0"
 backend = "aqua:hetznercloud/cli"
-specifiers = [
-    "1",
-    "1.67.0",
-]
+specifiers = ["1.69.0"]
 
 [tools.hcloud."platforms.linux-x64"]
-checksum = "sha256:7164483e05a1abef492768db429a28c21d579dc70e807558cb140debc2971477"
-url = "https://github.com/hetznercloud/cli/releases/download/v1.67.0/hcloud-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/hetznercloud/cli/releases/assets/488375554"
+checksum = "sha256:aca1a346c8d218a094f1811ee1705013d394cabf48e40887292caff464b64277"
+url = "https://github.com/hetznercloud/cli/releases/download/v1.69.0/hcloud-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/hetznercloud/cli/releases/assets/586188429"
 
 [tools.hcloud."platforms.macos-arm64"]
-checksum = "sha256:086295a836f4ee3ff062d6435c4b93108833b35278249414c461857aa42ac21a"
-url = "https://github.com/hetznercloud/cli/releases/download/v1.67.0/hcloud-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/hetznercloud/cli/releases/assets/488375578"
+checksum = "sha256:a0ee07cbd1c2350b8cc962aa99967a1aa6558fac3ae87e8a141f008772315b5d"
+url = "https://github.com/hetznercloud/cli/releases/download/v1.69.0/hcloud-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/hetznercloud/cli/releases/assets/586188377"
 
 [[tools.helm]]
-version = "4.2.4"
+version = "4.3.0"
 backend = "aqua:helm/helm"
-specifiers = [
-    "4",
-    "4.2.4",
-]
+specifiers = ["4.3.0"]
 
 [tools.helm."platforms.linux-x64"]
-checksum = "sha256:c306b46f719b0a4da32d0f78ee21bf90ce8d602f15b22ab753f0674d1670a7f3"
-url = "https://get.helm.sh/helm-v4.2.4-linux-amd64.tar.gz"
+checksum = "sha256:86584a54def73570558f66f5111cc53dfed56689637ae32c1201205d494f54fb"
+url = "https://get.helm.sh/helm-v4.3.0-linux-amd64.tar.gz"
 
 [tools.helm."platforms.macos-arm64"]
-checksum = "sha256:d747eb4e28bd2727173d15b759fa0a17822291ec09db7ced3d55af290a3661a2"
-url = "https://get.helm.sh/helm-v4.2.4-darwin-arm64.tar.gz"
+checksum = "sha256:d3870437e1e95b67f8edbde964156c84a26503f560821d40c542441658934fba"
+url = "https://get.helm.sh/helm-v4.3.0-darwin-arm64.tar.gz"
 
 [[tools.k3d]]
 version = "5.9.0"
@@ -221,17 +191,17 @@ url = "https://github.com/kubernetes-sigs/kind/releases/download/v0.33.0/kind-da
 url_api = "https://api.github.com/repos/kubernetes-sigs/kind/releases/assets/531396417"
 
 [[tools.kubectl]]
-version = "1.37.0"
+version = "1.37.1"
 backend = "aqua:kubernetes/kubernetes/kubectl"
-specifiers = ["1.37.0"]
+specifiers = ["1.37.1"]
 
 [tools.kubectl."platforms.linux-x64"]
-checksum = "sha256:6129359f4e1f3848a5572ccb0b26cf28b8ca08cef38c95a765b2f64a2c961a2f"
-url = "https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubectl"
+checksum = "sha256:65691ff77eb6fa44c908b77a1082c9f092c3b9733b5cefabec0d1104890e21a8"
+url = "https://dl.k8s.io/v1.37.1/bin/linux/amd64/kubectl"
 
 [tools.kubectl."platforms.macos-arm64"]
-checksum = "sha256:583beedaebe422e71d3f1a96acef8b1fef86ea2f09a45ad01aa6c9ce287c1380"
-url = "https://dl.k8s.io/v1.37.0/bin/darwin/arm64/kubectl"
+checksum = "sha256:fd65982c97ddad3106754b69ffa196d0e543aa591930ae52aed1adfb92f8c77f"
+url = "https://dl.k8s.io/v1.37.1/bin/darwin/arm64/kubectl"
 
 [[tools.kubectx]]
 version = "0.11.0"
@@ -270,37 +240,34 @@ url = "https://github.com/ahmetb/kubectx/releases/download/v0.11.0/kubens_v0.11.
 url_api = "https://api.github.com/repos/ahmetb/kubectx/releases/assets/382591004"
 
 [[tools.kustomize]]
-version = "5.8.1"
+version = "5.8.2"
 backend = "aqua:kubernetes-sigs/kustomize"
-specifiers = [
-    "5",
-    "5.8.1",
-]
+specifiers = ["5.8.2"]
 
 [tools.kustomize."platforms.linux-x64"]
-checksum = "sha256:029a7f0f4e1932c52a0476cf02a0fd855c0bb85694b82c338fc648dcb53a819d"
-url = "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.8.1/kustomize_v5.8.1_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/assets/353160972"
+checksum = "sha256:06af0a202c2b831207d0173f9c9cdb1b30abceca0747cb3fbb72792d26055c95"
+url = "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.8.2/kustomize_v5.8.2_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/assets/600925225"
 
 [tools.kustomize."platforms.macos-arm64"]
-checksum = "sha256:8886f8a78474e608cc81234f729fda188a9767da23e28925802f00ece2bab288"
-url = "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.8.1/kustomize_v5.8.1_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/assets/353160975"
+checksum = "sha256:4ce452c096a4005be16ddc02129255830d1d6605ffe3693699c72a1b2be48658"
+url = "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.8.2/kustomize_v5.8.2_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/assets/600925224"
 
 [[tools."pipx:mycli"]]
-version = "2.23.0"
+version = "2.27.0"
 backend = "pipx:mycli"
-specifiers = ["2.23.0"]
+specifiers = ["2.27.0"]
 
 [[tools."pipx:oci-cli"]]
-version = "3.92.1"
+version = "3.94.1"
 backend = "pipx:oci-cli"
-specifiers = ["3.92.1"]
+specifiers = ["3.94.1"]
 
 [[tools."pipx:pgcli"]]
-version = "4.6.0"
+version = "4.7.1"
 backend = "pipx:pgcli"
-specifiers = ["4.6.0"]
+specifiers = ["4.7.1"]
 
 [[tools.sops]]
 version = "3.13.3"
@@ -327,32 +294,29 @@ url_api = "https://api.github.com/repos/getsops/sops/releases/assets/486808198"
 url = "https://github.com/getsops/sops/releases/download/v3.13.3/sops-v3.13.3.intoto.jsonl"
 
 [[tools.telepresence]]
-version = "2.31.2"
+version = "2.32.1"
 backend = "aqua:telepresenceio/telepresence"
-specifiers = [
-    "2",
-    "2.31.2",
-]
+specifiers = ["2.32.1"]
 
 [tools.telepresence."platforms.linux-x64"]
-checksum = "sha256:d512fa457d9d02b9fdda2a6e353bafadc6eaf6b6af749c1be33c67c1a96b1e9f"
-url = "https://github.com/telepresenceio/telepresence/releases/download/v2.31.2/telepresence-linux-amd64"
-url_api = "https://api.github.com/repos/telepresenceio/telepresence/releases/assets/499076100"
+checksum = "sha256:cddbe69a37562cbe9ba00c37f9f9ccc4ad37088fd73a8018823ab16979fe1ea7"
+url = "https://github.com/telepresenceio/telepresence/releases/download/v2.32.1/telepresence-linux-amd64"
+url_api = "https://api.github.com/repos/telepresenceio/telepresence/releases/assets/588020403"
 
 [tools.telepresence."platforms.macos-arm64"]
-checksum = "sha256:e16a959934e5b49fdf8ada712b946a27aaf63e038022ce184c9fc76b5c593767"
-url = "https://github.com/telepresenceio/telepresence/releases/download/v2.31.2/telepresence-darwin-arm64"
-url_api = "https://api.github.com/repos/telepresenceio/telepresence/releases/assets/499076157"
+checksum = "sha256:353d24a39bba13af5813636cc987a9ed30ca3ad202a0ba50aea8a6e830fbc5a8"
+url = "https://github.com/telepresenceio/telepresence/releases/download/v2.32.1/telepresence-darwin-arm64"
+url_api = "https://api.github.com/repos/telepresenceio/telepresence/releases/assets/588020670"
 
 [[tools.terraform]]
-version = "1.16.2"
+version = "1.16.4"
 backend = "aqua:hashicorp/terraform"
-specifiers = ["1.16.2"]
+specifiers = ["1.16.4"]
 
 [tools.terraform."platforms.linux-x64"]
-checksum = "sha256:0d17011f0c4664539b164b044903d04e296c86c13cb9f28040076c65cfb3985a"
-url = "https://releases.hashicorp.com/terraform/1.16.2/terraform_1.16.2_linux_amd64.zip"
+checksum = "sha256:dc94af0eef1147718ad7c8daea792ed199e3e0492eec180d0adafa2a65a879df"
+url = "https://releases.hashicorp.com/terraform/1.16.4/terraform_1.16.4_linux_amd64.zip"
 
 [tools.terraform."platforms.macos-arm64"]
-checksum = "sha256:7c0a0b31c8aa541351369bcf7b62a7289fbc21de7e577669aeba6d42f4e6cc41"
-url = "https://releases.hashicorp.com/terraform/1.16.2/terraform_1.16.2_darwin_arm64.zip"
+checksum = "sha256:42cfdf97ad722f79085fe2279b06d4b8680172de3534b22eeddd9a0fbbe7b8f1"
+url = "https://releases.hashicorp.com/terraform/1.16.4/terraform_1.16.4_darwin_arm64.zip"

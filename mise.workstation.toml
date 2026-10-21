@@ -18,7 +18,7 @@ yazi            = "26.9.1"
 # collaboration & git workflow
 "github-cli"             = "2.102.0"
 glab                     = "1.116.0"
-"npm:@schpet/linear-cli" = "2.6.0"
+"npm:@schpet/linear-cli" = "3.0.0"
 delta                    = "0.19.2"
 lazygit                  = "0.65.0"
 

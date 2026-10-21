@@ -49,19 +49,19 @@ url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.37.8.zip"
 url = "https://awscli.amazonaws.com/AWSCLIV2-2.37.8.pkg"
 
 [[tools.doctl]]
-version = "1.177.0"
+version = "2.0.0"
 backend = "aqua:digitalocean/doctl"
-specifiers = ["1.177.0"]
+specifiers = ["2.0.0"]
 
 [tools.doctl."platforms.linux-x64"]
-checksum = "sha256:34d3954721bfb8cdb42032e78d98274f157426fa6332511ae356edcce59dade3"
-url = "https://github.com/digitalocean/doctl/releases/download/v1.177.0/doctl-1.177.0-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/digitalocean/doctl/releases/assets/603785957"
+checksum = "sha256:c9aca9dfb307e7070e2a4ca3944c1e4df5c2ebb6c311b2fa3f0dde5369a51c02"
+url = "https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/digitalocean/doctl/releases/assets/640790252"
 
 [tools.doctl."platforms.macos-arm64"]
-checksum = "sha256:8fd0046662e8421684349458c5c23de5b1beacbfd9d2b0cd8309dc190a12bc34"
-url = "https://github.com/digitalocean/doctl/releases/download/v1.177.0/doctl-1.177.0-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/digitalocean/doctl/releases/assets/603786020"
+checksum = "sha256:e37a6e9242286b9949fb22a237239361c9fcadf78d72dcd2c8377d9839472d60"
+url = "https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/digitalocean/doctl/releases/assets/640790107"
 
 [[tools.flux2]]
 version = "2.9.6"

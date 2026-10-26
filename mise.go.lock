@@ -5,10 +5,7 @@ lockfile_version = 1
 [[tools.air]]
 version = "1.67.4"
 backend = "aqua:air-verse/air"
-specifiers = [
-    "1",
-    "1.67.4",
-]
+specifiers = ["1.67.4"]
 
 [tools.air."platforms.linux-x64"]
 checksum = "sha256:c8cc405210e557e2681275688ce700441eac53db9fb42bb58764874ee9aa783d"
@@ -23,10 +20,7 @@ url_api = "https://api.github.com/repos/air-verse/air/releases/assets/497980659"
 [[tools.go]]
 version = "1.27.1"
 backend = "core:go"
-specifiers = [
-    "1.27",
-    "1.27.1",
-]
+specifiers = ["1.27.1"]
 
 [tools.go."platforms.linux-x64"]
 checksum = "sha256:63d339f0da5ab53635a56f2490a7984dfe12dfcff22ad749f63edaf590168445"
@@ -61,10 +55,7 @@ provenance = "github-attestations"
 [[tools.ko]]
 version = "0.19.1"
 backend = "aqua:ko-build/ko"
-specifiers = [
-    "0.19",
-    "0.19.1",
-]
+specifiers = ["0.19.1"]
 
 [tools.ko."platforms.linux-x64"]
 checksum = "sha256:635ac6ea3fd376c935fee597fbb29ab2c2449f49ef1655085fe3aa9c25fed7a5"

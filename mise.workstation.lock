@@ -209,9 +209,9 @@ url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-x86
 url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-macos-arm64.tar.gz"
 
 [[tools."npm:@schpet/linear-cli"]]
-version = "2.6.0"
+version = "3.1.0"
 backend = "npm:@schpet/linear-cli"
-specifiers = ["2.6.0"]
+specifiers = ["3.1.0"]
 
 [[tools."pipx:httpie"]]
 version = "3.2.4"

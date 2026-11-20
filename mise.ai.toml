@@ -10,7 +10,7 @@ minimum_release_age = "24h"
 [tools]
 claude-code = "latest"                           # Anthropic Claude Code
 codex = "latest"                                 # OpenAI Codex CLI
-gemini-cli = "latest"                            # Google Gemini CLI (gemini); needs Node, stack with MISE_ENV=node,ai
+antigravity-cli = "latest"                       # Google Antigravity CLI (agy)
 opencode = "latest"                              # OpenCode
 ollama = "latest"                                # Ollama, local model runtime for the agents above
 "npm:@moonshot-ai/kimi-code" = "latest"          # Kimi Code CLI (kimi); needs Node, stack with MISE_ENV=node,ai

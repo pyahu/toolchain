@@ -7,8 +7,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- Added Google Gemini CLI (`gemini-cli`, binary `gemini`) to the `ai` profile; it needs `node`, so
-  stack it with `MISE_ENV=node,ai`.
+- Added Google Antigravity CLI (`antigravity-cli`, binary `agy`) to the `ai` profile. It succeeds
+  Gemini CLI, which no longer serves personal Google accounts.
 
 ### Changed
 

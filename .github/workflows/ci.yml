@@ -126,9 +126,9 @@ jobs:
           MISE_ENV=node,ai mise install
           MISE_ENV=node,ai mise exec -- kimi --version
           MISE_ENV=node,ai mise exec -- pi --version
-          MISE_ENV=node,ai mise exec -- gemini --version
           MISE_ENV=ai mise exec -- claude --version
           MISE_ENV=ai mise exec -- codex --version
+          MISE_ENV=ai mise exec -- agy --version
           MISE_ENV=ai mise exec -- opencode --version
           MISE_ENV=ai mise exec -- ollama --version
           ./install.sh --uninstall

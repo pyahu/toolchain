@@ -14,7 +14,7 @@ Start with four useful command-line tools, then add only the profiles you need. 
 reviewed versions, and the same setup is tested on Linux and macOS before each release.
 
 <!-- catalog-summary:start -->
-**Current catalog:** 67 tools across 9 profiles.
+**Current catalog:** 68 tools across 9 profiles.
 <!-- catalog-summary:end -->
 
 ## Why use it?

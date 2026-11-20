@@ -432,7 +432,7 @@ title = "AI"
 file = "mise.ai.toml"
 audience = "Developers using local or hosted coding agents"
 adds = "Agent CLIs and Ollama"
-prerequisites = "Add `node` for Kimi and Pi; sufficient RAM and storage for local Ollama models"
+prerequisites = "Add `node` for Gemini, Kimi and Pi; sufficient RAM and storage for local Ollama models"
 recommended_profiles = ["node"]
 rolling = true
 note = "These agents coexist as an evaluation bench rather than a single-vendor default. This profile intentionally follows its separately documented rolling update contract."
@@ -448,6 +448,12 @@ key = "codex"
 name = "Codex CLI"
 purpose = "OpenAI coding agent"
 rationale = "Supports OpenAI-based agent workflows used by community contributors."
+
+[[profiles.tools]]
+key = "gemini-cli"
+name = "Gemini CLI"
+purpose = "Google coding agent (`gemini`); add `node`"
+rationale = "Supports Google Gemini-based agent workflows used by community contributors."
 
 [[profiles.tools]]
 key = "opencode"

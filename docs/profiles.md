@@ -17,7 +17,7 @@ Profiles are additive. Pick the ones that match the work you do and combine them
 | `python` | Python application and data developers | uv, Ruff, IPython | — | None |
 | `node` | TypeScript, Next.js, and Vue developers | Node and package managers used by supported repositories | — | None |
 | `cloud` | Platform engineers and contributors running the Pyahu local stack | Kubernetes, local clusters, GitOps, encryption, cloud providers, IaC, database clients, Pyahu CLI | — | Docker for kind, k3d, and `pyahu up`; `kcat` is an optional OS package |
-| `ai` | Developers using local or hosted coding agents | Agent CLIs and Ollama | `node` | Add `node` for Kimi and Pi; sufficient RAM and storage for local Ollama models |
+| `ai` | Developers using local or hosted coding agents | Agent CLIs and Ollama | `node` | Add `node` for Gemini, Kimi and Pi; sufficient RAM and storage for local Ollama models |
 | `arch` | Software architects and developers maintaining diagrams as code | D2 | — | Structurizr CLI and PlantUML remain optional OS packages |
 <!-- profile-map:end -->
 

@@ -109,6 +109,7 @@ is included.
 | ---- | ------- | ------- |
 | Claude Code | Anthropic coding agent | [latest](https://github.com/pyahu/toolchain/blob/main/mise.ai.toml) |
 | Codex CLI | OpenAI coding agent | [latest](https://github.com/pyahu/toolchain/blob/main/mise.ai.toml) |
+| Gemini CLI | Google coding agent (`gemini`); add `node` | [latest](https://github.com/pyahu/toolchain/blob/main/mise.ai.toml) |
 | OpenCode | provider-flexible coding agent | [latest](https://github.com/pyahu/toolchain/blob/main/mise.ai.toml) |
 | Ollama | local model runtime | [latest](https://github.com/pyahu/toolchain/blob/main/mise.ai.toml) |
 | Kimi Code | coding agent (`kimi`); add `node` | [latest](https://github.com/pyahu/toolchain/blob/main/mise.ai.toml) |

@@ -5,7 +5,7 @@ project installs, how profiles work, which platforms are tested, and where the l
 
 ## One sentence
 
-Pyahu Toolchain is a ready-to-use mise configuration with 67 developer CLI tools in 9 profiles. It
+Pyahu Toolchain is a ready-to-use mise configuration with 68 developer CLI tools in 9 profiles. It
 is tested on Linux x64 and macOS arm64.
 
 ## Short post

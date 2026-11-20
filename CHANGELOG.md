@@ -5,6 +5,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Added Google Gemini CLI (`gemini-cli`, binary `gemini`) to the `ai` profile; it needs `node`, so
+  stack it with `MISE_ENV=node,ai`.
+
 ### Changed
 
 - Moved the documentation site to Astro and Starlight, matching the Pyahu CLI documentation stack

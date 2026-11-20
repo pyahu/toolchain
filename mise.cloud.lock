@@ -259,6 +259,9 @@ version = "2.27.0"
 backend = "pipx:mycli"
 specifiers = ["2.27.0"]
 
+[tools."pipx:mycli".options]
+uvx_args = "--python 3.14"
+
 [[tools."pipx:oci-cli"]]
 version = "3.94.1"
 backend = "pipx:oci-cli"

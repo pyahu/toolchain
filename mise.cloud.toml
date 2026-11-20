@@ -33,7 +33,8 @@ terraform = "1.16.4"
 # database clients & rpc
 grpcurl = "1.9.4"
 "pipx:pgcli" = "4.7.1"
-"pipx:mycli" = "2.27.0"
+# sqlglotc (mycli dependency) ships no wheels for Python 3.15 yet; pin the tool venv to 3.14
+"pipx:mycli" = { version = "2.27.0", uvx_args = "--python 3.14" }
 
 # pyahu
 # Local dev stack on k3d (`pyahu up`), declared per repo in pyahu.yaml. Pinned to the

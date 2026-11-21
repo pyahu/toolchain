@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
-  site: "https://toolchain.terson.workers.dev",
+  site: "https://toolchain.pyahu.io",
   integrations: [
     starlight({
       title: "Pyahu Toolchain",

@@ -11,7 +11,7 @@ from urllib.parse import unquote, urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "website" / "dist"
-SITE_ORIGIN = "https://toolchain.terson.workers.dev"
+SITE_ORIGIN = "https://toolchain.pyahu.io"
 REDIRECTS = DIST / "_redirects"
 
 

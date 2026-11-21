@@ -1,6 +1,7 @@
 {
   "name": "toolchain",
   "compatibility_date": "2026-09-12",
+  "workers_dev": true,
   "routes": [
     { "pattern": "toolchain.pyahu.io", "custom_domain": true }
   ],

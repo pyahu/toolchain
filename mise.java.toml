@@ -3,10 +3,10 @@
 # Kotlin projects usually get the compiler via Gradle; the standalone CLI is pinned here too.
 
 [tools]
-java = "temurin-25.0.4+101.0.LTS"
-maven = "3.10.0"
-gradle = "9.8.0"
-kotlin = { version = "2.4.20", asset_pattern = "kotlin-compiler-*.zip", bin_path = "kotlinc/bin" }
+java = "temurin-25.0.5+8.0.LTS"
+maven = "3.10.1"
+gradle = "9.9.2"
+kotlin = { version = "2.4.21", asset_pattern = "kotlin-compiler-*.zip", bin_path = "kotlinc/bin" }
 
 # kcat (Kafka client) is not in the mise registry — install it with your OS
 # package manager: `brew install kcat` / `apt install kcat`.

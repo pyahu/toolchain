@@ -2,8 +2,8 @@
 # Go toolchain, linter, debugger, live reload, and container image builder.
 
 [tools]
-go = "1.27.1"
-golangci-lint = "2.14.0"
+go = "1.27.4"
+golangci-lint = "2.15.0"
 "go:github.com/go-delve/delve/cmd/dlv" = "1.27.2" # debugger (dlv)
 air = "1.67.4"                                    # live reload
 ko = "0.19.1"                                     # container images for Go

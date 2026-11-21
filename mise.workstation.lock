@@ -5,10 +5,7 @@ lockfile_version = 1
 [[tools.bat]]
 version = "0.26.1"
 backend = "aqua:sharkdp/bat"
-specifiers = [
-    "0.26",
-    "0.26.1",
-]
+specifiers = ["0.26.1"]
 
 [tools.bat."platforms.linux-x64"]
 checksum = "sha256:726f04c8f576a7fd18b7634f1bbf2f915c43494c1c0f013baa3287edb0d5a2a3"
@@ -23,10 +20,7 @@ url_api = "https://api.github.com/repos/sharkdp/bat/releases/assets/323548442"
 [[tools.delta]]
 version = "0.19.2"
 backend = "aqua:dandavison/delta"
-specifiers = [
-    "0.19",
-    "0.19.2",
-]
+specifiers = ["0.19.2"]
 
 [tools.delta."platforms.linux-x64"]
 checksum = "sha256:8e695c5f586a8c53d6c3b01be0b4a422ed218bfed2a56191caebe373a1c18ab2"
@@ -41,10 +35,7 @@ url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/3836623
 [[tools.dust]]
 version = "1.2.5"
 backend = "aqua:bootandy/dust"
-specifiers = [
-    "1",
-    "1.2.5",
-]
+specifiers = ["1.2.5"]
 
 [tools.dust."platforms.linux-x64"]
 checksum = "sha256:64b16f5c10cc4c25d2eaa144e9d2d44b3ed8f72ee63b3bc0a92c85e21e9e0932"
@@ -59,24 +50,20 @@ url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/521290141"
 [[tools.eza]]
 version = "0.23.5"
 backend = "vfox:eza"
-specifiers = [
-    "0.23",
-    "0.23.5",
-]
+specifiers = ["0.23.5"]
 
 [tools.eza."platforms.linux-x64"]
+checksum = "sha256:35c70c5c43c29108075e58b893234c67ef585f0b53a7eaf8e9e7d4eec9f339b4"
 url = "https://github.com/eza-community/eza/releases/download/v0.23.5/eza_x86_64-unknown-linux-gnu.tar.gz"
 
 [tools.eza."platforms.macos-arm64"]
+checksum = "sha256:c351f9506f6e30a8efb61701afc2313986004b8813c466c0f8b947db1ae891e9"
 url = "https://github.com/cargo-bins/cargo-quickinstall/releases/download/eza-0.23.5/eza-0.23.5-aarch64-apple-darwin.tar.gz"
 
 [[tools.fzf]]
 version = "0.74.3"
 backend = "aqua:junegunn/fzf"
-specifiers = [
-    "0.74",
-    "0.74.3",
-]
+specifiers = ["0.74.3"]
 
 [tools.fzf."platforms.linux-x64"]
 checksum = "sha256:3501a595e4b5c40a6b047340a0e8f805c46fd4e61ef95ef8a136ba8c61cf6f22"
@@ -108,10 +95,7 @@ provenance = "github-attestations"
 [[tools.glab]]
 version = "1.116.0"
 backend = "gitlab:gitlab-org/cli"
-specifiers = [
-    "1",
-    "1.116.0",
-]
+specifiers = ["1.116.0"]
 
 [tools.glab."platforms.linux-x64"]
 checksum = "sha256:173cc61ea94c562f2ccd831f320d25b73982192e82810064552282482e3713ea"
@@ -126,10 +110,7 @@ url_api = "https://gitlab.com/api/v4/projects/gitlab-org%2Fcli/packages/generic/
 [[tools.glow]]
 version = "3.0.0"
 backend = "aqua:charmbracelet/glow"
-specifiers = [
-    "3",
-    "3.0.0",
-]
+specifiers = ["3.0.0"]
 
 [tools.glow."platforms.linux-x64"]
 checksum = "sha256:13e05e4b2acc18d2aee44291aefe6325b077ec321b631a0cfa780e8e3bc33f78"
@@ -146,10 +127,7 @@ provenance = "cosign"
 [[tools.lazydocker]]
 version = "0.25.2"
 backend = "aqua:jesseduffield/lazydocker"
-specifiers = [
-    "0.25",
-    "0.25.2",
-]
+specifiers = ["0.25.2"]
 
 [tools.lazydocker."platforms.linux-x64"]
 checksum = "sha256:0d9dbfc26068b218e7ed84b104748cadc6e3cf733c0afd35465306fb39b9523c"
@@ -179,10 +157,7 @@ url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/54
 [[tools.mprocs]]
 version = "0.9.6"
 backend = "aqua:pvolok/dekit"
-specifiers = [
-    "0.9",
-    "0.9.6",
-]
+specifiers = ["0.9.6"]
 
 [tools.mprocs."platforms.linux-x64"]
 checksum = "sha256:52591a9aab797a5e164fa37a5f81b516fa3c25f125b59a60724e38ae98bfe77b"
@@ -197,15 +172,14 @@ url_api = "https://api.github.com/repos/pvolok/dekit/releases/assets/440298011"
 [[tools.neovim]]
 version = "0.12.5"
 backend = "vfox:mise-plugins/vfox-neovim"
-specifiers = [
-    "0.12",
-    "0.12.5",
-]
+specifiers = ["0.12.5"]
 
 [tools.neovim."platforms.linux-x64"]
+checksum = "sha256:bce0f56eda1f1b1db6eee8f4133d7a38813ea07933837dd1777411ca384c6875"
 url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-x86_64.tar.gz"
 
 [tools.neovim."platforms.macos-arm64"]
+checksum = "sha256:65fb000099e47ca1b762584c484cc833f40e30851a0ec450d4174e16317c1f9b"
 url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-macos-arm64.tar.gz"
 
 [[tools."npm:@schpet/linear-cli"]]
@@ -221,10 +195,7 @@ specifiers = ["3.2.4"]
 [[tools.starship]]
 version = "1.26.0"
 backend = "aqua:starship/starship"
-specifiers = [
-    "1.26",
-    "1.26.0",
-]
+specifiers = ["1.26.0"]
 
 [tools.starship."platforms.linux-x64"]
 checksum = "sha256:321f0dd7af8340a5f2e6a8fec6538a04f617486f9ec70d878f91c09cd8deef22"
@@ -239,10 +210,7 @@ url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374
 [[tools.tmux]]
 version = "3.7c"
 backend = "aqua:tmux/tmux-builds"
-specifiers = [
-    "3",
-    "3.7c",
-]
+specifiers = ["3.7c"]
 
 [tools.tmux."platforms.linux-x64"]
 checksum = "sha256:cc56bd1cc873eb6089c615f0496b072385bda8a6d944069f38564a5d49c128aa"
@@ -257,10 +225,7 @@ url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/5287348
 [[tools.yazi]]
 version = "26.9.1"
 backend = "aqua:sxyazi/yazi"
-specifiers = [
-    "26",
-    "26.9.1",
-]
+specifiers = ["26.9.1"]
 
 [tools.yazi."platforms.linux-x64"]
 checksum = "sha256:a02fe91d3304294048c681f010f1100856872a4e98ecf6927328e888d40a6ad2"
@@ -275,10 +240,7 @@ url_api = "https://api.github.com/repos/sxyazi/yazi/releases/assets/539261410"
 [[tools.zoxide]]
 version = "0.10.0"
 backend = "aqua:ajeetdsouza/zoxide"
-specifiers = [
-    "0.10",
-    "0.10.0",
-]
+specifiers = ["0.10.0"]
 
 [tools.zoxide."platforms.linux-x64"]
 checksum = "sha256:2d93385b99f3e82cf2701609a1bffcad863fbeb75aa3fe7eb6be4d29be68b1ae"

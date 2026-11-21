@@ -57,3 +57,22 @@ python3 scripts/test-catalog.py
 The GitHub Actions matrix then installs each profile on Linux, installs the complete catalog on
 macOS, executes representative binaries, and exercises a clean global install/uninstall lifecycle
 on both certified platforms.
+
+## Publishing the website
+
+The site at <https://toolchain.pyahu.io> is the `toolchain` Worker on Cloudflare. `wrangler.jsonc` declares
+the custom domain and keeps `toolchain.terson.workers.dev` working for older links. Cloudflare Workers Builds
+deploys every push to `main` with these settings:
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build command | `cd website && npm ci && npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Root directory | empty |
+| Build variable | `NODE_VERSION=24` |
+| API token | a build token of its own, not shared with another Worker |
+
+A failed build never reaches deploy and only shows up in the Worker's Deployments tab, so check it after a
+change to the site. If the log says the build token was deleted or rolled, create a new token in Settings,
+Builds, API token and retry the build.

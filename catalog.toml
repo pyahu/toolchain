@@ -39,7 +39,7 @@ title = "Terminal workstation"
 file = "mise.workstation.toml"
 audience = "Developers who want the full Pyahu terminal experience"
 adds = "Shell navigation, readable output, collaboration clients, TUIs, tmux, Neovim"
-prerequisites = "Git; Nerd Font recommended for the best prompt/editor rendering"
+prerequisites = "Git; Nerd Font recommended for prompt and editor rendering"
 rolling = false
 
 [[profiles.tools]]

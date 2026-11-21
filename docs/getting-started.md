@@ -67,19 +67,19 @@ If those commands work, the configuration and selected profiles are active.
 
 ## 5. Keep the setup across shells
 
-Add mise activation and the same `MISE_ENV` value to your shell startup file. For zsh:
+Add mise activation and the same `MISE_ENV` value to your shell startup file. For zsh, in `~/.zshrc`:
 
 ```sh
 eval "$(mise activate zsh)"
 export MISE_ENV=workstation,node,cloud
 ```
 
-For Bash, use `mise activate bash` and your Bash startup file. Open a new shell and run
+For Bash, use `mise activate bash` in `~/.bashrc`. Open a new shell and run
 `mise ls --current` to confirm the result.
 
 ## Add or stop using a profile
 
-To add Python later:
+To add Python later, run these commands, then put the same `MISE_ENV` value in your shell startup file:
 
 ```sh
 ./install.sh python

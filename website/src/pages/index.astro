@@ -91,7 +91,7 @@ const benefits = [
     <div class="proof-grid">
       <article><strong>Stable profiles</strong><p>Exact versions, reviewed updates, and lockfiles for supported artifacts.</p></article>
       <article><strong>Rolling AI profile</strong><p>Kept separate because agent CLIs need recent releases and may change between installs.</p></article>
-      <article><strong>Tested paths</strong><p>Linux x64 and macOS arm64 installs run in CI before changes land.</p></article>
+      <article><strong>Tested paths</strong><p>Linux x64 and macOS arm64 installs run in CI on every pull request and every push to main.</p></article>
     </div>
     <a class="text-link" href="/docs/support/">Read the exact support boundary <Icon name="arrow" size={16} /></a>
   </section>
@@ -100,7 +100,7 @@ const benefits = [
     <div class="install-copy">
       <p class="eyebrow">Get started</p>
       <h2 id="install-title">Install a stable release.</h2>
-      <p>Keep the checkout because mise links back to it. The dry run shows every filesystem change before you apply it.</p>
+      <p>Install mise first. Keep the checkout, because the installer links your mise configuration to it. The dry run previews every change. The complete guide then installs the tools and activates them in your shell.</p>
       <div class="install-links"><a class="text-link" href="/docs/getting-started/">Follow the complete guide <Icon name="arrow" size={16} /></a><a class="text-link" href="https://github.com/pyahu/toolchain/releases/latest">Latest release <Icon name="github" size={16} /></a></div>
     </div>
     <div class="install-panel">

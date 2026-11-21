@@ -63,7 +63,8 @@ mise ls-remote TOOL
 mise install --verbose TOOL@VERSION
 ```
 
-For a stable project checkout, keep the reviewed lockfile intact:
+In a project that commits the stable mise files (see [Base tools in one repository](recipes.md#base-tools-in-one-repository)),
+keep the reviewed lockfile intact:
 
 ```sh
 git status --short
@@ -108,5 +109,5 @@ Preview first, then remove only links owned by this checkout:
 ./install.sh --uninstall
 ```
 
-Backups created by the installer are restored. Downloaded tools stay in the mise cache but are no
-longer active.
+Backups created by the installer are restored. Downloaded tools stay installed in mise; your global
+configuration no longer selects them.

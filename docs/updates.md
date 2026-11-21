@@ -1,9 +1,8 @@
 # Version and update policy
 
-Pyahu Toolchain separates global installation from project-level verification. Stable profile TOMLs
-use exact versions, so the non-invasive global installer cannot unexpectedly upgrade a user's tools
-or compete with a lockfile owned by their global mise configuration. Committed project lockfiles add
-the artifact URLs and checksums exposed by mise for the supported platforms.
+Stable profiles use exact tool versions. The global installer links their configuration files and does
+not touch your global mise lockfile, so it never upgrades your tools behind your back. A project that
+commits a lockfile also gets the artifact URLs and checksums mise records for the supported platforms.
 
 ## Stability channels
 
@@ -65,5 +64,6 @@ For an actively exploited vulnerability or compromised release, do not wait for 
 3. Run the complete CI matrix.
 4. Merge and publish a patch release with an explicit security note.
 
-If no safe version exists, remove or disable the affected tool and document the temporary break in
-the same patch release. Do not silently point an existing lock at a different artifact.
+If no safe version exists, remove or disable the affected tool and document the temporary break. If
+that removes a supported workflow, publish it as a major release, as the [versioning
+policy](releases.md) requires. Do not silently point an existing lock at a different artifact.

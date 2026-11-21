@@ -23,7 +23,7 @@ reviewed versions, and the same setup is tested on Linux and macOS before each r
 - **Pick your stack:** Java, Go, Python, Node, cloud, AI, and terminal tools are optional.
 - **Predictable versions:** stable profiles use exact pins and checked-in lockfiles.
 - **Safe setup:** the installer does not replace your existing mise configuration.
-- **Easy to leave:** preview every change and uninstall the links at any time.
+- **Preview and uninstall:** preview every change and remove the links at any time.
 
 This is a shared CLI baseline. It does not replace project dependency files, containers, dotfiles,
 cloud credentials, or tool-specific configuration.
@@ -94,7 +94,7 @@ export MISE_ENV=node,ai
 mise install
 ```
 
-Node is recommended with AI because Kimi and Pi use it.
+Enable both `node` and `ai` to use Kimi or Pi.
 
 ## What the installer changes
 
@@ -102,8 +102,8 @@ Node is recommended with AI because Kimi and Pi use it.
 goes into `conf.d`; selected profiles become `config.<profile>.toml` environment files.
 
 It does not replace `config.toml`. It validates all destinations before writing, respects
-`MISE_CONFIG_DIR` and `XDG_CONFIG_HOME`, and refuses unrelated files or links. Use `--force` only
-after reviewing the backup behavior in [Getting started](docs/getting-started.md).
+`MISE_CONFIG_DIR` and `XDG_CONFIG_HOME`, and refuses unrelated files or links. Before using `--force`, read how
+[conflicts and backups](docs/troubleshooting.md#the-installer-reports-a-conflict) are handled.
 
 Remove links created by this checkout with:
 
@@ -112,7 +112,7 @@ Remove links created by this checkout with:
 ./install.sh --uninstall
 ```
 
-Downloaded tools remain in the mise cache but become inactive.
+Downloaded tools stay installed in mise; your global configuration no longer selects them.
 
 ## Use the base in one project
 

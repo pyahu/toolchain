@@ -11,7 +11,8 @@ cloud platforms, and terminal workflows.
 ## Start small
 
 Every setup begins with `rg`, `fd`, `jq`, and `yq`. Add Java, Go, Python, Node, cloud, AI,
-architecture, or workstation tools only when you need them.
+architecture, or workstation tools only when you need them. Install mise and clone a release first, as
+[Getting started](getting-started.md) shows, then run:
 
 ```sh
 ./install.sh workstation node cloud

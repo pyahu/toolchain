@@ -11,7 +11,7 @@ Profiles are additive. Pick the ones that match the work you do and combine them
 | Profile | Intended user | Adds | Suggested profiles | Prerequisites |
 | ------- | ------------- | ---- | ------------------ | ------------- |
 | Base | Any developer or automation runner | Search and JSON/YAML processing | — | None beyond mise |
-| `workstation` | Developers who want the full Pyahu terminal experience | Shell navigation, readable output, collaboration clients, TUIs, tmux, Neovim | — | Git; Nerd Font recommended for the best prompt/editor rendering |
+| `workstation` | Developers who want the full Pyahu terminal experience | Shell navigation, readable output, collaboration clients, TUIs, tmux, Neovim | — | Git; Nerd Font recommended for prompt and editor rendering |
 | `java` | JVM application developers | Temurin, Maven, Gradle, Kotlin | — | `kcat` remains an optional OS package for Kafka work |
 | `go` | Go service and CLI developers | Go, linting, debugging, reload, image builds | — | Docker only when publishing images with `ko` |
 | `python` | Python application and data developers | uv, Ruff, IPython | — | None |

@@ -33,7 +33,8 @@ cd ~/.config/pyahu-toolchain
 ./install.sh workstation node cloud
 ```
 
-Release pages also provide a project-owned tar archive and SHA-256 file. Verify and extract it, then
+Each release on [GitHub Releases](https://github.com/pyahu/toolchain/releases) also has a project-owned
+tar archive and its SHA-256 file. Download both into one directory, verify and extract the archive, then
 run the same installer from the extracted directory:
 
 ```sh

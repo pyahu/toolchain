@@ -26,7 +26,7 @@ Coding-agent CLIs change quickly and often need recent compatibility fixes. The 
 recent releases after a short delay and is tested for installation, but it is not reproducible in
 the same way as stable profiles.
 
-## Are all 67 tools security-audited?
+## Are all tools security-audited?
 
 No. Versions and installation behavior are reviewed and tested, but the project does not audit all
 upstream source code or transitive dependencies. See [Platform support](support.md) for the exact

@@ -1,7 +1,7 @@
 # Common recipes
 
-Run these examples from the Pyahu Toolchain checkout. Replace the profile list with the one that
-fits your work.
+Run these examples from the Pyahu Toolchain checkout, except [Base tools in one repository](#base-tools-in-one-repository),
+which runs in your own project. Replace the profile list with the one that fits your work.
 
 ## Minimal command-line base
 

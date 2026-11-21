@@ -12,8 +12,9 @@ collection of everything that exists. Before opening a PR, check that the tool:
 2. **Is in the [mise registry](https://mise.jdx.dev/registry.html)** (or installable via a mise
    backend like `pipx:`, `npm:`, `go:`). Tools mise can't manage go in the README's OS-level
    prerequisites instead.
-3. **Fits an overlay.** Base is deliberately minimal — new tools usually belong in a
-   `mise.<env>.toml` overlay, or a new overlay if a whole workflow is missing.
+3. **Fits a profile.** A profile groups the tools of one workflow in its own `mise.<env>.toml` file. The base
+   profile is deliberately minimal, so a new tool usually belongs in an existing profile, or in a new one if a
+   whole workflow is missing.
 
 Open the PR with the tool pinned to an exact reviewed release and add its display name, purpose, and
 rationale to `catalog.toml`. Regenerate the public tables with `./scripts/catalog.py`. CI must pass
